@@ -1,0 +1,107 @@
+\documentclass[a4paper,10pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[english]{babel}
+
+\usepackage{color}
+\usepackage{float}
+\usepackage{fancyvrb}
+
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{listings}
+\usepackage{comment}
+\usepackage[boxed]{algorithm2e}
+\usepackage{graphicx}
+\DeclareGraphicsExtensions{.png}
+
+\definecolor{dkgreen}{rgb}{0,0.45,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.30,0,0.30}
+
+\lstset{frame=tb,
+  language=Java,
+  aboveskip=3mm,
+  belowskip=3mm,
+  showstringspaces=false,
+  columns=flexible,
+  basicstyle={\small\ttfamily},
+  numbers=left,
+  numberstyle=\footnotesize,
+  keywordstyle=\color{dkgreen}\bfseries,
+  commentstyle=\color{red},
+  stringstyle=\color{mauve},
+  frame=single,
+  breaklines=true,
+  breakatwhitespace=false
+  tabsize=1
+}
+
+\title{ Notes \\\rule{5.5cm}{0.5mm} \\ Parameterless clustering by dynamic tree-cutting \\\rule{10cm}{0.5mm}}
+\author{Simon Lehmann Knudsen \\
+	simkn15@student.sdu.dk \\
+	ECTS: 10 \\
+	04/09-2017 - 31/01-2018 \\
+	5th semester in Computer Science
+\\\rule{5.5cm}{0.5mm}\\}
+
+\begin{document}
+\begin{figure}[h]
+	\centering
+	\begin{tabular}{|c|c|r|}
+		\hline
+		Dimensions & Threshold max gap & fold change \\\hline
+		5   & 122 & 227.3405 \\\hline
+		10  & 151 & 39.0570 \\\hline
+		15  & 153 & 35.0167 \\\hline
+		20  & 153 & 34.4680 \\\hline
+		25  & 148 & 27.9837 \\\hline
+		30  & 160 & 30.6777 \\\hline
+		35  & 128 & 101.9536 \\\hline
+		40  & 140 & 36.7628 \\\hline
+		45  & 139 & 39.2452 \\\hline
+		50  & 147 & 24.3221 \\\hline	
+		55  & 125 & 147.9133 \\\hline
+		60  & 123 & 165.325 \\\hline
+		65  & 125 & 149.7192 \\\hline
+		70  & 118 & 352.4266 \\\hline
+		75  & 125 & 144.0012 \\\hline
+		80  & 134 & 57.8595 \\\hline
+		85  & 124 & 154.1030 \\\hline
+		90  & 130 & 73.9996 \\\hline
+		95  & 124 & 145.2467 \\\hline
+		100 & 136 & 43.5962 \\\hline
+	\end{tabular}
+	\caption{Small Data Set}
+\end{figure}
+\begin{figure}[h]
+	\centering
+	\begin{tabular}{|c|c|c|r|}
+		\hline
+		Dimensions & Max cost Threshold & Threshold max gap & fold change ($\mu = 4.25353$) \\\hline
+		5 & 78 & 78 & 4.9265 \\\hline
+		10 & 107 & 107 & 6.5309 \\\hline
+		15 & 92 & 92 & 3.9525 \\\hline
+		20 & 84 & 84 & 3.6639 \\\hline
+		25 & 90 & 90 & 3.6681 \\\hline
+		30 & 96 & 96 & 4.2508 \\\hline
+		35 & 98 & 97 & 4.6519 \\\hline
+		40 & 87 & 87 & 3.8082 \\\hline
+		45 & 93 & 93 & 4.1851 \\\hline
+		50 & 89 & 89 & 3.7935 \\\hline
+		55 & 90 & 90 & 3.8843 \\\hline
+		60 & 95 & 95 & 4.3252 \\\hline
+		65 & 91 & 91 & 3.8819 \\\hline
+		70 & 91 & 91 & 3.9391 \\\hline
+		75 & 94 & 94 & 4.1228 \\\hline
+		80 & 101 & 101 & 4.2029 \\\hline
+		85 & 91 & 91 & 4.0458 \\\hline
+		90 & 100 & 100 & 4.3406 \\\hline
+		95 & 93 & 93 & 3.9544 \\\hline
+		100 & 106 & 106 & 4.9422 \\\hline
+	\end{tabular}
+	\caption{Big Data Set}
+\end{figure}
+	
+\end{document}

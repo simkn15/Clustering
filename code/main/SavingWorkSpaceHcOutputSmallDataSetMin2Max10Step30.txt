@@ -1,0 +1,626 @@
+
+currentTclustCluster = c1 | nextThreshold = -1
+
+currentTclustCluster = c1 | nextThreshold = 29
+Beginning binary search with cluster: c1 | amountOfClustersInTclustResult = 22
+Decreasing to step = 15 | lowerBound = 0 | upperBound = 30
+amountOfClustersInTclustResult = 18 | currentStep = 15
+Outer loop | amountOfClustersInTclustResult >= 10 | Updating upperBound from 30 to 15
+Decreasing to step = 8 | lowerBound = 0 | upperBound = 15
+amountOfClustersInTclustResult = 16 | currentStep = 8
+Outer loop | amountOfClustersInTclustResult >= 10 | Updating upperBound from 15 to 8
+Decreasing to step = 4 | lowerBound = 0 | upperBound = 8
+amountOfClustersInTclustResult = 16 | currentStep = 4
+Outer loop | amountOfClustersInTclustResult >= 10 | Updating upperBound from 8 to 4
+Decreasing to step = 2 | lowerBound = 0 | upperBound = 4
+amountOfClustersInTclustResult = 10 | currentStep = 2
+Outer loop | amountOfClustersInTclustResult >= 10 | Updating upperBound from 4 to 2
+Decreasing to step = 1 | lowerBound = 0 | upperBound = 2
+amountOfClustersInTclustResult = 2 | currentStep = 1
+
+currentTclustCluster = c3 | nextThreshold = 30
+Beginning binary search with cluster: c3 | amountOfClustersInTclustResult = 22
+Decreasing to step = 15 | lowerBound = 0 | upperBound = 30
+amountOfClustersInTclustResult = 17 | currentStep = 15
+Outer loop | amountOfClustersInTclustResult >= 10 | Updating upperBound from 30 to 15
+Decreasing to step = 8 | lowerBound = 0 | upperBound = 15
+amountOfClustersInTclustResult = 15 | currentStep = 8
+Outer loop | amountOfClustersInTclustResult >= 10 | Updating upperBound from 15 to 8
+Decreasing to step = 4 | lowerBound = 0 | upperBound = 8
+amountOfClustersInTclustResult = 14 | currentStep = 4
+Outer loop | amountOfClustersInTclustResult >= 10 | Updating upperBound from 8 to 4
+Decreasing to step = 2 | lowerBound = 0 | upperBound = 4
+amountOfClustersInTclustResult = 15 | currentStep = 2
+Outer loop | amountOfClustersInTclustResult >= 10 | Updating upperBound from 4 to 2
+Decreasing to step = 1 | lowerBound = 0 | upperBound = 2
+amountOfClustersInTclustResult = 9 | currentStep = 1
+
+currentTclustCluster = c5 | nextThreshold = 31
+
+currentTclustCluster = c6 | nextThreshold = 31
+
+currentTclustCluster = c7 | nextThreshold = 31
+
+currentTclustCluster = c8 | nextThreshold = 31
+
+currentTclustCluster = c9 | nextThreshold = 31
+
+currentTclustCluster = c10 | nextThreshold = 31
+
+currentTclustCluster = c11 | nextThreshold = 31
+
+currentTclustCluster = c12 | nextThreshold = 31
+
+currentTclustCluster = c5 | nextThreshold = 61
+
+currentTclustCluster = c15 | nextThreshold = 61
+
+currentTclustCluster = c16 | nextThreshold = 61
+
+currentTclustCluster = c17 | nextThreshold = 61
+
+currentTclustCluster = c18 | nextThreshold = 61
+
+currentTclustCluster = c19 | nextThreshold = 61
+
+currentTclustCluster = c20 | nextThreshold = 61
+
+currentTclustCluster = c21 | nextThreshold = 61
+
+currentTclustCluster = c22 | nextThreshold = 61
+
+currentTclustCluster = c23 | nextThreshold = 61
+
+currentTclustCluster = c24 | nextThreshold = 61
+
+currentTclustCluster = c26 | nextThreshold = 61
+
+currentTclustCluster = c28 | nextThreshold = 61
+
+currentTclustCluster = c9 | nextThreshold = 61
+
+currentTclustCluster = c10 | nextThreshold = 61
+
+currentTclustCluster = c11 | nextThreshold = 61
+
+currentTclustCluster = c12 | nextThreshold = 61
+
+currentTclustCluster = c5 | nextThreshold = 91
+
+currentTclustCluster = c15 | nextThreshold = 91
+
+currentTclustCluster = c16 | nextThreshold = 91
+
+currentTclustCluster = c17 | nextThreshold = 91
+
+currentTclustCluster = c18 | nextThreshold = 91
+
+currentTclustCluster = c29 | nextThreshold = 91
+
+currentTclustCluster = c30 | nextThreshold = 91
+
+currentTclustCluster = c20 | nextThreshold = 91
+
+currentTclustCluster = c21 | nextThreshold = 91
+
+currentTclustCluster = c23 | nextThreshold = 91
+
+currentTclustCluster = c33 | nextThreshold = 91
+
+currentTclustCluster = c34 | nextThreshold = 91
+
+currentTclustCluster = c35 | nextThreshold = 91
+
+currentTclustCluster = c36 | nextThreshold = 91
+
+currentTclustCluster = c28 | nextThreshold = 91
+
+currentTclustCluster = c38 | nextThreshold = 91
+
+currentTclustCluster = c10 | nextThreshold = 91
+
+currentTclustCluster = c11 | nextThreshold = 91
+
+currentTclustCluster = c39 | nextThreshold = 91
+
+currentTclustCluster = c40 | nextThreshold = 91
+
+currentTclustCluster = c5 | nextThreshold = 121
+
+currentTclustCluster = c15 | nextThreshold = 121
+
+currentTclustCluster = c16 | nextThreshold = 121
+
+currentTclustCluster = c17 | nextThreshold = 121
+
+currentTclustCluster = c41 | nextThreshold = 121
+
+currentTclustCluster = c29 | nextThreshold = 121
+
+currentTclustCluster = c30 | nextThreshold = 121
+
+currentTclustCluster = c43 | nextThreshold = 121
+
+currentTclustCluster = c44 | nextThreshold = 121
+
+currentTclustCluster = c21 | nextThreshold = 121
+
+currentTclustCluster = c23 | nextThreshold = 121
+
+currentTclustCluster = c33 | nextThreshold = 121
+
+currentTclustCluster = c34 | nextThreshold = 121
+
+currentTclustCluster = c35 | nextThreshold = 121
+
+currentTclustCluster = c36 | nextThreshold = 121
+
+currentTclustCluster = c28 | nextThreshold = 121
+
+currentTclustCluster = c38 | nextThreshold = 121
+
+currentTclustCluster = c10 | nextThreshold = 121
+
+currentTclustCluster = c11 | nextThreshold = 121
+
+currentTclustCluster = c39 | nextThreshold = 121
+
+currentTclustCluster = c40 | nextThreshold = 121
+
+currentTclustCluster = c5 | nextThreshold = 151
+
+currentTclustCluster = c15 | nextThreshold = 151
+
+currentTclustCluster = c16 | nextThreshold = 151
+
+currentTclustCluster = c45 | nextThreshold = 151
+
+currentTclustCluster = c46 | nextThreshold = 151
+
+currentTclustCluster = c47 | nextThreshold = 151
+
+currentTclustCluster = c29 | nextThreshold = 151
+
+currentTclustCluster = c52 | nextThreshold = 151
+
+currentTclustCluster = c53 | nextThreshold = 151
+
+currentTclustCluster = c43 | nextThreshold = 151
+
+currentTclustCluster = c44 | nextThreshold = 151
+
+currentTclustCluster = c21 | nextThreshold = 151
+
+currentTclustCluster = c54 | nextThreshold = 151
+
+currentTclustCluster = c33 | nextThreshold = 151
+
+currentTclustCluster = c34 | nextThreshold = 151
+
+currentTclustCluster = c35 | nextThreshold = 151
+
+currentTclustCluster = c36 | nextThreshold = 151
+
+currentTclustCluster = c28 | nextThreshold = 151
+
+currentTclustCluster = c38 | nextThreshold = 151
+
+currentTclustCluster = c11 | nextThreshold = 151
+
+currentTclustCluster = c39 | nextThreshold = 151
+
+currentTclustCluster = c40 | nextThreshold = 151
+
+currentTclustCluster = c5 | nextThreshold = 181
+
+currentTclustCluster = c58 | nextThreshold = 181
+
+currentTclustCluster = c16 | nextThreshold = 181
+
+currentTclustCluster = c45 | nextThreshold = 181
+
+currentTclustCluster = c61 | nextThreshold = 181
+
+currentTclustCluster = c47 | nextThreshold = 181
+
+currentTclustCluster = c29 | nextThreshold = 181
+
+currentTclustCluster = c52 | nextThreshold = 181
+
+currentTclustCluster = c62 | nextThreshold = 181
+
+currentTclustCluster = c63 | nextThreshold = 181
+
+currentTclustCluster = c43 | nextThreshold = 181
+
+currentTclustCluster = c44 | nextThreshold = 181
+
+currentTclustCluster = c64 | nextThreshold = 181
+
+currentTclustCluster = c65 | nextThreshold = 181
+
+currentTclustCluster = c66 | nextThreshold = 181
+
+currentTclustCluster = c54 | nextThreshold = 181
+
+currentTclustCluster = c33 | nextThreshold = 181
+
+currentTclustCluster = c34 | nextThreshold = 181
+
+currentTclustCluster = c35 | nextThreshold = 181
+
+currentTclustCluster = c36 | nextThreshold = 181
+
+currentTclustCluster = c28 | nextThreshold = 181
+
+currentTclustCluster = c38 | nextThreshold = 181
+
+currentTclustCluster = c11 | nextThreshold = 181
+
+currentTclustCluster = c39 | nextThreshold = 181
+
+currentTclustCluster = c40 | nextThreshold = 181
+
+currentTclustCluster = c68 | nextThreshold = 211
+
+currentTclustCluster = c58 | nextThreshold = 211
+
+currentTclustCluster = c16 | nextThreshold = 211
+
+currentTclustCluster = c45 | nextThreshold = 211
+
+currentTclustCluster = c70 | nextThreshold = 211
+
+currentTclustCluster = c47 | nextThreshold = 211
+
+currentTclustCluster = c29 | nextThreshold = 211
+
+currentTclustCluster = c52 | nextThreshold = 211
+
+currentTclustCluster = c62 | nextThreshold = 211
+
+currentTclustCluster = c63 | nextThreshold = 211
+
+currentTclustCluster = c43 | nextThreshold = 211
+
+currentTclustCluster = c44 | nextThreshold = 211
+
+currentTclustCluster = c71 | nextThreshold = 211
+
+currentTclustCluster = c72 | nextThreshold = 211
+
+currentTclustCluster = c65 | nextThreshold = 211
+
+currentTclustCluster = c66 | nextThreshold = 211
+
+currentTclustCluster = c54 | nextThreshold = 211
+
+currentTclustCluster = c33 | nextThreshold = 211
+
+currentTclustCluster = c34 | nextThreshold = 211
+
+currentTclustCluster = c35 | nextThreshold = 211
+
+currentTclustCluster = c36 | nextThreshold = 211
+
+currentTclustCluster = c28 | nextThreshold = 211
+
+currentTclustCluster = c38 | nextThreshold = 211
+
+currentTclustCluster = c11 | nextThreshold = 211
+
+currentTclustCluster = c39 | nextThreshold = 211
+
+currentTclustCluster = c40 | nextThreshold = 211
+
+currentTclustCluster = c73 | nextThreshold = 241
+
+currentTclustCluster = c58 | nextThreshold = 241
+
+currentTclustCluster = c16 | nextThreshold = 241
+
+currentTclustCluster = c45 | nextThreshold = 241
+
+currentTclustCluster = c70 | nextThreshold = 241
+
+currentTclustCluster = c47 | nextThreshold = 241
+
+currentTclustCluster = c29 | nextThreshold = 241
+
+currentTclustCluster = c52 | nextThreshold = 241
+
+currentTclustCluster = c62 | nextThreshold = 241
+
+currentTclustCluster = c63 | nextThreshold = 241
+
+currentTclustCluster = c43 | nextThreshold = 241
+
+currentTclustCluster = c44 | nextThreshold = 241
+
+currentTclustCluster = c75 | nextThreshold = 241
+
+currentTclustCluster = c76 | nextThreshold = 241
+
+currentTclustCluster = c72 | nextThreshold = 241
+
+currentTclustCluster = c65 | nextThreshold = 241
+
+currentTclustCluster = c66 | nextThreshold = 241
+
+currentTclustCluster = c54 | nextThreshold = 241
+
+currentTclustCluster = c33 | nextThreshold = 241
+
+currentTclustCluster = c34 | nextThreshold = 241
+
+currentTclustCluster = c35 | nextThreshold = 241
+
+currentTclustCluster = c36 | nextThreshold = 241
+
+currentTclustCluster = c78 | nextThreshold = 241
+
+currentTclustCluster = c38 | nextThreshold = 241
+
+currentTclustCluster = c11 | nextThreshold = 241
+
+currentTclustCluster = c39 | nextThreshold = 241
+
+currentTclustCluster = c40 | nextThreshold = 241
+
+currentTclustCluster = c73 | nextThreshold = 271
+
+currentTclustCluster = c58 | nextThreshold = 271
+
+currentTclustCluster = c16 | nextThreshold = 271
+
+currentTclustCluster = c45 | nextThreshold = 271
+
+currentTclustCluster = c70 | nextThreshold = 271
+
+currentTclustCluster = c47 | nextThreshold = 271
+
+currentTclustCluster = c29 | nextThreshold = 271
+
+currentTclustCluster = c52 | nextThreshold = 271
+
+currentTclustCluster = c62 | nextThreshold = 271
+
+currentTclustCluster = c63 | nextThreshold = 271
+
+currentTclustCluster = c43 | nextThreshold = 271
+
+currentTclustCluster = c44 | nextThreshold = 271
+
+currentTclustCluster = c81 | nextThreshold = 271
+
+currentTclustCluster = c82 | nextThreshold = 271
+
+currentTclustCluster = c84 | nextThreshold = 271
+
+currentTclustCluster = c76 | nextThreshold = 271
+
+currentTclustCluster = c72 | nextThreshold = 271
+
+currentTclustCluster = c65 | nextThreshold = 271
+
+currentTclustCluster = c66 | nextThreshold = 271
+
+currentTclustCluster = c54 | nextThreshold = 271
+
+currentTclustCluster = c33 | nextThreshold = 271
+
+currentTclustCluster = c34 | nextThreshold = 271
+
+currentTclustCluster = c35 | nextThreshold = 271
+
+currentTclustCluster = c36 | nextThreshold = 271
+
+currentTclustCluster = c85 | nextThreshold = 271
+
+currentTclustCluster = c86 | nextThreshold = 271
+
+currentTclustCluster = c38 | nextThreshold = 271
+
+currentTclustCluster = c11 | nextThreshold = 271
+
+currentTclustCluster = c39 | nextThreshold = 271
+
+currentTclustCluster = c88 | nextThreshold = 271
+
+currentTclustCluster = c89 | nextThreshold = 271
+
+currentTclustCluster = c73 | nextThreshold = 301
+
+currentTclustCluster = c58 | nextThreshold = 301
+
+currentTclustCluster = c16 | nextThreshold = 301
+
+currentTclustCluster = c45 | nextThreshold = 301
+
+currentTclustCluster = c70 | nextThreshold = 301
+
+currentTclustCluster = c47 | nextThreshold = 301
+
+currentTclustCluster = c29 | nextThreshold = 301
+
+currentTclustCluster = c52 | nextThreshold = 301
+
+currentTclustCluster = c62 | nextThreshold = 301
+
+currentTclustCluster = c63 | nextThreshold = 301
+
+currentTclustCluster = c43 | nextThreshold = 301
+
+currentTclustCluster = c44 | nextThreshold = 301
+
+currentTclustCluster = c90 | nextThreshold = 301
+
+currentTclustCluster = c91 | nextThreshold = 301
+
+currentTclustCluster = c92 | nextThreshold = 301
+
+currentTclustCluster = c82 | nextThreshold = 301
+
+currentTclustCluster = c84 | nextThreshold = 301
+
+currentTclustCluster = c76 | nextThreshold = 301
+
+currentTclustCluster = c72 | nextThreshold = 301
+
+currentTclustCluster = c65 | nextThreshold = 301
+
+currentTclustCluster = c66 | nextThreshold = 301
+
+currentTclustCluster = c54 | nextThreshold = 301
+
+currentTclustCluster = c33 | nextThreshold = 301
+
+currentTclustCluster = c34 | nextThreshold = 301
+
+currentTclustCluster = c35 | nextThreshold = 301
+
+currentTclustCluster = c36 | nextThreshold = 301
+
+currentTclustCluster = c85 | nextThreshold = 301
+
+currentTclustCluster = c86 | nextThreshold = 301
+
+currentTclustCluster = c38 | nextThreshold = 301
+
+currentTclustCluster = c11 | nextThreshold = 301
+
+currentTclustCluster = c39 | nextThreshold = 301
+
+currentTclustCluster = c88 | nextThreshold = 301
+
+currentTclustCluster = c89 | nextThreshold = 301
+
+currentTclustCluster = c73 | nextThreshold = 324
+
+currentTclustCluster = c58 | nextThreshold = 324
+
+currentTclustCluster = c16 | nextThreshold = 324
+
+currentTclustCluster = c45 | nextThreshold = 324
+
+currentTclustCluster = c70 | nextThreshold = 324
+
+currentTclustCluster = c47 | nextThreshold = 324
+
+currentTclustCluster = c29 | nextThreshold = 324
+
+currentTclustCluster = c52 | nextThreshold = 324
+
+currentTclustCluster = c62 | nextThreshold = 324
+
+currentTclustCluster = c63 | nextThreshold = 324
+
+currentTclustCluster = c43 | nextThreshold = 324
+
+currentTclustCluster = c44 | nextThreshold = 324
+
+currentTclustCluster = c94 | nextThreshold = 324
+Beginning binary search with cluster: c94 | amountOfClustersInTclustResult = 67
+Decreasing to step = 15 | lowerBound = 0 | upperBound = 30
+amountOfClustersInTclustResult = 3 | currentStep = 15
+
+currentTclustCluster = c95 | nextThreshold = 324
+
+currentTclustCluster = c97 | nextThreshold = 324
+
+currentTclustCluster = c91 | nextThreshold = 324
+
+currentTclustCluster = c92 | nextThreshold = 324
+
+currentTclustCluster = c82 | nextThreshold = 324
+
+currentTclustCluster = c84 | nextThreshold = 324
+
+currentTclustCluster = c76 | nextThreshold = 324
+
+currentTclustCluster = c72 | nextThreshold = 324
+
+currentTclustCluster = c65 | nextThreshold = 324
+
+currentTclustCluster = c66 | nextThreshold = 324
+
+currentTclustCluster = c54 | nextThreshold = 324
+
+currentTclustCluster = c33 | nextThreshold = 324
+
+currentTclustCluster = c34 | nextThreshold = 324
+
+currentTclustCluster = c35 | nextThreshold = 324
+
+currentTclustCluster = c36 | nextThreshold = 324
+
+currentTclustCluster = c99 | nextThreshold = 324
+
+currentTclustCluster = c86 | nextThreshold = 324
+Beginning binary search with cluster: c86 | amountOfClustersInTclustResult = 18
+Decreasing to step = 15 | lowerBound = 0 | upperBound = 30
+amountOfClustersInTclustResult = 2 | currentStep = 15
+
+currentTclustCluster = c38 | nextThreshold = 324
+
+currentTclustCluster = c101 | nextThreshold = 324
+
+currentTclustCluster = c39 | nextThreshold = 324
+
+currentTclustCluster = c88 | nextThreshold = 324
+
+currentTclustCluster = c89 | nextThreshold = 324
+
+currentTclustCluster = c141 | nextThreshold = 324
+Beginning binary search with cluster: c141 | amountOfClustersInTclustResult = 65
+Decreasing to step = 15 | lowerBound = 0 | upperBound = 30
+amountOfClustersInTclustResult = 1 | currentStep = 15
+Inner loop | Updating lowerBound from 0 to 15
+Increasing to step = 23 | lowerBound = 15 | upperBound = 30
+amountOfClustersInTclustResult = 1 | currentStep = 23
+Inner loop | Updating lowerBound from 15 to 23
+Increasing to step = 27 | lowerBound = 23 | upperBound = 30
+amountOfClustersInTclustResult = 1 | currentStep = 27
+Inner loop | Updating lowerBound from 23 to 27
+Increasing to step = 29 | lowerBound = 27 | upperBound = 30
+amountOfClustersInTclustResult = 2 | currentStep = 29
+
+currentTclustCluster = c202 | nextThreshold = 324
+Beginning binary search with cluster: c202 | amountOfClustersInTclustResult = 17
+Decreasing to step = 15 | lowerBound = 0 | upperBound = 30
+amountOfClustersInTclustResult = 1 | currentStep = 15
+Inner loop | Updating lowerBound from 0 to 15
+Increasing to step = 23 | lowerBound = 15 | upperBound = 30
+amountOfClustersInTclustResult = 1 | currentStep = 23
+Inner loop | Updating lowerBound from 15 to 23
+Increasing to step = 27 | lowerBound = 23 | upperBound = 30
+amountOfClustersInTclustResult = 1 | currentStep = 27
+Inner loop | Updating lowerBound from 23 to 27
+Increasing to step = 29 | lowerBound = 27 | upperBound = 30
+amountOfClustersInTclustResult = 1 | currentStep = 29
+Inner loop | Updating lowerBound from 27 to 29
+Increasing to step = 30 | lowerBound = 29 | upperBound = 30
+fallBack mode at inner, currentStep 30 == 30 upperBound
+fallBack mode caught
+######## Resetting into pre-binary-search
+amountOfClustersInTclustResult = 17
+
+currentTclustCluster = c223 | nextThreshold = 324
+Beginning binary search with cluster: c223 | amountOfClustersInTclustResult = 64
+Decreasing to step = 15 | lowerBound = 0 | upperBound = 30
+amountOfClustersInTclustResult = 1 | currentStep = 15
+Inner loop | Updating lowerBound from 0 to 15
+Increasing to step = 23 | lowerBound = 15 | upperBound = 30
+amountOfClustersInTclustResult = 1 | currentStep = 23
+Inner loop | Updating lowerBound from 15 to 23
+Increasing to step = 27 | lowerBound = 23 | upperBound = 30
+amountOfClustersInTclustResult = 1 | currentStep = 27
+Inner loop | Updating lowerBound from 23 to 27
+Increasing to step = 29 | lowerBound = 27 | upperBound = 30
+amountOfClustersInTclustResult = 1 | currentStep = 29
+Inner loop | Updating lowerBound from 27 to 29
+Increasing to step = 30 | lowerBound = 29 | upperBound = 30
+fallBack mode at inner, currentStep 30 == 30 upperBound
+fallBack mode caught
+######## Resetting into pre-binary-search
+amountOfClustersInTclustResult = 64

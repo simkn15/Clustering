@@ -1,0 +1,7 @@
+lastname firstname born died
+Fisher R.A. 1890 1962
+Pearson Karl 1857 1936
+Cox Gertrude 1900 1978
+Yates Frank 1902 1994
+Smith Kirstine 1878 1939
+Jørgensen Bent 1954 2015

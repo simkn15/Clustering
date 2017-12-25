@@ -1,0 +1,20 @@
+\select@language {english}
+\contentsline {section}{\numberline {1}Abstract}{3}
+\contentsline {section}{\numberline {2}Introduction}{4}
+\contentsline {subsection}{\numberline {2.1}What is clustering?}{4}
+\contentsline {subsection}{\numberline {2.2}The clustering problem}{4}
+\contentsline {subsubsection}{\numberline {2.2.1}Determining parameters}{4}
+\contentsline {section}{\numberline {3}Background}{5}
+\contentsline {subsection}{\numberline {3.1}Transitivity Clustering}{5}
+\contentsline {subsection}{\numberline {3.2}Hierarchical Clustering}{5}
+\contentsline {subsection}{\numberline {3.3}Cluster Validation}{5}
+\contentsline {subsection}{\numberline {3.4}GAP Statistics}{5}
+\contentsline {section}{\numberline {4}Method}{6}
+\contentsline {subsection}{\numberline {4.1}Assessing best clustering}{6}
+\contentsline {subsection}{\numberline {4.2}Randomization approach 1}{6}
+\contentsline {subsection}{\numberline {4.3}Randomization approach 2}{6}
+\contentsline {subsection}{\numberline {4.4}Randomization approach 3}{6}
+\contentsline {subsection}{\numberline {4.5}Randomization approach 4}{6}
+\contentsline {subsection}{\numberline {4.6}Results for randomizations}{6}
+\contentsline {subsection}{\numberline {4.7}Short about the implementation / tools}{6}
+\contentsline {section}{\numberline {5}Conclusion}{7}

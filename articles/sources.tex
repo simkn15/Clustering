@@ -1,0 +1,217 @@
+\documentclass[a4paper,10pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[english]{babel}
+
+\usepackage{color}
+\usepackage{float}
+\usepackage{fancyvrb}
+
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{listings}
+\usepackage{comment}
+\usepackage[boxed]{algorithm2e}
+\usepackage{graphicx}
+\DeclareGraphicsExtensions{.png}
+
+\definecolor{dkgreen}{rgb}{0,0.45,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.30,0,0.30}
+
+\lstset{frame=tb,
+  language=Java,
+  aboveskip=3mm,
+  belowskip=3mm,
+  showstringspaces=false,
+  columns=flexible,
+  basicstyle={\small\ttfamily},
+  numbers=left,
+  numberstyle=\footnotesize,
+  keywordstyle=\color{dkgreen}\bfseries,
+  commentstyle=\color{red},
+  stringstyle=\color{mauve},
+  frame=single,
+  breaklines=true,
+  breakatwhitespace=false
+  tabsize=1
+}
+
+\title{ Sources: \\Parameterless clustering by dynamic tree-cutting \\ \rule{10cm}{0.5mm}}
+\author{Simon Lehmann Knudsen \\
+	simkn15@student.sdu.dk \\
+	ECTS: 10 \\
+	04/09-2017 - 31/01-2018 \\
+	5th semester in Computer Science
+\\\rule{5.5cm}{0.5mm}\\}
+
+\begin{document}
+\maketitle
+
+\tableofcontents
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage
+\section{Articles}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{itemize}
+	\item A gold standard set of mechanistically diverse enzyme superfamilies. \\ Shoshana D Brown*, John A Gerlt†, Jennifer L Seffernick‡ and
+	Patricia C Babbitt§. \\
+	Article downloaded from SDU library and located in articles folder.
+	
+	\item Comprehensive cluster analysis with Transitivity Clustering. \\
+	Tobias Wittkop, Dorothea Emig, Anke Truss, Mario Albrecht, Sebastian Böcker \& Jan Baumbach \\
+	Article downloaded from SDU library and located in articles folder.
+	
+	\item Comparing the performance of biomedical clustering
+	methods. \\
+	Christian Wiwie1, Jan Baumbach \& Richard Röttger \\
+	Article downloaded from sdu library and located in articles folder.
+	
+	\item Large scale clustering of protein sequences with FORCE -A layout
+	based heuristic for weighted cluster editing. \\
+	Tobias Wittkop, Jan Baumbach, Francisco P Lobo and
+	Sven Rahmann. \\
+	Article downloaded from unsupervised learning and located in articles folder.
+	
+	\item Partitioning biological data with transitivity clustering \\
+	Tobias Wittkop, Dorothea Emig, Sita Lange, Sven Rahmann, Mario Albrecht, John H
+	Morris, Sebastian Böcker, Jens Stoye \& Jan Baumbach. \\
+	Article downloaded from unsupervised learning "TransClust Supplement".
+	
+	\item On Clustering Validation Techniques \\
+	Maria Halkidi, Yannis Batistakis, Michalis Vazirgiannis \\
+	Article received from Richard and located in articles folder.
+	
+	\item Internal versus External cluster validation indexes \\
+	Eréndira Rendón, Itzel Abundez, Alejandra Arizmendi and Elvia M. Quiroz. \\
+	Article received from Richard and located in articles folder.
+	
+	\item Estimating the number of clusters	in a data set via the gap statistic \\
+	Robert Tibshirani, Guenther Walther and Trevor Hastie \\
+	Article downloaded from: https://web.stanford.edu/~hastie/Papers/gap.pdf
+\end{itemize}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Notes}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{On Clustering Validation Techniques}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsubsection{Introduction}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{itemize}
+	\item Clustering problem is about partitioning a given data set into groups (clusters) such that the data points in a cluster are more similar to each other than points in different clusters (Guha et al., 1998).
+	
+	\item In the clustering process, there are no predefined classes and no examples thatwould show what kind of desirable relations should be valid among the data that is why it is perceived as an unsupervised process (Berry and Linoff, 1996).
+	
+	\item On the other hand, classification is a procedure of assigning a data item to a predefined set of categories (Fayyad et al., 1996).
+	
+\end{itemize}
+Clustering produces initial categories in which values of a data set are classified during the classification process.
+The basic steps to develop clustering process:
+\begin{itemize}
+	\item Feature selection
+	\item Clustering algorithm
+		\subitem Proximity measure
+		\subitem Clustering criterion
+	\item Validation of the results: The final partition of data requires some kind of evaluation in most applications (Rezaee et al., 1998)
+	\item Interpretation of the results
+\end{itemize}
+Clustering algorithms can be classified according to:
+\begin{itemize}
+	\item The type of data input to the algorithm.
+	\item The clustering criterion defining the similarity between data points.
+	\item The theory and fundamental concepts on which clustering analysis techniques are based (e.g. fuzzy theory, statistics).
+\end{itemize}
+Thus according to the method adopted to define clusters, the algorithms can be broadly classified into the following types (Jain et al., 1999):
+\begin{itemize}
+	\item Partitional clustering.
+	\item Hierarchical clustering.
+	\item Density clustering.
+	\item Grid-based clustering.
+\end{itemize}
+For each of above categories there is a wealth of subtypes and different algorithms for finding the clusters. Thus, according to the type of variables allowed in the data set can be categorized into (Guha et al., 1999; Huang et al., 1997; Rezaee et al., 1998):
+\begin{itemize}
+	\item Statistical.
+	\item Conceptual: which are used to cluster categorical data. They cluster objects according to the concepts they carry.
+	\item Fuzzy clustering.
+	\item Crisp clustering: considers non-overlapping partitions meaning that a data point either belongs to a class or not. Most of the clustering algorithms result in crisp clusters, and thus can be categorized in crisp clustering.
+	\item Kohonen net clustering.
+\end{itemize}
+Input parameters of an algorithm can be number of clusters, density of clusters, etc.. Attempt to define the best partitioning of a data set for the given parameters. Thus, they do not necessarily give the "best" partitioning. Since clustering algorithms discover clusters, which are not known a priori, the final partitions require some sort of evaluation in most applications (Rezaee et al., 1998).
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsubsection{Clustering algorithms}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{itemize}
+	\item Partitional algorithms
+		\subitem K-Means: Optimisation of an objective function that us described by the equation: $E = \sum_{i = 1}^{c} \sum_{x \in C_{i}} d(x, m_{i})$.
+		\subitem PAM (Partitioning Around Medoids)
+		\subitem CLARA (Clustering Large Applications)
+		\subitem CLARANS (Clustering Large Applications based on Randomized Search)
+		\subitem K-prototypes, K-mode are based on K-Means, but aims at clustering categorical data.
+	\item Hierarchical algorithms (Theodoridis and Koutroubas, 1999):
+		\subitem Agglomerative algorithms: Decreasing number of clusters.
+		\subitem Divisive algorithms: Increasing number of clusters.
+		\subitem BIRCH (Zhang et al., 1996)
+		\subitem CURE (Guha et al., 1998)
+		\subitem ROCK (Guha et al., 1999)
+	\item Density-based algorithms
+		\subitem DBSCAN
+		\subitem DENCLUE
+	\item Grid-based algorithms
+		\subitem STING (Statistical Information Grid-based method)
+		\subitem WaveCluster
+	\item Fuzzy clustering
+		\subitem Fuzzy C-Means (FCM)
+		\subitem EM (Expectation Maximization)
+\end{itemize}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsubsection{Cluster validity assessment}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{itemize}
+	\item Problem specification
+		\subitem Defining the optimal number of clusters
+	\item Fundamental concepts of cluster validity
+		\subitem Three approaches: external criteria, internal criteria and relative criteria.
+			\subsubitem External criteria: Monde Carlo
+		\subitem Compactness
+		\subitem Separation: Single linkage, complete linkage, comparison of centroids.
+\end{itemize}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Internal versus External cluster validation indexes}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{itemize}
+	\item The purpose of clustering is to determine the intrinsic grouping in a set of unlabelled data, where the objects in each group are indistinguishable under some criterion of similarity. Clustering is an unsupervised classification process fundamental to data mining (one of the most important tasks in data analysis).
+	
+	\item \textit{Compactness}: This measures closeness of cluster elements. A common measure of compactness is variance.\\
+	\textit{Separability}: This indicates how distinct two clusters are. It computes the distance between two different clusters. The distance between representative objects of two clusters is a good example. This measure has been widely used due to its computational efficiency and effectiveness for hypersphereshaped clusters.
+	\item In recent times, many indexes have been proposed in the literature, which are used to measure the fitness of the partitions produced by clustering algorithm.
+	\item The Dunn index, DB measures, SD index, S\_Dbw index, CS index, BIC index. (Check if all these are internal!)
+	\item External measures include Entropy, Purity, NMIMeasure and F-Measure.
+\end{itemize}
+\textit{Since clustering algorithms discover clusters, which are not known a priori, the final partitions of a data set requires some sort of evaluation in most applications (Rezaee et al.,1998).}
+
+
+
+\end{document}

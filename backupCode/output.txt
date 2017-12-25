@@ -1,0 +1,2 @@
+Threshold =  -1  | F-measure =  0.602409638554217  | clusters =  1  | cost =  0
+Threshold =  0  | F-measure =  0.605935514116054  | clusters =  2  | cost =  0

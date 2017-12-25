@@ -1,0 +1,552 @@
+\documentclass[a4paper,10pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[english]{babel}
+
+\usepackage{color}
+\usepackage{float}
+\usepackage{fancyvrb}
+
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{listings}
+\usepackage{comment}
+\usepackage[boxed]{algorithm2e}
+\usepackage{graphicx}
+\DeclareGraphicsExtensions{.png}
+
+\definecolor{dkgreen}{rgb}{0,0.45,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.30,0,0.30}
+
+\lstset{frame=tb,
+  language=Java,
+  aboveskip=3mm,
+  belowskip=3mm,
+  showstringspaces=false,
+  columns=flexible,
+  basicstyle={\small\ttfamily},
+  numbers=left,
+  numberstyle=\footnotesize,
+  keywordstyle=\color{dkgreen}\bfseries,
+  commentstyle=\color{red},
+  stringstyle=\color{mauve},
+  frame=single,
+  breaklines=true,
+  breakatwhitespace=false
+  tabsize=1
+}
+
+\title{ Notes \\\rule{5.5cm}{0.5mm} \\ Parameterless clustering by dynamic tree-cutting \\\rule{10cm}{0.5mm}}
+\author{Simon Lehmann Knudsen \\
+	simkn15@student.sdu.dk \\
+	ECTS: 10 \\
+	04/09-2017 - 31/01-2018 \\
+	5th semester in Computer Science
+\\\rule{5.5cm}{0.5mm}\\}
+
+\begin{document}
+\maketitle
+
+\tableofcontents
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage
+\section{Testing}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Generating randomized data sets: TODO explain multidimensional scaling and what it does}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\textbf{Skip talking about first approach ?????}
+\textbf{First approach test output files located in folder randomSimV1}\\
+\texttt{The first approach was to take the upper matrix and randomize the similarities according to original similarities. Such that the random similarities was taken from the set of similarities from the original data, while the same number could be taken multiple times. 
+However this approach turned out as misleading, as the costs from tclust peaked at 1.000.000, and the actual cost is peaking at around 60.000.}
+
+Next approach required looking into multidimensional scaling, as this should make a better scaling of the randomized similarities. MDS made it possible to scale the data into higher dimensions, making a "better match" of similarities. Already at five dimensions the costs is peaking at around 220.000. A big reduction in the costs from the first approach.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Evaluation of cost plots}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+With respect to the fold change we do not see any interesting pattern with the small data set. However, the big data set shows somewhat of a pattern with a foldchange just above 4. The lowest fold change is $3.6639$ at 20 dimensions, where the highest is $6.5309$ at 10 dimensions. The highest looks like an outlier, since it is much higher than the other values. Looking at the second highest at 100 dimensions with $4.9422$ we get much closer to the mean of $4.2535$.
+As all the plottings show, the threshold which has the biggest gap in cost between random and original data is extremely close to the highest cost peak in the random data. In 19 out of 20, the threshold with the biggest gap in cost is the highest peak of cost in the random data set.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsubsection{Small Data Set}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{figure}[h]
+	\centering
+	\begin{tabular}{|c|c|r|}
+		\hline
+		Dimensions & Threshold max gap & fold change \\\hline
+		5   & 122 & 227.3405 \\\hline
+		10  & 151 & 39.0570 \\\hline
+		15  & 153 & 35.0167 \\\hline
+		20  & 153 & 34.4680 \\\hline
+		25  & 148 & 27.9837 \\\hline
+		30  & 160 & 30.6777 \\\hline
+		35  & 128 & 101.9536 \\\hline
+		40  & 140 & 36.7628 \\\hline
+		45  & 139 & 39.2452 \\\hline
+		50  & 147 & 24.3221 \\\hline	
+		55  & 125 & 147.9133 \\\hline
+		60  & 123 & 165.325 \\\hline
+		65  & 125 & 149.7192 \\\hline
+		70  & 118 & 352.4266 \\\hline
+		75  & 125 & 144.0012 \\\hline
+		80  & 134 & 57.8595 \\\hline
+		85  & 124 & 154.1030 \\\hline
+		90  & 130 & 73.9996 \\\hline
+		95  & 124 & 145.2467 \\\hline
+		100 & 136 & 43.5962 \\\hline
+	\end{tabular}
+	\caption{Small Data Set}
+\end{figure}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsubsection{Big Data Set}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{figure}[h]
+	\centering
+	\begin{tabular}{|c|c|c|r|}
+		\hline
+		Dimensions & Max cost Threshold & Threshold max gap & fold change ($\mu = 4.25353$) \\\hline
+		5 & 78 & 78 & 4.9265 \\\hline
+		10 & 107 & 107 & 6.5309 \\\hline
+		15 & 92 & 92 & 3.9525 \\\hline
+		20 & 84 & 84 & 3.6639 \\\hline
+		25 & 90 & 90 & 3.6681 \\\hline
+		30 & 96 & 96 & 4.2508 \\\hline
+		35 & 98 & 97 & 4.6519 \\\hline
+		40 & 87 & 87 & 3.8082 \\\hline
+		45 & 93 & 93 & 4.1851 \\\hline
+		50 & 89 & 89 & 3.7935 \\\hline
+		55 & 90 & 90 & 3.8843 \\\hline
+		60 & 95 & 95 & 4.3252 \\\hline
+		65 & 91 & 91 & 3.8819 \\\hline
+		70 & 91 & 91 & 3.9391 \\\hline
+		75 & 94 & 94 & 4.1228 \\\hline
+		80 & 101 & 101 & 4.2029 \\\hline
+		85 & 91 & 91 & 4.0458 \\\hline
+		90 & 100 & 100 & 4.3406 \\\hline
+		95 & 93 & 93 & 3.9544 \\\hline
+		100 & 106 & 106 & 4.9422 \\\hline
+	\end{tabular}
+	\caption{Big Data Set}
+\end{figure}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Small Data Set}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsubsection{Original}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsubsection{Random}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Big Data Set}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsubsection{Original}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsubsection{Random}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Hierarchical Clustering}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsubsection{Binary Search of Threshold}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage
+\section{Theory}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{TransClust / Transitivity Clustering / Weighted Graph Projection problem}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\textbf{partitioningBiologicalDataWithTransitivityClusteringSUPPLEMENT.pdf} \\
+\textbf{ComprehensiveClusterAnalysisWithTransitivityClustering.pdf} \\
+\textbf{largeScaleClusteringOfProteinSequencesWithFORCE-aLayoutBasedHeuristicForWeightedClusterEditing.pdf} \\
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Hierarchical Clustering / Dendrogram}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Cluster Validation}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Multidimensional Scaling}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage
+\section{Cluster Analysis - Book}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Chapter 1: An introduction to classification and clustering}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Chapter 2: Detecting clusters graphically}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Chapter 3: Measurement of proximity}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Chapter 4: Hierarchical clustering}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+There are two forms of hierarchical Clustering, agglomerative and divisive. Agglomerative is starting with n clusters and joins them until one cluster is left. Divisive is the opposite, going from one to n clusters.
+With hierarchical methods, joins or split of clusters are irrevocable. Thus these operations cannot be undone.
+Agglomerative are the most common procedure, since divisive is very expensive procedure.
+One of the important issues with hierarchical clustering is deciding on the correct number of clusters. Typically the result of a hierarchical clustering is represented as a dendrogram, a two-dimensional diagram.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsubsection{Agglomerative}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Most widely used. Produces a series of partitions of the data. First consists of \texttt{n} cluster, all of size one. Last one consists of one cluster of size \texttt{n}. Some of the basic operations to fuse the closest clusters are \texttt{single linkage} and \texttt{Centroid linkage}. The differences arises in terms of which distance measure is preferred.
+
+\begin{itemize}
+	\item Table 4.1
+	\item Single linkage: Distance is defined as the closest pair of individuals between two clusters. The pair consists of one individual from each cluster.
+	\item Centroid linkage: Calculation the euclidean distance. Requires access to the original data. Operates on a proximity matrix.
+	\item Complete linkage: Furthest neighbour, distance of most distant pair of individuals.
+	\item Average linkage: Average distance from all pairs of individuals that are made with one individual from each cluster.
+	\item Median linkage: .	
+	\item Weighted average linkage: .
+	\item Centroid clustering: Uses median linkage.
+	\item Error sum of squares, page 77.
+\end{itemize}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsubsection{Divisive}
+This procedure is very expensive, thus heuristics are needed.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Chapter 5: Optimization clustering techniques}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Chapter 6: Finite mixture densities as models for cluster analysis}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Chapter 7: Model-based cluster analysis for structured data}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Chapter 8: Miscellaneous clustering methods}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Chapter 9: Some final comments and guidelines}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage
+\section{Articles}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Articles Sources}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{itemize}
+	\item A gold standard set of mechanistically diverse enzyme superfamilies. \\ Shoshana D Brown*, John A Gerlt†, Jennifer L Seffernick‡ and
+	Patricia C Babbitt§. \\
+	Article downloaded from SDU library and located in articles folder.
+	\item Comprehensive cluster analysis with Transitivity Clustering. \\
+	Tobias Wittkop, Dorothea Emig, Anke Truss, Mario Albrecht, Sebastian Böcker \& Jan Baumbach \\
+	Article downloaded from SDU library and located in articles folder.
+	\item Comparing the performance of biomedical clustering
+	methods. \\
+	Christian Wiwie1, Jan Baumbach \& Richard Röttger \\
+	Article downloaded from sdu library and located in articles folder.
+	\item Large scale clustering of protein sequences with FORCE -A layout
+	based heuristic for weighted cluster editing. \\
+	Tobias Wittkop, Jan Baumbach, Francisco P Lobo and
+	Sven Rahmann. \\
+	Article downloaded unsupervised learning and located in articles folder.
+\end{itemize}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage
+\section{Meetings}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{27/09-17 - 14:15}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Make subitems
+\begin{enumerate}
+	\item TransClust is suggesting to parse the Gold Standard to find optimal parameters. How?
+	\begin{itemize}
+		\item R package with F-measure
+		\item res = data.frame(protein = proteins, cluster = tclust\_res\$clusters[[1]])
+		\item best f-measure around 0.9 (threshold 23, 18?)
+		\item Plot with cost, threshold
+		\item Get test pipeline working.
+		\item Find the optimal clustering, with looping and increasing threshold. Measuring F-measure on each run.
+		\item rfactor to get unq string to numbers
+		\item Convert classes into numbers with rfactor and map into clusters from test result.
+		\item Random dataset: f-measure does not make sense here
+		\item test\_dist = as.vector(as.dist(sim\_matrix))
+		\item sample(x=test\_dist, replace = TRUE, size = length(test\_dist)))
+		\item Now you got your randomized similarity matrix from the initial dataset.
+		\item hierarchical clustering in R -> draw dendrograms
+	\end{itemize}
+	\item What is it that makes WTGP / FORCE so great ?
+	\item WTGP vs. FORCE ?
+	\item Weighted Transitivity Graph Projection vs. Weighted Graph Cluster Editing Problem ?
+\end{enumerate}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{25/10-17 - 12:30}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{enumerate}
+	\item Is the F-measure calculations correct ?
+	\begin{itemize}
+		\item If not, what do I need to change ?
+		
+		\item When more tclust clusters point to the same gsCluster, should I find the one 
+		that gives the best score and swap ?
+	\end{itemize}
+	
+	\item Last time we talked about plotting cost vs threshold on original data vs randomized:
+	\begin{itemize}
+		\item What about the randomized similarity matrix testing ?
+		\item What about the plotting for cost/threshold, original data vs. randomized ?
+	\end{itemize}
+	
+	\item hclust object ?
+	\begin{itemize}
+		\item merge: j is object j from data. -j is the singleton merged at this stage. Positive means it is a cluster, which was merged at an earlier stage.
+		
+		\item height: ?? What does this number represent
+		At which height a merge/split was done ?
+		
+		\item order: Ordering for plotting, such that no branches are crossing
+		
+		\item labels: object name from file
+		
+		\item call: method call
+		
+		\item method: cluster method
+		
+		\item dist.method: distance method used
+	\end{itemize}
+	
+\end{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{1/11-17 - 14:15}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{enumerate}
+	\item F-measure now finds the best candidate for a match to gsCluster, when multiple candidates. \textbf{output-1-320.txt}
+	
+	\item F-measure sum all tp, fp, fn ? and then calculate F-measure(Would be for whole clustering)?
+	
+	\item Status on hierarchical clustering
+	\begin{itemize}
+		\item hc algorithm is "done".
+		\item Figuring out how to do the hc object/structure: hc\$merge, hc\$height, hc\$order and dendrogram
+		\item Currently looking at ordering. Append to \texttt{order} with the proteins of the next split. If the split is a subsplit of an suborder, reorder the ordering of the subsplit.
+		\item Rearranging \texttt{order} will be \textbf{very} expensive
+		\item Currently finding all proteins for each cluster after tclust -> map into startIndex, endIndex in \texttt{order} for the given cluster.
+		\item Steps: order, merge, height
+	\end{itemize}
+	
+	\item How should I handle a split at a certain threshold, when the split > 2. How should the dendrogram look like ?
+	The dendrogam will have the split on same height -> will not look like a binary split.
+	
+	\item Have not used time on randomized similarity
+	
+	\item Will be done by the end of the week: hc, randomized similarity
+	\begin{itemize}
+		\item What is next ? In case I have spare time before next meeting
+		\item Testing costs on randomSim ?
+	\end{itemize}
+	
+	
+	\item Do you want the code in mail ?
+	\subitem F-measure (New)
+	\subitem Current hc files
+	
+	\item next meeting ? Monday ? Lectures 12:15-16:00
+\end{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{7/11-17 - 16:15}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{enumerate}
+	\item F-measure - corrected. Threshold 47 is the best with F-measure 0.9816, \textbf{outputFixedMeasure.txt}. Previously 40 with 0.9808. The web page has F-measure 0.9859 at 48.868 (47 is .0043 lower). 
+	\item Random similarity
+	\subitem Have made a few test outputs. Still getting costs above 1 mio.
+	\subitem The costs of the randomized are very similar at a given threshold, \textbf{total.txt}.
+	\item > mean(as.vector(as.dist(simMatrix)))
+	[1] 56.10247
+	\item Hierarchical clustering / Dendrogram
+	\subitem Got a dendrogram showing, but the labels are very dense. How to make it better ?
+	\subitem I have to make a normal hclust first, to get the object, and reassign variables.
+	\item Status on the bigger dataset ?
+	\item I will start looking at plotting with random similarity.
+\end{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{27/11-17 - 14:15}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{enumerate}
+	\item bigData results: Best threshold = 17.
+	\item Metric vs. non-metric multidimensional scaling
+	\item How should the points from multidimensional scaling be converted into a similarity matrix. Just calculate the distances ?
+	
+	\item Binary threshold: Not quite done. In the debugging phase.
+	
+	\item Bachelor thesis ? 
+	\subitem Meeting with Richard 29/11. Richard will come up with some suggestions.
+\end{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage
+\subsection{16/12-17 - 14:00 : Skype}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{enumerate}
+	\item Last steps in project
+		\begin{enumerate}
+			\item Randomize every split ?(Every new cluster)
+				\subitem We need our randomization distribution to work before going on
+			\item Why does the max difference tell us the optimal split?
+				\subitem Forgot to ask
+		\end{enumerate}
+	\item How much theory do I need to cover? 
+		\subitem All the theory that you have not invented yourself.
+	\item Should I expect answers if I write to you during the holiday?
+		\subitem Just email Richard at any time
+	
+	\item Report
+		\begin{itemize}
+			\item Abstract
+			\item Introduction
+			\item Background (Related work)
+			\item Method
+				\begin{itemize}
+					\item Each randomization strategy
+					\item Results section in the end of the whole section, for the reason of trying other strategies
+				\end{itemize}
+			\item Results
+			\item "Implementation"
+				\subitem - Short: It was written in R and so on.
+			\item Conclusion/Discussion
+		\end{itemize}
+		
+	\item Setup the layout of the report. Make 3-6 bullet points in each section on what you want to write about.
+		\subitem Send to Richard so he can give feedback, to minimize rewriting.
+	
+	\item Refine code. (R Package)
+		\subitem Debug
+		\subitem Clean Code
+	
+	\item Try the two new randomization strategies
+	\item Plot the similarity distributions
+	\item Just use 2-5, and 10 dimension.
+\end{enumerate}
+
+
+
+\end{document}
