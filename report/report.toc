@@ -9,6 +9,7 @@
 \contentsline {subsection}{\numberline {3.2}Hierarchical Clustering}{5}
 \contentsline {subsection}{\numberline {3.3}Cluster Validation}{5}
 \contentsline {subsection}{\numberline {3.4}GAP Statistics}{5}
+\contentsline {subsection}{\numberline {3.5}Multidimensional Scaling}{5}
 \contentsline {section}{\numberline {4}Method}{6}
 \contentsline {subsection}{\numberline {4.1}Assessing best clustering}{6}
 \contentsline {subsection}{\numberline {4.2}Randomization approach 1}{6}
