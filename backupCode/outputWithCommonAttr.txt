@@ -1,4 +1,0 @@
-Threshold = 2 | F-measure = 0.9127334 | clusters = 16 | common = 202 | cost = 2048.22802734375
-Best Clustering:
-Threshold = 2 | F-measure = 0.9127334 | clusters = 16 | common = 202 | cost = 2048.22802734375
-Total time for clustering: 21.7077810764313 seconds
