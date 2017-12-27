@@ -1,0 +1,21 @@
+{
+    "collab_server" : "",
+    "contents" : "#install.packages(\"igraph\")\nlibrary(\"igraph\")\nlibrary(\"transclustr\")\n\nadjm <- matrix(nrow = 11, ncol = 11, data = 0)\nadjm[1,2] = adjm[1,4] = adjm[2,3] = adjm[3,4] = adjm[4,5] = adjm[5,6] = adjm[5,8] = adjm[6,7]= adjm[7,8] = adjm[8,9] = adjm[9,10] = adjm[9,11] = 1\nadjm = adjm + t(adjm)\ng1 <- graph_from_adjacency_matrix(adjm, mode = \"undirected\")\nplot(g1)\n\nclust = tclust(simmatrix = adjm, threshold = 0.49, convert_dissimilarity_to_similarity = FALSE)\nclust\nV(g1)$color = clust$clusters[[1]]\nplot(g1)\n",
+    "created" : 1486997786035.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "437017945",
+    "id" : "B7E9D4EE",
+    "lastKnownWriteTime" : 1487002610,
+    "last_content_update" : 1487002610074,
+    "path" : "~/imada/research/bromberg/graphcluster.R",
+    "project_path" : null,
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

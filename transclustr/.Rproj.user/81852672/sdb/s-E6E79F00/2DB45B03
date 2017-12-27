@@ -1,0 +1,20 @@
+{
+    "collab_server" : "",
+    "contents" : "#Read data from file\nfile <- read.table(\"data.txt\", header = FALSE, sep=\",\")\n#file <- scan(\"/Users/slk/Dropbox/sdu/clustering ISA 5th semester/code/data.txt\", sep <- \",\")\nprint(file)\nM = matrix(file, nrow <- 3, ncol <- 3, byrow <- TRUE)\nprint\n#Write a function performing matrix multiplication\nsize = dim(M)\nmult <- function(a, b) {\n  res <- matrix(, nrow = 0, ncol = 0)\n  if (is.matrix(a) && is.matrix(b) && dim(a)[2] == dim(b)[1]) {\n    res <- matrix(1, nrow = dim(a)[1], ncol = dim(b)[2])\n    for (i in 1:dim(a)[1]) {\n      for (j in 1:dim(b)[2]) {\n        res[i,j] <- sum(a[i,] * b[,j])\n      }\n    }\n  }\n  res\n}\nv <- c(1,2,3,1,2,3,1,2,3)\nm1 <- matrix(v, nrow = 3, ncol = 3, byrow = TRUE)\nm2 <- matrix(rev(v), nrow = 3, ncol = 3, byrow = TRUE)\nprint(mult(m1, m2))\n#Write a function calculating the determinant of a square matrix. Again, check against the built-in capabilities.\n\n#Create large random matrices and\n#(a) compare your program's performance (in terms of runtime) versus the built-in capabilities\n#     for growing matrix sizes\n#(b) create a plot depicting the runtime vs. matrix-size\n",
+    "created" : 1505310009248.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2501935501",
+    "id" : "2DB45B03",
+    "lastKnownWriteTime" : 1505310622,
+    "last_content_update" : 1505310622227,
+    "path" : "~/Dropbox/sdu/clustering/code/tutorial/tutorial.R",
+    "project_path" : null,
+    "properties" : {
+    },
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

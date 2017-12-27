@@ -57,20 +57,23 @@ plot_clustering <- function(X, clusters, title, bb){
     return(g)
 }
 
-# Why do we need to project ?
-buildRandomSimMatrix <- function(proteins, simMatrix, k = 10, seed = 42) {
-    set.seed(42)
-    # table <- read.table("../data/brown/sfld_brown_et_al_amidohydrolases_protein_similarities_for_beh.txt", sep = "", skip = 5)
-    # #table <- read.table("simBig.txt", sep = "", skip = 5)
-    # df_table <- as.data.frame(table)
-    # proteins = levels(df_table[,1])
+calculateIndexInMatrix <- function(IndexInOrder, amountOfProteins) {
+    index <- IndexInOrder
+    row <- index %% amountOfProteins
+    col <- ceiling(index / amountOfProteins)
+    if (row == 0) { row <- amountOfProteins }
+    if (col == 0) { col <- amountOfProteins }
     
+    return(c(row, col))
+}
+
+
+buildRandomSimMatrixAp2 <- function(proteins, simMatrix, k = 10, seed = 42) {
+    set.seed(seed)
     simMatrixAsDist <- as.dist((max(simMatrix) + 1) - simMatrix) # Why was +1 needed ?
     
     mds <- isoMDS(simMatrixAsDist, k = k)
-    
     mdsPoints <- mds$points
-    
     Q = cov(mdsPoints)
     
     eval = eigen(Q)$values
@@ -90,6 +93,109 @@ buildRandomSimMatrix <- function(proteins, simMatrix, k = 10, seed = 42) {
     colnames(simMatrix) = proteins
     
     return(simMatrix)
+}
+
+buildRandomSimMatrixAp3 <- function(proteins, simMatrix, k = 10, seed = 42) {
+    set.seed(seed)
+    amountOfZeroes <- table(simMatrix)[1]
+    amountOfProteins <- length(proteins)
+    
+    simMatrixAsDist <- as.dist((max(simMatrix) + 1) - simMatrix) # Why was +1 needed ?
+    
+    mds <- isoMDS(simMatrixAsDist, k = k)
+    mdsPoints <- mds$points
+    Q = cov(mdsPoints)
+    
+    eval = eigen(Q)$values
+    evec = eigen(Q)$vectors
+    
+    mdsPoints.projected = t(t(evec) %*% t(mdsPoints))
+    
+    R <- matrix( nrow = nrow(mdsPoints.projected), ncol = 0)
+    for (i in 1:ncol(mdsPoints.projected)) {
+        column <- runif(nrow(mdsPoints), min = min(mdsPoints.projected[,i], max = max(mdsPoints.projected[,i])))
+        R <- cbind(R, column)
+    }
+    
+    distRandom <- dist(R)
+    simMatrix <- as.matrix((max(distRandom) + 1) - distRandom)
+    
+    # Find limit for setting value to 0
+    tableSimMatrix <- table(simMatrix)
+    tableHeaderValues <- sort(unique(as.vector(simMatrix)))
+    sum <- 0
+    limit <- 0
+    for (i in 1:length(tableSimMatrix)) {
+        sum <- sum + tableSimMatrix[i]
+        if (sum >= amountOfZeroes) { # Found limit
+            limit <- tableHeaderValues[i]
+            break
+        }
+    }
+    
+    # Set values which are <= to limit to 0, until same amount of zeroes as original simMatrix
+    countZeroes <- 0
+    for (i in 1:amountOfProteins) {
+        for (j in 1:amountOfProteins) {
+            if (simMatrix[i,j] <= limit) {
+                simMatrix[i,j] <- 0
+                countZeroes <- countZeroes + 1
+            }
+            if (countZeroes >= amountOfZeroes) {
+                break
+            }
+        }
+        if (countZeroes >= amountOfZeroes) {
+            break
+        }
+    }
+    
+    row.names(simMatrix) = proteins
+    colnames(simMatrix) = proteins
+    
+    return(simMatrix)
+}
+
+buildRandomSimMatrixAp4 <- function(proteins, simMatrix, k = 10, seed = 42) {
+    set.seed(seed)
+    amountOfProteins <- length(proteins)
+    
+    simMatrixAsDist <- as.dist((max(simMatrix) + 1) - simMatrix) # Why was +1 needed ?
+    
+    mds <- isoMDS(simMatrixAsDist, k = k)
+    mdsPoints <- mds$points
+    Q = cov(mdsPoints)
+    
+    eval = eigen(Q)$values
+    evec = eigen(Q)$vectors
+    
+    mdsPoints.projected = t(t(evec) %*% t(mdsPoints))
+    
+    R <- matrix( nrow = nrow(mdsPoints.projected), ncol = 0)
+    for (i in 1:ncol(mdsPoints.projected)) {
+        column <- runif(nrow(mdsPoints), min = min(mdsPoints.projected[,i], max = max(mdsPoints.projected[,i])))
+        R <- cbind(R, column)
+    }
+    
+    distRandom <- dist(R)
+    simMatrixRandom <- as.matrix((max(distRandom) + 1) - distRandom)
+
+    # Find ordering of both matrices
+    orderOriginal <- order(simMatrix)
+    orderRandom <- order(simMatrixRandom)
+
+    # Set ordered values into same ordering of random
+    for (i in 1:length(orderOriginal)) {
+        posInOriginal <- calculateIndexInMatrix(orderOriginal[i], amountOfProteins)
+        posInRandom <- calculateIndexInMatrix(orderRandom[i], amountOfProteins)
+
+        simMatrixRandom[posInRandom[1], posInRandom[2]] <- simMatrix[posInOriginal[1], posInOriginal[2]]
+    }
+
+    row.names(simMatrixRandom) = proteins
+    colnames(simMatrixRandom) = proteins
+    
+    return(simMatrixRandom)
 }
 
 #simMatrix <- buildRandomSimMatrix(5)

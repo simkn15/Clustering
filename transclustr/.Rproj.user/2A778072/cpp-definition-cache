@@ -1,0 +1,866 @@
+[
+    {
+        "definitions" : [
+            {
+                "column" : 8,
+                "file" : "/Users/slk/Dropbox/sdu/clustering/transclustr/inst/include/transclust/ClusteringResult.hpp",
+                "kind" : 3,
+                "line" : 7,
+                "name" : "ClusteringResult",
+                "parent_name" : "",
+                "usr" : "c:@S@ClusteringResult"
+            },
+            {
+                "column" : 16,
+                "file" : "/Users/slk/Dropbox/sdu/clustering/transclustr/inst/include/transclust/ClusteringResult.hpp",
+                "kind" : 3,
+                "line" : 12,
+                "name" : "clustering",
+                "parent_name" : "",
+                "usr" : "c:@S@clustering"
+            },
+            {
+                "column" : 2,
+                "file" : "/Users/slk/Dropbox/sdu/clustering/transclustr/inst/include/transclust/ClusteringResult.hpp",
+                "kind" : 8,
+                "line" : 17,
+                "name" : "clustering",
+                "parent_name" : "",
+                "usr" : "c:ClusteringResult.hpp@T@clustering"
+            }
+        ],
+        "file" : "/Users/slk/Dropbox/sdu/clustering/transclustr/inst/include/transclust/ClusteringResult.hpp",
+        "file_last_write" : 1486907827
+    },
+    {
+        "definitions" : [
+            {
+                "column" : 9,
+                "file" : "/Users/slk/Dropbox/sdu/clustering/transclustr/inst/include/transclust/Common.hpp",
+                "kind" : 3,
+                "line" : 11,
+                "name" : "TransClustParams",
+                "parent_name" : "",
+                "usr" : "c:@N@TCC@S@TransClustParams"
+            },
+            {
+                "column" : 21,
+                "file" : "/Users/slk/Dropbox/sdu/clustering/transclustr/inst/include/transclust/Common.hpp",
+                "kind" : 7,
+                "line" : 31,
+                "name" : "set_file_type(std::string)",
+                "parent_name" : "TransClustParams",
+                "usr" : "c:@N@TCC@S@TransClustParams@F@set_file_type#$@N@std@N@__1@C@basic_string>#C#$@N@std@N@__1@S@char_traits>#C#$@N@std@N@__1@C@allocator>#C#"
+            },
+            {
+                "column" : 21,
+                "file" : "/Users/slk/Dropbox/sdu/clustering/transclustr/inst/include/transclust/Common.hpp",
+                "kind" : 7,
+                "line" : 32,
+                "name" : "set_sim_fallback(float)",
+                "parent_name" : "TransClustParams",
+                "usr" : "c:@N@TCC@S@TransClustParams@F@set_sim_fallback#f#"
+            },
+            {
+                "column" : 21,
+                "file" : "/Users/slk/Dropbox/sdu/clustering/transclustr/inst/include/transclust/Common.hpp",
+                "kind" : 7,
+                "line" : 33,
+                "name" : "set_threshold(float)",
+                "parent_name" : "TransClustParams",
+                "usr" : "c:@N@TCC@S@TransClustParams@F@set_threshold#f#"
+            },
+            {
+                "column" : 21,
+                "file" : "/Users/slk/Dropbox/sdu/clustering/transclustr/inst/include/transclust/Common.hpp",
+                "kind" : 7,
+                "line" : 34,
+                "name" : "set_p(float)",
+                "parent_name" : "TransClustParams",
+                "usr" : "c:@N@TCC@S@TransClustParams@F@set_p#f#"
+            },
+            {
+                "column" : 21,
+                "file" : "/Users/slk/Dropbox/sdu/clustering/transclustr/inst/include/transclust/Common.hpp",
+                "kind" : 7,
+                "line" : 35,
+                "name" : "set_f_att(float)",
+                "parent_name" : "TransClustParams",
+                "usr" : "c:@N@TCC@S@TransClustParams@F@set_f_att#f#"
+            },
+            {
+                "column" : 21,
+                "file" : "/Users/slk/Dropbox/sdu/clustering/transclustr/inst/include/transclust/Common.hpp",
+                "kind" : 7,
+                "line" : 36,
+                "name" : "set_f_rep(float)",
+                "parent_name" : "TransClustParams",
+                "usr" : "c:@N@TCC@S@TransClustParams@F@set_f_rep#f#"
+            },
+            {
+                "column" : 21,
+                "file" : "/Users/slk/Dropbox/sdu/clustering/transclustr/inst/include/transclust/Common.hpp",
+                "kind" : 7,
+                "line" : 37,
+                "name" : "set_R(float)",
+                "parent_name" : "TransClustParams",
+                "usr" : "c:@N@TCC@S@TransClustParams@F@set_R#f#"
+            },
+            {
+                "column" : 21,
+                "file" : "/Users/slk/Dropbox/sdu/clustering/transclustr/inst/include/transclust/Common.hpp",
+                "kind" : 7,
+                "line" : 38,
+                "name" : "set_dim(float)",
+                "parent_name" : "TransClustParams",
+                "usr" : "c:@N@TCC@S@TransClustParams@F@set_dim#f#"
+            },
+            {
+                "column" : 21,
+                "file" : "/Users/slk/Dropbox/sdu/clustering/transclustr/inst/include/transclust/Common.hpp",
+                "kind" : 7,
+                "line" : 39,
+                "name" : "set_start_t(float)",
+                "parent_name" : "TransClustParams",
+                "usr" : "c:@N@TCC@S@TransClustParams@F@set_start_t#f#"
+            },
+            {
+                "column" : 21,
+                "file" : "/Users/slk/Dropbox/sdu/clustering/transclustr/inst/include/transclust/Common.hpp",
+                "kind" : 7,
+                "line" : 40,
+                "name" : "set_d_init(float)",
+                "parent_name" : "TransClustParams",
+                "usr" : "c:@N@TCC@S@TransClustParams@F@set_d_init#f#"
+            },
+            {
+                "column" : 21,
+                "file" : "/Users/slk/Dropbox/sdu/clustering/transclustr/inst/include/transclust/Common.hpp",
+                "kind" : 7,
+                "line" : 41,
+                "name" : "set_d_maximal(float)",
+                "parent_name" : "TransClustParams",
+                "usr" : "c:@N@TCC@S@TransClustParams@F@set_d_maximal#f#"
+            },
+            {
+                "column" : 21,
+                "file" : "/Users/slk/Dropbox/sdu/clustering/transclustr/inst/include/transclust/Common.hpp",
+                "kind" : 7,
+                "line" : 42,
+                "name" : "set_s_init(float)",
+                "parent_name" : "TransClustParams",
+                "usr" : "c:@N@TCC@S@TransClustParams@F@set_s_init#f#"
+            },
+            {
+                "column" : 21,
+                "file" : "/Users/slk/Dropbox/sdu/clustering/transclustr/inst/include/transclust/Common.hpp",
+                "kind" : 7,
+                "line" : 43,
+                "name" : "set_f_s(float)",
+                "parent_name" : "TransClustParams",
+                "usr" : "c:@N@TCC@S@TransClustParams@F@set_f_s#f#"
+            },
+            {
+                "column" : 21,
+                "file" : "/Users/slk/Dropbox/sdu/clustering/transclustr/inst/include/transclust/Common.hpp",
+                "kind" : 7,
+                "line" : 44,
+                "name" : "set_fpt_time_limit(float)",
+                "parent_name" : "TransClustParams",
+                "usr" : "c:@N@TCC@S@TransClustParams@F@set_fpt_time_limit#f#"
+            },
+            {
+                "column" : 21,
+                "file" : "/Users/slk/Dropbox/sdu/clustering/transclustr/inst/include/transclust/Common.hpp",
+                "kind" : 7,
+                "line" : 45,
+                "name" : "set_fpt_max_cost(float)",
+                "parent_name" : "TransClustParams",
+                "usr" : "c:@N@TCC@S@TransClustParams@F@set_fpt_max_cost#f#"
+            },
+            {
+                "column" : 21,
+                "file" : "/Users/slk/Dropbox/sdu/clustering/transclustr/inst/include/transclust/Common.hpp",
+                "kind" : 7,
+                "line" : 46,
+                "name" : "set_fpt_step_size(float)",
+                "parent_name" : "TransClustParams",
+                "usr" : "c:@N@TCC@S@TransClustParams@F@set_fpt_step_size#f#"
+            },
+            {
+                "column" : 21,
+                "file" : "/Users/slk/Dropbox/sdu/clustering/transclustr/inst/include/transclust/Common.hpp",
+                "kind" : 7,
+                "line" : 47,
+                "name" : "set_disable_force(bool)",
+                "parent_name" : "TransClustParams",
+                "usr" : "c:@N@TCC@S@TransClustParams@F@set_disable_force#b#"
+            },
+            {
+                "column" : 21,
+                "file" : "/Users/slk/Dropbox/sdu/clustering/transclustr/inst/include/transclust/Common.hpp",
+                "kind" : 7,
+                "line" : 48,
+                "name" : "set_disable_fpt(bool)",
+                "parent_name" : "TransClustParams",
+                "usr" : "c:@N@TCC@S@TransClustParams@F@set_disable_fpt#b#"
+            },
+            {
+                "column" : 21,
+                "file" : "/Users/slk/Dropbox/sdu/clustering/transclustr/inst/include/transclust/Common.hpp",
+                "kind" : 7,
+                "line" : 49,
+                "name" : "set_seed(bool)",
+                "parent_name" : "TransClustParams",
+                "usr" : "c:@N@TCC@S@TransClustParams@F@set_seed#b#"
+            },
+            {
+                "column" : 15,
+                "file" : "/Users/slk/Dropbox/sdu/clustering/transclustr/inst/include/transclust/Common.hpp",
+                "kind" : 6,
+                "line" : 52,
+                "name" : "round(float)",
+                "parent_name" : "",
+                "usr" : "c:@N@TCC@F@round#f#"
+            },
+            {
+                "column" : 15,
+                "file" : "/Users/slk/Dropbox/sdu/clustering/transclustr/inst/include/transclust/Common.hpp",
+                "kind" : 6,
+                "line" : 57,
+                "name" : "dist(std::vector<std::vector<float> > &, unsigned int, unsigned int)",
+                "parent_name" : "",
+                "usr" : "c:@N@TCC@F@dist#&$@N@std@N@__1@C@vector>#$@N@std@N@__1@C@vector>#f#$@N@std@N@__1@C@allocator>#f#$@N@std@N@__1@C@allocator>#S2_#i#i#"
+            }
+        ],
+        "file" : "/Users/slk/Dropbox/sdu/clustering/transclustr/inst/include/transclust/Common.hpp",
+        "file_last_write" : 1486907827
+    },
+    {
+        "definitions" : [
+            {
+                "column" : 7,
+                "file" : "/Users/slk/Dropbox/sdu/clustering/transclustr/inst/include/transclust/ConnectedComponent.hpp",
+                "kind" : 2,
+                "line" : 12,
+                "name" : "ConnectedComponent",
+                "parent_name" : "",
+                "usr" : "c:@C@ConnectedComponent"
+            },
+            {
+                "column" : 34,
+                "file" : "/Users/slk/Dropbox/sdu/clustering/transclustr/inst/include/transclust/ConnectedComponent.hpp",
+                "kind" : 7,
+                "line" : 23,
+                "name" : "getMatrix",
+                "parent_name" : "ConnectedComponent",
+                "usr" : "c:@C@ConnectedComponent@F@getMatrix#1"
+            },
+            {
+                "column" : 25,
+                "file" : "/Users/slk/Dropbox/sdu/clustering/transclustr/inst/include/transclust/ConnectedComponent.hpp",
+                "kind" : 7,
+                "line" : 24,
+                "name" : "size",
+                "parent_name" : "ConnectedComponent",
+                "usr" : "c:@C@ConnectedComponent@F@size#1"
+            },
+            {
+                "column" : 22,
+                "file" : "/Users/slk/Dropbox/sdu/clustering/transclustr/inst/include/transclust/ConnectedComponent.hpp",
+                "kind" : 7,
+                "line" : 25,
+                "name" : "getMinSimilarity",
+                "parent_name" : "ConnectedComponent",
+                "usr" : "c:@C@ConnectedComponent@F@getMinSimilarity#1"
+            },
+            {
+                "column" : 22,
+                "file" : "/Users/slk/Dropbox/sdu/clustering/transclustr/inst/include/transclust/ConnectedComponent.hpp",
+                "kind" : 7,
+                "line" : 26,
+                "name" : "getMaxSimilarity",
+                "parent_name" : "ConnectedComponent",
+                "usr" : "c:@C@ConnectedComponent@F@getMaxSimilarity#1"
+            },
+            {
+                "column" : 42,
+                "file" : "/Users/slk/Dropbox/sdu/clustering/transclustr/inst/include/transclust/ConnectedComponent.hpp",
+                "kind" : 7,
+                "line" : 27,
+                "name" : "getObjectNames",
+                "parent_name" : "ConnectedComponent",
+                "usr" : "c:@C@ConnectedComponent@F@getObjectNames#1"
+            },
+            {
+                "column" : 28,
+                "file" : "/Users/slk/Dropbox/sdu/clustering/transclustr/inst/include/transclust/ConnectedComponent.hpp",
+                "kind" : 7,
+                "line" : 31,
+                "name" : "getObjectName(unsigned int)",
+                "parent_name" : "ConnectedComponent",
+                "usr" : "c:@C@ConnectedComponent@F@getObjectName#i#1"
+            },
+            {
+                "column" : 22,
+                "file" : "/Users/slk/Dropbox/sdu/clustering/transclustr/inst/include/transclust/ConnectedComponent.hpp",
+                "kind" : 7,
+                "line" : 34,
+                "name" : "getCost(unsigned int, unsigned int, float)",
+                "parent_name" : "ConnectedComponent",
+                "usr" : "c:@C@ConnectedComponent@F@getCost#i#i#f#1"
+            },
+            {
+                "column" : 22,
+                "file" : "/Users/slk/Dropbox/sdu/clustering/transclustr/inst/include/transclust/ConnectedComponent.hpp",
+                "kind" : 7,
+                "line" : 37,
+                "name" : "at(unsigned int, unsigned int, bool)",
+                "parent_name" : "ConnectedComponent",
+                "usr" : "c:@C@ConnectedComponent@F@at#i#i#b#1"
+            },
+            {
+                "column" : 22,
+                "file" : "/Users/slk/Dropbox/sdu/clustering/transclustr/inst/include/transclust/ConnectedComponent.hpp",
+                "kind" : 7,
+                "line" : 54,
+                "name" : "getThreshold",
+                "parent_name" : "ConnectedComponent",
+                "usr" : "c:@C@ConnectedComponent@F@getThreshold#1"
+            },
+            {
+                "column" : 25,
+                "file" : "/Users/slk/Dropbox/sdu/clustering/transclustr/inst/include/transclust/ConnectedComponent.hpp",
+                "kind" : 7,
+                "line" : 59,
+                "name" : "getObjectId(unsigned int)",
+                "parent_name" : "ConnectedComponent",
+                "usr" : "c:@C@ConnectedComponent@F@getObjectId#i#1"
+            },
+            {
+                "column" : 25,
+                "file" : "/Users/slk/Dropbox/sdu/clustering/transclustr/inst/include/transclust/ConnectedComponent.hpp",
+                "kind" : 7,
+                "line" : 63,
+                "name" : "getId",
+                "parent_name" : "ConnectedComponent",
+                "usr" : "c:@C@ConnectedComponent@F@getId#1"
+            },
+            {
+                "column" : 25,
+                "file" : "/Users/slk/Dropbox/sdu/clustering/transclustr/inst/include/transclust/ConnectedComponent.hpp",
+                "kind" : 7,
+                "line" : 67,
+                "name" : "getMatrixSize",
+                "parent_name" : "ConnectedComponent",
+                "usr" : "c:@C@ConnectedComponent@F@getMatrixSize#1"
+            },
+            {
+                "column" : 15,
+                "file" : "/Users/slk/Dropbox/sdu/clustering/transclustr/inst/include/transclust/ConnectedComponent.hpp",
+                "kind" : 7,
+                "line" : 75,
+                "name" : "init_normalization_context(TCC::TransClustParams &)",
+                "parent_name" : "ConnectedComponent",
+                "usr" : "c:@C@ConnectedComponent@F@init_normalization_context#&$@N@TCC@S@TransClustParams#"
+            },
+            {
+                "column" : 26,
+                "file" : "/Users/slk/Dropbox/sdu/clustering/transclustr/inst/include/transclust/ConnectedComponent.hpp",
+                "kind" : 7,
+                "line" : 92,
+                "name" : "getNewId",
+                "parent_name" : "ConnectedComponent",
+                "usr" : "c:@C@ConnectedComponent@F@getNewId#S"
+            }
+        ],
+        "file" : "/Users/slk/Dropbox/sdu/clustering/transclustr/inst/include/transclust/ConnectedComponent.hpp",
+        "file_last_write" : 1486907827
+    },
+    {
+        "definitions" : [
+            {
+                "column" : 14,
+                "file" : "/Users/slk/Dropbox/sdu/clustering/transclustr/inst/include/transclust/DEBUG.hpp",
+                "kind" : 6,
+                "line" : 9,
+                "name" : "geometricLinking(std::vector<std::vector<unsigned int> > &, std::vector<std::vector<float> > &, float)",
+                "parent_name" : "",
+                "usr" : "c:@N@DEBUG@F@geometricLinking#&$@N@std@N@__1@C@vector>#$@N@std@N@__1@C@vector>#i#$@N@std@N@__1@C@allocator>#i#$@N@std@N@__1@C@allocator>#S2_#&$@N@std@N@__1@C@vector>#$@N@std@N@__1@C@vector>#f#$@N@std@N@__1@C@allocator>#f#$@N@std@N@__1@C@allocator>#S7_#f#"
+            },
+            {
+                "column" : 14,
+                "file" : "/Users/slk/Dropbox/sdu/clustering/transclustr/inst/include/transclust/DEBUG.hpp",
+                "kind" : 6,
+                "line" : 56,
+                "name" : "findConnectedComponents(std::vector<std::vector<unsigned int> > &, const ConnectedComponent &, float)",
+                "parent_name" : "",
+                "usr" : "c:@N@DEBUG@F@findConnectedComponents#&$@N@std@N@__1@C@vector>#$@N@std@N@__1@C@vector>#i#$@N@std@N@__1@C@allocator>#i#$@N@std@N@__1@C@allocator>#S2_#&1$@C@ConnectedComponent#f#"
+            },
+            {
+                "column" : 14,
+                "file" : "/Users/slk/Dropbox/sdu/clustering/transclustr/inst/include/transclust/DEBUG.hpp",
+                "kind" : 6,
+                "line" : 103,
+                "name" : "round(float)",
+                "parent_name" : "",
+                "usr" : "c:@N@DEBUG@F@round#f#"
+            }
+        ],
+        "file" : "/Users/slk/Dropbox/sdu/clustering/transclustr/inst/include/transclust/DEBUG.hpp",
+        "file_last_write" : 1486907827
+    },
+    {
+        "definitions" : [
+        ],
+        "file" : "/Users/slk/Dropbox/sdu/clustering/transclustr/inst/include/transclust/FORCE.hpp",
+        "file_last_write" : 1486907827
+    },
+    {
+        "definitions" : [
+            {
+                "column" : 7,
+                "file" : "/Users/slk/Dropbox/sdu/clustering/transclustr/inst/include/transclust/FPT.hpp",
+                "kind" : 2,
+                "line" : 15,
+                "name" : "FPT",
+                "parent_name" : "",
+                "usr" : "c:@C@FPT"
+            },
+            {
+                "column" : 10,
+                "file" : "/Users/slk/Dropbox/sdu/clustering/transclustr/inst/include/transclust/FPT.hpp",
+                "kind" : 3,
+                "line" : 18,
+                "name" : "Node",
+                "parent_name" : "",
+                "usr" : "c:@C@FPT@S@Node"
+            },
+            {
+                "column" : 16,
+                "file" : "/Users/slk/Dropbox/sdu/clustering/transclustr/inst/include/transclust/FPT.hpp",
+                "kind" : 7,
+                "line" : 50,
+                "name" : "getDeltaTime",
+                "parent_name" : "FPT",
+                "usr" : "c:@C@FPT@F@getDeltaTime#"
+            }
+        ],
+        "file" : "/Users/slk/Dropbox/sdu/clustering/transclustr/inst/include/transclust/FPT.hpp",
+        "file_last_write" : 1486907827
+    },
+    {
+        "definitions" : [
+        ],
+        "file" : "/Users/slk/Dropbox/sdu/clustering/transclustr/inst/include/transclust/FindConnectedComponents.hpp",
+        "file_last_write" : 1486907827
+    },
+    {
+        "definitions" : [
+            {
+                "column" : 7,
+                "file" : "/Users/slk/Dropbox/sdu/clustering/transclustr/inst/include/transclust/Result.hpp",
+                "kind" : 2,
+                "line" : 8,
+                "name" : "Result",
+                "parent_name" : "",
+                "usr" : "c:@C@Result"
+            }
+        ],
+        "file" : "/Users/slk/Dropbox/sdu/clustering/transclustr/inst/include/transclust/Result.hpp",
+        "file_last_write" : 1486907827
+    },
+    {
+        "definitions" : [
+            {
+                "column" : 7,
+                "file" : "/Users/slk/Dropbox/sdu/clustering/transclustr/inst/include/transclust/TransClust.hpp",
+                "kind" : 2,
+                "line" : 15,
+                "name" : "TransClust",
+                "parent_name" : "",
+                "usr" : "c:@C@TransClust"
+            }
+        ],
+        "file" : "/Users/slk/Dropbox/sdu/clustering/transclustr/inst/include/transclust/TransClust.hpp",
+        "file_last_write" : 1486907827
+    },
+    {
+        "definitions" : [
+            {
+                "column" : 7,
+                "file" : "/Users/slk/Dropbox/sdu/clustering/transclustr/inst/include/transclust/TriangularMatrix.hpp",
+                "kind" : 2,
+                "line" : 9,
+                "name" : "TriangularMatrix",
+                "parent_name" : "",
+                "usr" : "c:@C@TriangularMatrix"
+            },
+            {
+                "column" : 17,
+                "file" : "/Users/slk/Dropbox/sdu/clustering/transclustr/inst/include/transclust/TriangularMatrix.hpp",
+                "kind" : 7,
+                "line" : 21,
+                "name" : "operator(unsigned int, unsigned int)",
+                "parent_name" : "TriangularMatrix",
+                "usr" : "c:@C@TriangularMatrix@F@operator()#i#i#"
+            },
+            {
+                "column" : 23,
+                "file" : "/Users/slk/Dropbox/sdu/clustering/transclustr/inst/include/transclust/TriangularMatrix.hpp",
+                "kind" : 7,
+                "line" : 22,
+                "name" : "operator(unsigned int, unsigned int)",
+                "parent_name" : "TriangularMatrix",
+                "usr" : "c:@C@TriangularMatrix@F@operator()#i#i#1"
+            },
+            {
+                "column" : 16,
+                "file" : "/Users/slk/Dropbox/sdu/clustering/transclustr/inst/include/transclust/TriangularMatrix.hpp",
+                "kind" : 7,
+                "line" : 26,
+                "name" : "getMaxValue",
+                "parent_name" : "TriangularMatrix",
+                "usr" : "c:@C@TriangularMatrix@F@getMaxValue#1"
+            },
+            {
+                "column" : 16,
+                "file" : "/Users/slk/Dropbox/sdu/clustering/transclustr/inst/include/transclust/TriangularMatrix.hpp",
+                "kind" : 7,
+                "line" : 27,
+                "name" : "getMinValue",
+                "parent_name" : "TriangularMatrix",
+                "usr" : "c:@C@TriangularMatrix@F@getMinValue#1"
+            },
+            {
+                "column" : 28,
+                "file" : "/Users/slk/Dropbox/sdu/clustering/transclustr/inst/include/transclust/TriangularMatrix.hpp",
+                "kind" : 7,
+                "line" : 28,
+                "name" : "getObjectName(unsigned int)",
+                "parent_name" : "TriangularMatrix",
+                "usr" : "c:@C@TriangularMatrix@F@getObjectName#i#1"
+            },
+            {
+                "column" : 42,
+                "file" : "/Users/slk/Dropbox/sdu/clustering/transclustr/inst/include/transclust/TriangularMatrix.hpp",
+                "kind" : 7,
+                "line" : 29,
+                "name" : "getObjectNames",
+                "parent_name" : "TriangularMatrix",
+                "usr" : "c:@C@TriangularMatrix@F@getObjectNames#1"
+            },
+            {
+                "column" : 25,
+                "file" : "/Users/slk/Dropbox/sdu/clustering/transclustr/inst/include/transclust/TriangularMatrix.hpp",
+                "kind" : 7,
+                "line" : 30,
+                "name" : "getNumObjects",
+                "parent_name" : "TriangularMatrix",
+                "usr" : "c:@C@TriangularMatrix@F@getNumObjects#1"
+            },
+            {
+                "column" : 25,
+                "file" : "/Users/slk/Dropbox/sdu/clustering/transclustr/inst/include/transclust/TriangularMatrix.hpp",
+                "kind" : 7,
+                "line" : 31,
+                "name" : "getObjectId(unsigned int)",
+                "parent_name" : "TriangularMatrix",
+                "usr" : "c:@C@TriangularMatrix@F@getObjectId#i#1"
+            },
+            {
+                "column" : 25,
+                "file" : "/Users/slk/Dropbox/sdu/clustering/transclustr/inst/include/transclust/TriangularMatrix.hpp",
+                "kind" : 7,
+                "line" : 32,
+                "name" : "getMatrixSize",
+                "parent_name" : "TriangularMatrix",
+                "usr" : "c:@C@TriangularMatrix@F@getMatrixSize#1"
+            },
+            {
+                "column" : 19,
+                "file" : "/Users/slk/Dropbox/sdu/clustering/transclustr/inst/include/transclust/TriangularMatrix.hpp",
+                "kind" : 7,
+                "line" : 65,
+                "name" : "index(unsigned int, unsigned int)",
+                "parent_name" : "TriangularMatrix",
+                "usr" : "c:@C@TriangularMatrix@F@index#i#i#1"
+            }
+        ],
+        "file" : "/Users/slk/Dropbox/sdu/clustering/transclustr/inst/include/transclust/TriangularMatrix.hpp",
+        "file_last_write" : 1486907827
+    },
+    {
+        "definitions" : [
+            {
+                "column" : 26,
+                "file" : "/Users/slk/Dropbox/sdu/clustering/transclustr/src/ConnectedComponent.cpp",
+                "kind" : 7,
+                "line" : 50,
+                "name" : "dump",
+                "parent_name" : "ConnectedComponent",
+                "usr" : "c:@C@ConnectedComponent@F@dump#"
+            }
+        ],
+        "file" : "/Users/slk/Dropbox/sdu/clustering/transclustr/src/ConnectedComponent.cpp",
+        "file_last_write" : 1486907827
+    },
+    {
+        "definitions" : [
+            {
+                "column" : 7,
+                "file" : "/Users/slk/Dropbox/sdu/clustering/transclustr/src/FORCE.cpp",
+                "kind" : 6,
+                "line" : 23,
+                "name" : "layout(const ConnectedComponent &, std::vector<std::vector<float> > &, float, float, float, unsigned int, float, unsigned int, unsigned int)",
+                "parent_name" : "",
+                "usr" : "c:@N@FORCE@F@layout#&1$@C@ConnectedComponent#&$@N@std@N@__1@C@vector>#$@N@std@N@__1@C@vector>#f#$@N@std@N@__1@C@allocator>#f#$@N@std@N@__1@C@allocator>#S4_#f#f#f#i#f#i#i#"
+            },
+            {
+                "column" : 7,
+                "file" : "/Users/slk/Dropbox/sdu/clustering/transclustr/src/FORCE.cpp",
+                "kind" : 6,
+                "line" : 161,
+                "name" : "partition(const ConnectedComponent &, std::vector<std::vector<float> > &, ClusteringResult &, float, float, float, float)",
+                "parent_name" : "",
+                "usr" : "c:@N@FORCE@F@partition#&1$@C@ConnectedComponent#&$@N@std@N@__1@C@vector>#$@N@std@N@__1@C@vector>#f#$@N@std@N@__1@C@allocator>#f#$@N@std@N@__1@C@allocator>#S4_#&$@S@ClusteringResult#f#f#f#f#"
+            },
+            {
+                "column" : 37,
+                "file" : "/Users/slk/Dropbox/sdu/clustering/transclustr/src/FORCE.cpp",
+                "kind" : 6,
+                "line" : 227,
+                "name" : "geometricLinking(std::vector<std::vector<float> > &, const float, const std::vector<std::vector<unsigned int> > &)",
+                "parent_name" : "",
+                "usr" : "c:@N@FORCE@F@geometricLinking#&$@N@std@N@__1@C@vector>#$@N@std@N@__1@C@vector>#f#$@N@std@N@__1@C@allocator>#f#$@N@std@N@__1@C@allocator>#S2_#1f#&1$@N@std@N@__1@C@vector>#$@N@std@N@__1@C@vector>#i#$@N@std@N@__1@C@allocator>#i#$@N@std@N@__1@C@allocator>#S7_#"
+            }
+        ],
+        "file" : "/Users/slk/Dropbox/sdu/clustering/transclustr/src/FORCE.cpp",
+        "file_last_write" : 1486907827
+    },
+    {
+        "definitions" : [
+            {
+                "column" : 11,
+                "file" : "/Users/slk/Dropbox/sdu/clustering/transclustr/src/FPT.cpp",
+                "kind" : 7,
+                "line" : 29,
+                "name" : "cluster(ClusteringResult &)",
+                "parent_name" : "FPT",
+                "usr" : "c:@C@FPT@F@cluster#&$@S@ClusteringResult#"
+            },
+            {
+                "column" : 11,
+                "file" : "/Users/slk/Dropbox/sdu/clustering/transclustr/src/FPT.cpp",
+                "kind" : 7,
+                "line" : 89,
+                "name" : "reduce(FPT::Node &)",
+                "parent_name" : "FPT",
+                "usr" : "c:@C@FPT@F@reduce#&$@C@FPT@S@Node#"
+            },
+            {
+                "column" : 12,
+                "file" : "/Users/slk/Dropbox/sdu/clustering/transclustr/src/FPT.cpp",
+                "kind" : 7,
+                "line" : 125,
+                "name" : "costSetForbidden(FPT::Node &, unsigned int, unsigned int)",
+                "parent_name" : "FPT",
+                "usr" : "c:@C@FPT@F@costSetForbidden#&$@C@FPT@S@Node#i#i#"
+            },
+            {
+                "column" : 12,
+                "file" : "/Users/slk/Dropbox/sdu/clustering/transclustr/src/FPT.cpp",
+                "kind" : 7,
+                "line" : 147,
+                "name" : "costSetPermanent(FPT::Node &, unsigned int, unsigned int)",
+                "parent_name" : "FPT",
+                "usr" : "c:@C@FPT@F@costSetPermanent#&$@C@FPT@S@Node#i#i#"
+            },
+            {
+                "column" : 11,
+                "file" : "/Users/slk/Dropbox/sdu/clustering/transclustr/src/FPT.cpp",
+                "kind" : 7,
+                "line" : 173,
+                "name" : "find_solution(FPT::Node &)",
+                "parent_name" : "FPT",
+                "usr" : "c:@C@FPT@F@find_solution#&$@C@FPT@S@Node#"
+            },
+            {
+                "column" : 11,
+                "file" : "/Users/slk/Dropbox/sdu/clustering/transclustr/src/FPT.cpp",
+                "kind" : 7,
+                "line" : 258,
+                "name" : "mergeNodes(FPT::Node &, unsigned int, unsigned int, float)",
+                "parent_name" : "FPT",
+                "usr" : "c:@C@FPT@F@mergeNodes#&$@C@FPT@S@Node#i#i#f#"
+            },
+            {
+                "column" : 11,
+                "file" : "/Users/slk/Dropbox/sdu/clustering/transclustr/src/FPT.cpp",
+                "kind" : 7,
+                "line" : 298,
+                "name" : "clone_node(FPT::Node &, FPT::Node &)",
+                "parent_name" : "FPT",
+                "usr" : "c:@C@FPT@F@clone_node#&$@C@FPT@S@Node#S0_#"
+            },
+            {
+                "column" : 11,
+                "file" : "/Users/slk/Dropbox/sdu/clustering/transclustr/src/FPT.cpp",
+                "kind" : 7,
+                "line" : 305,
+                "name" : "buildSolution(ClusteringResult &)",
+                "parent_name" : "FPT",
+                "usr" : "c:@C@FPT@F@buildSolution#&$@S@ClusteringResult#"
+            }
+        ],
+        "file" : "/Users/slk/Dropbox/sdu/clustering/transclustr/src/FPT.cpp",
+        "file_last_write" : 1486907827
+    },
+    {
+        "definitions" : [
+            {
+                "column" : 7,
+                "file" : "/Users/slk/Dropbox/sdu/clustering/transclustr/src/FindConnectedComponents.cpp",
+                "kind" : 6,
+                "line" : 18,
+                "name" : "findConnectedComponents(TCC::TransClustParams &, const ConnectedComponent &, std::deque<ConnectedComponent> &, const float)",
+                "parent_name" : "",
+                "usr" : "c:@N@FCC@F@findConnectedComponents#&$@N@TCC@S@TransClustParams#&1$@C@ConnectedComponent#&$@N@std@N@__1@C@deque>#S3_#$@N@std@N@__1@C@allocator>#S3_#1f#"
+            },
+            {
+                "column" : 7,
+                "file" : "/Users/slk/Dropbox/sdu/clustering/transclustr/src/FindConnectedComponents.cpp",
+                "kind" : 6,
+                "line" : 39,
+                "name" : "BFS_cc(std::vector<std::vector<unsigned int> > &, const ConnectedComponent &, const float)",
+                "parent_name" : "",
+                "usr" : "c:@N@FCC@F@BFS_cc#&$@N@std@N@__1@C@vector>#$@N@std@N@__1@C@vector>#i#$@N@std@N@__1@C@allocator>#i#$@N@std@N@__1@C@allocator>#S2_#&1$@C@ConnectedComponent#1f#"
+            }
+        ],
+        "file" : "/Users/slk/Dropbox/sdu/clustering/transclustr/src/FindConnectedComponents.cpp",
+        "file_last_write" : 1486907827
+    },
+    {
+        "definitions" : [
+            {
+                "column" : 14,
+                "file" : "/Users/slk/Dropbox/sdu/clustering/transclustr/src/Result.cpp",
+                "kind" : 7,
+                "line" : 13,
+                "name" : "add(ConnectedComponent &, ClusteringResult &)",
+                "parent_name" : "Result",
+                "usr" : "c:@C@Result@F@add#&$@C@ConnectedComponent#&$@S@ClusteringResult#"
+            },
+            {
+                "column" : 20,
+                "file" : "/Users/slk/Dropbox/sdu/clustering/transclustr/src/Result.cpp",
+                "kind" : 7,
+                "line" : 54,
+                "name" : "get",
+                "parent_name" : "Result",
+                "usr" : "c:@C@Result@F@get#"
+            },
+            {
+                "column" : 14,
+                "file" : "/Users/slk/Dropbox/sdu/clustering/transclustr/src/Result.cpp",
+                "kind" : 7,
+                "line" : 83,
+                "name" : "dump",
+                "parent_name" : "Result",
+                "usr" : "c:@C@Result@F@dump#"
+            }
+        ],
+        "file" : "/Users/slk/Dropbox/sdu/clustering/transclustr/src/Result.cpp",
+        "file_last_write" : 1486907827
+    },
+    {
+        "definitions" : [
+            {
+                "column" : 24,
+                "file" : "/Users/slk/Dropbox/sdu/clustering/transclustr/src/TransClust.cpp",
+                "kind" : 7,
+                "line" : 37,
+                "name" : "cluster",
+                "parent_name" : "TransClust",
+                "usr" : "c:@C@TransClust@F@cluster#"
+            }
+        ],
+        "file" : "/Users/slk/Dropbox/sdu/clustering/transclustr/src/TransClust.cpp",
+        "file_last_write" : 1486907827
+    },
+    {
+        "definitions" : [
+            {
+                "column" : 24,
+                "file" : "/Users/slk/Dropbox/sdu/clustering/transclustr/src/TriangularMatrix.cpp",
+                "kind" : 7,
+                "line" : 77,
+                "name" : "parseLegacySimDataFile(std::map<std::string, unsigned int> &, std::map<std::pair<std::string, std::string>, float> &, std::map<std::pair<std::string, std::string>, bool> &, TCC::TransClustParams &)",
+                "parent_name" : "TriangularMatrix",
+                "usr" : "c:@C@TriangularMatrix@F@parseLegacySimDataFile#&$@N@std@N@__1@C@map>#$@N@std@N@__1@C@basic_string>#C#$@N@std@N@__1@S@char_traits>#C#$@N@std@N@__1@C@allocator>#C#i#$@N@std@N@__1@S@less>#S2_#$@N@std@N@__1@C@allocator>#$@N@std@N@__1@S@pair>#1S2_#i#&$@N@std@N@__1@C@map>#$@N@std@N@__1@S@pair>#S2_#S2_#f#$@N@std@N@__1@S@less>#S10_#$@N@std@N@__1@C@allocator>#$@N@std@N@__1@S@pair>#1S10_#f#&$@N@std@N@__1@C@map>#S10_#b#S11_#$@N@std@N@__1@C@allocator>#$@N@std@N@__1@S@pair>#1S10_#b#&$@N@TCC@S@TransClustParams#"
+            },
+            {
+                "column" : 24,
+                "file" : "/Users/slk/Dropbox/sdu/clustering/transclustr/src/TriangularMatrix.cpp",
+                "kind" : 7,
+                "line" : 121,
+                "name" : "parseSimpleSimDataFile(std::map<std::string, unsigned int> &, std::map<std::pair<std::string, std::string>, float> &, std::map<std::pair<std::string, std::string>, bool> &, TCC::TransClustParams &)",
+                "parent_name" : "TriangularMatrix",
+                "usr" : "c:@C@TriangularMatrix@F@parseSimpleSimDataFile#&$@N@std@N@__1@C@map>#$@N@std@N@__1@C@basic_string>#C#$@N@std@N@__1@S@char_traits>#C#$@N@std@N@__1@C@allocator>#C#i#$@N@std@N@__1@S@less>#S2_#$@N@std@N@__1@C@allocator>#$@N@std@N@__1@S@pair>#1S2_#i#&$@N@std@N@__1@C@map>#$@N@std@N@__1@S@pair>#S2_#S2_#f#$@N@std@N@__1@S@less>#S10_#$@N@std@N@__1@C@allocator>#$@N@std@N@__1@S@pair>#1S10_#f#&$@N@std@N@__1@C@map>#S10_#b#S11_#$@N@std@N@__1@C@allocator>#$@N@std@N@__1@S@pair>#1S10_#b#&$@N@TCC@S@TransClustParams#"
+            },
+            {
+                "column" : 25,
+                "file" : "/Users/slk/Dropbox/sdu/clustering/transclustr/src/TriangularMatrix.cpp",
+                "kind" : 7,
+                "line" : 146,
+                "name" : "parseSimpleEdge(std::vector<std::pair<unsigned int, unsigned int> > &, std::map<std::string, unsigned int> &, std::map<std::pair<std::string, std::string>, float> &, std::map<std::pair<std::string, std::string>, bool> &, unsigned int, unsigned int, TCC::TransClustParams &)",
+                "parent_name" : "TriangularMatrix",
+                "usr" : "c:@C@TriangularMatrix@F@parseSimpleEdge#&$@N@std@N@__1@C@vector>#$@N@std@N@__1@S@pair>#i#i#$@N@std@N@__1@C@allocator>#S2_#&$@N@std@N@__1@C@map>#$@N@std@N@__1@C@basic_string>#C#$@N@std@N@__1@S@char_traits>#C#$@N@std@N@__1@C@allocator>#C#i#$@N@std@N@__1@S@less>#S6_#$@N@std@N@__1@C@allocator>#$@N@std@N@__1@S@pair>#1S6_#i#&$@N@std@N@__1@C@map>#$@N@std@N@__1@S@pair>#S6_#S6_#f#$@N@std@N@__1@S@less>#S14_#$@N@std@N@__1@C@allocator>#$@N@std@N@__1@S@pair>#1S14_#f#&$@N@std@N@__1@C@map>#S14_#b#S15_#$@N@std@N@__1@C@allocator>#$@N@std@N@__1@S@pair>#1S14_#b#i#i#&$@N@TCC@S@TransClustParams#"
+            },
+            {
+                "column" : 24,
+                "file" : "/Users/slk/Dropbox/sdu/clustering/transclustr/src/TriangularMatrix.cpp",
+                "kind" : 7,
+                "line" : 189,
+                "name" : "readFile(const std::string &, std::map<std::string, unsigned int> &, std::map<std::pair<std::string, std::string>, float> &, std::map<std::pair<std::string, std::string>, bool> &)",
+                "parent_name" : "TriangularMatrix",
+                "usr" : "c:@C@TriangularMatrix@F@readFile#&1$@N@std@N@__1@C@basic_string>#C#$@N@std@N@__1@S@char_traits>#C#$@N@std@N@__1@C@allocator>#C#&$@N@std@N@__1@C@map>#S1_#i#$@N@std@N@__1@S@less>#S1_#$@N@std@N@__1@C@allocator>#$@N@std@N@__1@S@pair>#1S1_#i#&$@N@std@N@__1@C@map>#$@N@std@N@__1@S@pair>#S1_#S1_#f#$@N@std@N@__1@S@less>#S11_#$@N@std@N@__1@C@allocator>#$@N@std@N@__1@S@pair>#1S11_#f#&$@N@std@N@__1@C@map>#S11_#b#S12_#$@N@std@N@__1@C@allocator>#$@N@std@N@__1@S@pair>#1S11_#b#"
+            }
+        ],
+        "file" : "/Users/slk/Dropbox/sdu/clustering/transclustr/src/TriangularMatrix.cpp",
+        "file_last_write" : 1486907827
+    },
+    {
+        "definitions" : [
+            {
+                "column" : 6,
+                "file" : "/Users/slk/Dropbox/sdu/clustering/transclustr/src/transclustr.cpp",
+                "kind" : 6,
+                "line" : 12,
+                "name" : "cppCluster(TransClust &)",
+                "parent_name" : "",
+                "usr" : "c:@F@cppCluster#&$@C@TransClust#"
+            },
+            {
+                "column" : 6,
+                "file" : "/Users/slk/Dropbox/sdu/clustering/transclustr/src/transclustr.cpp",
+                "kind" : 6,
+                "line" : 24,
+                "name" : "cppTransClustFile(std::string, std::string, int)",
+                "parent_name" : "",
+                "usr" : "c:@F@cppTransClustFile#$@N@std@N@__1@C@basic_string>#C#$@N@std@N@__1@S@char_traits>#C#$@N@std@N@__1@C@allocator>#C#S0_#I#"
+            },
+            {
+                "column" : 6,
+                "file" : "/Users/slk/Dropbox/sdu/clustering/transclustr/src/transclustr.cpp",
+                "kind" : 6,
+                "line" : 56,
+                "name" : "cppTransClustDist(int, unsigned int, int)",
+                "parent_name" : "",
+                "usr" : "c:@F@cppTransClustDist#I#i#I#"
+            }
+        ],
+        "file" : "/Users/slk/Dropbox/sdu/clustering/transclustr/src/transclustr.cpp",
+        "file_last_write" : 1486907827
+    }
+]

@@ -21,6 +21,7 @@ doTclustWithinRange <- function(simMatrix, proteins, randomSim = FALSE, minThres
     
     start.time <- Sys.time()
     if (randomSim == FALSE) { bestClustering <- list(threshold = 0, fmeasure = 0.0, clusters = 0, cost = 0.0, common = 0) }
+    if (randomSim) {write(paste0("Threshold Cost Clusters"), file, append = TRUE)} # Creating headers
     
     for (threshold in seq(minThreshold, maxThreshold, step)) {
         tclustResult <- tclust(simmatrix = simMatrix, convert_dissimilarity_to_similarity = FALSE, threshold = threshold)
@@ -42,7 +43,7 @@ doTclustWithinRange <- function(simMatrix, proteins, randomSim = FALSE, minThres
             string <- paste0("Threshold = ", threshold, " | F-measure = ", round(fmeasure$fmeasure, 7), " | clusters = ", clusters, " | common = ", fmeasure$common, " | cost = ", cost)
         }
         
-        if (randomSim == TRUE) { string <- paste0("Threshold = ", threshold, " | Cost = ", cost, " | Clusters = ", clusters) }
+        if (randomSim == TRUE) { string <- paste(threshold, round(cost), clusters) }
         
         print(string)
         if (writeToFile) { write(string, file, append = TRUE) }
@@ -91,14 +92,14 @@ if (readSmallData && !readBigData) {
     gsClusteringDataFrame <- as.numeric(as.factor(gold_sorted$class))
 }
 if (readBigData && !readSmallData) {
-    table <- read.table("simBig.txt", sep = "")
+    table <- read.table("../data/big/simBig.txt", sep = "")
     df_table <- as.data.frame(table)
     proteins = levels(df_table[,1])
     simMatrix <- buildSimilarityMatrixFromBlast(proteins, df_table)
     
     gold_df_before_split <- as.data.frame(readLines("../data/big/gold_standard_3rd_column.txt"))
     gold <- as.data.frame(stri_split_fixed(gold_df_before_split[,1], "\t", simplify = TRUE))
-    gold[,2] <- NULL # Deleting second columns, as it is not currently needed
+    gold[,2] <- NULL # Deleting second column, as it is not currently needed
     colnames(gold) <- c("proteins", "class")
     gold_sorted <- gold[match(proteins,gold$proteins),]
     gsClusteringDataFrame <- as.numeric(as.factor(gold_sorted$class))
@@ -125,24 +126,59 @@ if (randomSim) {
     step <- 1
     writeToFile <- TRUE
     
-    minDimensions <- 5
-    maxDimensions <- 100
-    stepDimensions <- 5
-    seed <- 21
-    # dd <- c(2, 3, 4, 5, 10, 15, 20, 25, 35, 45, 55, 65, 75, 85, 95, 100)
-    # for (dimensions in dd) {
-    for (dimensions in seq(minDimensions, maxDimensions, stepDimensions)) {
-        if (readSmallData) {
-            fileName <- paste0("outputRandomSmallData-S", seed, "-K", dimensions, ".txt")
+    # minDimensions <- 5
+    # maxDimensions <- 100
+    # stepDimensions <- 5
+    dimensions <- c(2, 3, 4, 5, 10)
+    seeds <- c(7, 21, 42, 50)
+    for (seed in seeds) {
+        for (dim in dimensions) {
+            # for (dimensions in seq(minDimensions, maxDimensions, stepDimensions)) {
+            if (readSmallData) {
+                fileName <- paste0("AP2outputRandomSmallData-S", seed, "-K", dim, ".txt")
+            }
+            if (readBigData) {
+                fileName <- paste0("AP2outputRandomBigData-S", seed, "-K", dim, ".txt")
+            }
+            
+            simMatrixRandom <- buildRandomSimMatrixAp2(proteins, simMatrix, dim, seed)
+            minThreshold <- round(min(simMatrixRandom)) - 1 # -1 to make sure to get all singletons on first run
+            maxThreshold <- round(max(simMatrixRandom)) + 1 # +1 to make sure to get 1 cluster with all proteins
+            doTclustWithinRange(simMatrixRandom, proteins, randomSim, minThreshold, maxThreshold, step, writeToFile, fileName)
         }
-        if (readBigData) {
-            fileName <- paste0("outputRandomBigData-S", seed, "-K", dimensions, ".txt")
+    }
+    
+    for (seed in seeds) {
+        for (dim in dimensions) {
+            if (readSmallData) {
+                fileName <- paste0("AP3outputRandomSmallData-S", seed, "-K", dim, ".txt")
+            }
+            if (readBigData) {
+                fileName <- paste0("AP3outputRandomBigData-S", seed, "-K", dim, ".txt")
+            }
+            
+            simMatrixRandom <- buildRandomSimMatrixAp3(proteins, simMatrix, dim, seed)
+            minThreshold <- round(min(simMatrixRandom)) - 1 # -1 to make sure to get all singletons on first run
+            maxThreshold <- round(max(simMatrixRandom)) + 1 # +1 to make sure to get 1 cluster with all proteins
+            doTclustWithinRange(simMatrixRandom, proteins, randomSim, minThreshold, maxThreshold, step, writeToFile, fileName)
         }
-        
-        simMatrixRandom <- buildRandomSimMatrix(proteins, simMatrix, dimensions, seed)
-        minThreshold <- round(min(simMatrixRandom)) - 1
-        maxThreshold <- round(max(simMatrixRandom)) + 1
-        doTclustWithinRange(simMatrixRandom, proteins, randomSim, minThreshold, maxThreshold, step, writeToFile, fileName)
+    }
+    
+    for (seed in seeds) {
+        for (dim in dimensions) {
+            # for (dimensions in seq(minDimensions, maxDimensions, stepDimensions)) {
+            if (readSmallData) {
+                fileName <- paste0("AP4outputRandomSmallData-S", seed, "-K", dim, ".txt")
+            }
+            if (readBigData) {
+                fileName <- paste0("AP4outputRandomBigData-S", seed, "-K", dim, ".txt")
+            }
+            
+            simMatrixRandom <- buildRandomSimMatrixAp4(proteins, simMatrix, dim, seed)
+            minThreshold <- round(min(simMatrixRandom)) - 1 # -1 to make sure to get all singletons on first run
+            maxThreshold <- round(max(simMatrixRandom)) + 1 # +1 to make sure to get 1 cluster with all proteins
+            doTclustWithinRange(simMatrixRandom, proteins, randomSim, minThreshold, maxThreshold, step, writeToFile, fileName)
+        }
     }
 }
 

@@ -14,7 +14,7 @@ source("randomV2.R")
 # Read in data and build similarity matrix
 ####################################################################################################
 # table <- read.table("../data/brown/sfld_brown_et_al_amidohydrolases_protein_similarities_for_beh.txt", sep = "", skip = 5)
-table <- read.table("simBig.txt", sep = "")
+table <- read.table("../data/big/simBig.txt", sep = "")
 df_table <- as.data.frame(table)
 
 # Get the involved proteins
