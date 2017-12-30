@@ -69,6 +69,8 @@
 \textbf{First approach test output files located in folder randomSimV1}\\
 \texttt{The first approach was to take the upper matrix and randomize the similarities according to original similarities. Such that the random similarities was taken from the set of similarities from the original data, while the same number could be taken multiple times. 
 However this approach turned out as misleading, as the costs from tclust peaked at 1.000.000, and the actual cost is peaking at around 60.000.}
+% Need to test first approach with the big data set, to get the numbers right, and keeping a red thread with the big data set in the entire report.
+% Just mention the small dataset was the one used for making the code/algorithms and was later tested with the big data set.
 
 Next approach required looking into multidimensional scaling, as this should make a better scaling of the randomized similarities. MDS made it possible to scale the data into higher dimensions, making a "better match" of similarities. Already at five dimensions the costs is peaking at around 220.000. A big reduction in the costs from the first approach.
 
@@ -318,29 +320,12 @@ This procedure is very expensive, thus heuristics are needed.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Density parameter estimation for finding clusters of homologous proteins—tracing actinobacterial pathogenicity lifestyles}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Articles Sources}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{itemize}
-	\item A gold standard set of mechanistically diverse enzyme superfamilies. \\ Shoshana D Brown*, John A Gerlt†, Jennifer L Seffernick‡ and
-	Patricia C Babbitt§. \\
-	Article downloaded from SDU library and located in articles folder.
-	\item Comprehensive cluster analysis with Transitivity Clustering. \\
-	Tobias Wittkop, Dorothea Emig, Anke Truss, Mario Albrecht, Sebastian Böcker \& Jan Baumbach \\
-	Article downloaded from SDU library and located in articles folder.
-	\item Comparing the performance of biomedical clustering
-	methods. \\
-	Christian Wiwie1, Jan Baumbach \& Richard Röttger \\
-	Article downloaded from sdu library and located in articles folder.
-	\item Large scale clustering of protein sequences with FORCE -A layout
-	based heuristic for weighted cluster editing. \\
-	Tobias Wittkop, Jan Baumbach, Francisco P Lobo and
-	Sven Rahmann. \\
-	Article downloaded unsupervised learning and located in articles folder.
-\end{itemize}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
