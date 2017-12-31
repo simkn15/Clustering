@@ -67,14 +67,6 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Where to introduce the dynamic cutting tree approach?(Currently brief description in section hierarchical clustering)}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newpage
 \section{Abstract}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -114,7 +106,7 @@
 % Look at notes.tex
 
 Clustering, or cluster analysis, is a way of grouping a set of objects such that a cluster of objects is more similar to each other than those of another cluster. Clustering can help with the description of patterns of similarities and differences in a data set. There are many different tools to do cluster analysis, which all intend to find an optimal clustering depending on a set of criteria. Given a set of criteria and parameters, we can analyze the data and discover the clusters. The resulting clusters can all be either feasible or infeasible. In some circumstances, even overlapping clusters can provide acceptable solutions. When there are no clear separation of clusters, it can be hard to determine if the solution is acceptable or not.\\
-Figure \ref{fig:g2-combined} shows somewhat similar datasets where the sepration of the clusters are decreasing. \texttt{g2-2-10} and \texttt{[g2-2-30]} has a clear separation. In \texttt{g2-2-50} we can still see a little difference in the density around the center, showing a small separation. There are no longer a separation in \texttt{g2-2-70} and it is difficult to say how many clusters the optimal solution has. Clustering requires a understanding of the dataset, and depending on the data, the solution could, e.g., have 10 clusters to be optimal, like the clustering in figure \ref{fig:g2-2-70-k10}.
+Figure \ref{fig:g2-combined} shows somewhat similar data sets where the sepration of the clusters are decreasing. \texttt{g2-2-10} and \texttt{[g2-2-30]} has a clear separation. In \texttt{g2-2-50} we can still see a little difference in the density around the center, showing a small separation. There are no longer a separation in \texttt{g2-2-70} and it is difficult to say how many clusters the optimal solution has. Clustering requires a understanding of the data set, and depending on the data, the solution could, e.g., have 10 clusters to be optimal, like the clustering in figure \ref{fig:g2-2-70-k10}.
 \begin{figure}[H]
 	\centering
 	\begin{minipage}{5cm}
@@ -149,7 +141,7 @@ Figure \ref{fig:g2-combined} shows somewhat similar datasets where the sepration
 	\caption{g2-2-70 clustering with 10 clusters}
 	\label{fig:g2-2-70-k10}
 \end{figure}
-The basic data for a cluster analysis starts with a $n \cdot p$ multivariate data matrix, \texttt{X}, which describes each object to be clustered. The entry $x_{ij}$ gives the value of the \texttt{j}th variable on object \texttt{i}:
+The basic data for a cluster analysis starts with a $n \cdot p$ multivariate data matrix, \texttt{X}, which describes each object to be clustered. The entry $x_{ij}$ gives the value of the \textit{j}th variable on object \textit{i}:
 \begin{figure}[H]
 	\centering
 	\[
@@ -176,9 +168,58 @@ The formal definition of a cluster can be difficult to give, and it is not clear
 	\label{shapeDataSets}
 \end{figure}
 
-Assessing the quality of a clustering can be a challenging task. Clustering is Unsupervised Learning where it is unknown a priori what the best clustering looks like. Many validation techniques requires a \texttt{gold standard} in order to measure the quality. A \texttt{gold standard} to a given dataset is a solution developed by experts. Quality measures that requires a \texttt{gold standard} are Rand Measure, F-measure, Jaccard Index and Dice Index to name a few. One that does not need a gold standard is Sum of Squares which calculates the sum of distances of all objects in a cluster to its centroid. A low value indicates a good clustering, and a high value indicates bad clustering. One problem with Sum of Squares is that a clustering with all objects as it own cluster(singleton clusters) would have a Sum of Squares of 0. Thus, theoretically imply a good clustering, but rarely, if not none, would this ever give any new information.
+Assessing the quality of a clustering can be a challenging task. Clustering is Unsupervised Learning where it is unknown a priori what the best clustering looks like. Many validation techniques requires a \texttt{gold standard} in order to measure the quality. Gold standard can also be referenced as 'the ground truth'. A \texttt{gold standard} to a given data set is a solution developed manually by experts(people, not algorithms or software). Quality measures that requires a \texttt{gold standard} are Rand Measure, F-measure, Jaccard Index and Dice Index to name a few. One that does not need a gold standard is Sum of Squares which calculates the sum of distances of all objects in a cluster to its centroid. A low value indicates a good clustering, and a high value indicates bad clustering. One problem with Sum of Squares is that a clustering with all objects as it own cluster(singleton clusters) would have a Sum of Squares of 0. Thus, theoretically imply a good clustering, but rarely, if not none, would this ever give any new information.
 
-There are many different algorithms for cluster analysis and which one to use is highly dependent on the dataset. Some of the more known algorithms are \texttt{k-means}, \texttt{hierarchical clustering}, \texttt{Shared Nearest Neighbor}, \texttt{DBSCAN}. \texttt{k-means} is the de-facto standard algorithm for clustering, as it generally performs well. All algorithms takes a set of parameters in order to do the clustering. \texttt{k-means} has one, where \texttt{DBSCAN} has two. Parameter \texttt{k} in \texttt{k-means} is the number of clusters it should return. It can be difficult to determine a single parameter, and increasing the number of parameters exponentially increases the difficulty of setting the parameters. Although, calculating the \texttt{F-ratio} can give a good indication of an optimal \texttt{k} for \texttt{k-means}. In this project we chose \texttt{Transitivity Clustering(TC)}, based on the \texttt{Weighted Transitivity Graph Projection Problem}. F-measure will be used as quality measure. TC and F-measure will be discussed later.
+There are many different algorithms for cluster analysis and which one to use is highly dependent on the data set. Some of the more known algorithms are \texttt{k-means}, \texttt{hierarchical clustering}, \texttt{Shared Nearest Neighbor}, \texttt{DBSCAN}. \texttt{k-means} is the de-facto standard algorithm for clustering, as it generally performs well. All algorithms takes a set of parameters in order to do the clustering. \texttt{k-means} has one, where \texttt{DBSCAN} has two. Parameter \texttt{k} in \texttt{k-means} is the number of clusters it should return. It can be difficult to determine a single parameter, and increasing the number of parameters exponentially increases the difficulty of setting the parameters. Although, calculating the \texttt{F-ratio} can give a good indication of an optimal \texttt{k} for \texttt{k-means}. In this project we chose \texttt{Transitivity Clustering(TC)}, based on the \texttt{Weighted Transitivity Graph Projection Problem}. F-measure will be used as quality measure. TC and F-measure will be discussed later.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Write this into block above 'There are many different algorithms'.
+\subsubsection{NEEDS REFORMULATION IF INCLUDED: Clustering algorithms: Add The 4 subcategories in introduction ? Which category does TC fall under ? Density based !?}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{itemize}
+	\item \textbf{Reference: On Clustering Validation Techniques}
+	\item Partitional algorithms
+		\subitem K-Means: Optimization of an objective function that is described by the equation: $E = \sum_{i = 1}^{c} \sum_{x \in C_{i}} d(x, m_{i})$.
+		\subitem PAM (Partitioning Around Medoids)
+		\subitem CLARA (Clustering Large Applications)
+		\subitem CLARANS (Clustering Large Applications based on Randomized Search)
+		\subitem K-prototypes, K-mode are based on K-Means, but aims at clustering categorical data.
+	\item Hierarchical algorithms (Theodoridis and Koutroubas, 1999):
+		\subitem Agglomerative algorithms: Decreasing number of clusters.
+		\subitem Divisive algorithms: Increasing number of clusters.
+		\subitem BIRCH (Zhang et al., 1996)
+		\subitem CURE (Guha et al., 1998)
+		\subitem ROCK (Guha et al., 1999)
+	\item Density-based algorithms
+		\subitem DBSCAN
+		\subitem DENCLUE
+	\item Grid-based algorithms
+		\subitem STING (Statistical Information Grid-based method)
+		\subitem WaveCluster
+	\item Fuzzy clustering
+		\subitem Fuzzy C-Means (FCM)
+		\subitem EM (Expectation Maximization)
+\end{itemize}
+\begin{itemize}
+	\item \textbf{Reference: On Clustering Validation Techniques}
+	\item Inspiration from this description?
+	\item Agglomerative algorithms. They produce a sequence of clustering schemes of decreasing number of clusters at east step. The clustering scheme produced at each step results from the previous one by merging the two closest clusters into one.
+	\item Divisive algorithms. These algorithms produce a sequence of clustering schemes of increasing number of clusters at each step. Contrary to the agglomerative algorithms the clustering produced at each step results from the previous one by splitting a cluster into two.
+\end{itemize}
+
+\begin{itemize}
+	\item \textbf{Reference: On Clustering Validation Techniques}	
+	
+	\item Description of the subcategories of clustering algorithms
+	
+	\item Partitional clustering attempts to directly decompose the data set into a set of disjoint clusters. More specifically, they attempt to determine an integer number of partitions that optimize a certain criterion function. The criterion function may emphasize the local or global structure of the data and its optimization is an iterative procedure.
+
+	\item Hierarchical clustering proceeds successively by either merging smaller clusters into larger ones, or by splitting larger clusters. The result of the algorithm is a tree of clusters, called dendrogram, which shows how the clusters are related. By cutting the dendrogram at a desired level, a clustering of the data items into disjoint groups is obtained.
+	
+	\item Density-based clustering. The key idea of this type of clustering is to group neighboring objects of a data set into clusters based on density conditions.
+
+	\item Grid-based clustering. This type of algorithms is mainly proposed for spatial data mining. Their main characteristic is that they quantize the space into a finite number of cells and then they do all operations on the quantized space.
+\end{itemize}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -189,6 +230,14 @@ There are many different algorithms for cluster analysis and which one to use is
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{The Dataset}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Inspiration for description of brown: 'Partitional biological data with transitivity clustering' "A typical clustering workflow by using a gold standard data set of enzyme families"
+% Reference?: S. D. Brown, J. A. Gerlt, J. L. Seffernick et al., Genome Biol 7 (1), R8 (2006).
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -259,18 +308,18 @@ The resulting transitive graph, \textit{G''}, is the clustering solution.
 	\end{itemize}
 \end{defn}
 
-There are two forms of hierarchical Clustering, \texttt{agglomerative} and \texttt{divisive}. Agglomerate starts with \textit{n} clusters, where \textit{n} is the number of objects in the dataset. Joining clusters until one cluster is remaining, where all \textit{n} objects are members. Divisive is the opposite. Starting with one cluster with \textit{n} objects. Splitting the clusters until all clusters are singletons. Thus, all \textit{n} objects represents are cluster. Agglomerative is the most used, as divisive usually is a more expensive procedure. One important feature of hierarchical clustering is that a join or split of clusters are irrevocable, thus cannot be undone. Figure \ref{fig:agglo_vs_div} shows an overview of agglomerative vs. divisive.
+There are two forms of hierarchical Clustering, \texttt{agglomerative} and \texttt{divisive}. Agglomerate starts with \textit{n} clusters, where \textit{n} is the number of objects in the data set. Joining clusters until one cluster is remaining, where all \textit{n} objects are members. Divisive is the opposite. Starting with one cluster with \textit{n} objects. Splitting the clusters until all clusters are singletons. Thus, all \textit{n} objects represents are cluster. Agglomerative is the most used, as divisive usually is a more expensive procedure. One important feature of hierarchical clustering is that a join or split of clusters are irrevocable, thus cannot be undone. Figure \ref{fig:agglo_vs_div} shows an overview of agglomerative vs. divisive.
 \begin{figure}[H]
 	\centering
-	\includegraphics*[scale=0.4]{./pictures/hc/agglo_vs_div.png}
-	\caption{Agglomerative vs. Divisive}
+	\includegraphics*[scale=0.3]{./pictures/hc/agglo_vs_div.png}
+	\caption{Agglomerative vs. Divisive: Reference Slides Hierarchical Clustering}
 	\label{fig:agglo_vs_div}
 \end{figure} 
-The steps of joins or splits is often showed as a \texttt{dendrogram}, which is viewed as a tree structure. The root of the tree is the cluster containing all \textit{n} objects. Moving down the tree the nodes represents the clusters which was split from its parent. At the bottom of the tree we have the leafs, where the number of leafs represents all singleton clusters(the \textit{n} objects). The tree can be cut a given height resulting in a clustering solution. Figure \ref{fig:hc example} shows a \texttt{dendrogram} of the tree structure of a HC. The horizontal axis shows all the objects in the dataset. The vertical axis shows the distances between objects and/or clusters. Objects 1 and 2 are joined to a cluster at height 2. These are joined with the remaining objects at height 4, resulting in one cluster holding all objects.
+The steps of joins or splits is often showed as a \texttt{dendrogram}, which is viewed as a tree structure. The root of the tree is the cluster containing all \textit{n} objects. Moving down the tree the nodes represents the clusters which was split from its parent. At the bottom of the tree we have the leafs, where the number of leafs represents all singleton clusters(the \textit{n} objects). The tree can be cut a given height resulting in a clustering solution. Figure \ref{fig:hc example} shows a \texttt{dendrogram} of the tree structure of a HC. The horizontal axis shows all the objects in the data set. The vertical axis shows the distances between objects and/or clusters. Objects 1 and 2 are joined to a cluster at height 2. These are joined with the remaining objects at height 4, resulting in one cluster holding all objects.
 \begin{figure}[H]
 	\centering
 	\includegraphics*[scale=0.3]{./pictures/hc/hc_example.png}
-	\caption{Dendrogram of a Hierarchical Clustering}
+	\caption{Dendrogram of a Hierarchical Clustering: Reference Slides Hierarchical Clustering}
 	\label{fig:hc example}
 \end{figure}
 
@@ -280,7 +329,7 @@ In Figure \ref{fig:hc quality example} we could cut the tree between height 3-7.
 \begin{figure}[H]
 	\centering
 	\includegraphics*[scale=0.4]{./pictures/hc/hc_quality_example.png}
-	\caption{}
+	\caption{Reference: Hierarchical Clustering}
 	\label{fig:hc quality example}
 \end{figure}
 
@@ -290,8 +339,72 @@ In Figure \ref{fig:hc quality example} we could cut the tree between height 3-7.
 \subsection{Cluster Validation}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Section 'cluster comparison' from article 'Large scale clustering of protein sequence with FORCE-A layout based heuristic for weighted cluster editing'
+% Section 'Partitioning biological data with Transitivity Clustering'
 % Look at source.tex in articles folder
+Often it is crucial to measure the quality of a clustering result. Evaluating the best of two results can be difficult, if not impossible, when looking at plots of the clusterings. Thus, we need other methods to validate the results. \texttt{Cluster validity indexes} are a important factor to evaluate solutions. There are three categories of cluster validity indexes:
+\begin{itemize}
+	\item External Criteria/Validation: Evaluate the result with respect to a pre-specified structure, such as a gold standard. 
+	\item Internal Criteria/Validation: Evaluate the result with respect to information intrinsic to the data alone.
+	\item Relative Criteria: Choosing the best clustering scheme of a set of defined schemes, according to a pre-specified criterion.
+\end{itemize}
+We are using the brown data set, which has a gold standard. Thus, we can evaluate results with the external criteria. F-measure falls under this category, and is the chosen quality measure.There are multiple versions of the F-measure. We will be using the $\text{F}_1-measure$, where the measures Recall and Precision is weighted equally. In order to understand the F-measure we need the following definitions:\\
+$K = (K_1, \dots, K_m) = $ Clustering result obtained from the algorithm. $K_i$ is the \textit{i}th cluster in \textit{K}.\\
+$G = (G_1, \dots, G_l) = $ Gold standard clustering. $G_j$ is the \textit{j}th cluster in \textit{G}.\\
+$n = $ amount of objects in the data set. \\
+$n_i = $ number of objects in cluster $K_i$. \\
+$n^j = $ number of objects in cluster $C_j$. \\
+$n_{i}^{j} = $ number of objects contained in $K_i \cap C_j$
+
+\begin{defn}[True Positive]\label{}
+	The number of common objects between cluster \textit{i} and the compared gold standard cluster \textit{j}.
+	\begin{equation}
+		\text{TP}(i,j) = |K_i \cup C_j|
+	\end{equation}
+\end{defn}
+
+\begin{defn}[False Positive]\label{}
+	The number of objects in cluster \textit{i}, which are not in the compared gold standard cluster \textit{j}.
+	\begin{equation}
+		\text{FP}(i,j) = |K_i \backslash C_j|
+	\end{equation}
+\end{defn}
+
+\begin{defn}[False Negative]\label{}
+	Number objects that are not in cluster \textit{i}, which are in the compared gold standard cluster \textit{j}
+	\begin{equation}
+		\text{FN}(i,j) = |C_j \backslash K_i|
+	\end{equation}
+\end{defn}
+
+\begin{defn}[Recall]\label{}
+	\begin{equation}
+		\text{Recall}(i,j) = \frac{n_{ij}}{n_i}
+	\end{equation}
+\end{defn}
+
+\begin{defn}[Precision]\label{}
+	\begin{equation}
+		\text{Precision}(i,j) = \frac{n_{ij}}{n_j}
+	\end{equation}
+\end{defn}
+
+\begin{defn}[F-measure for a cluster]\label{}
+	The F-measure of cluster \textit{j} and class \textit{i} is given by:
+	\begin{equation}
+		F(i,j) = 2 \cdot \frac{\text{Recall}(i,j) \cdot \text{Precision}(i,j)}{\text{Precision}(i,j) + \text{Recall}(i,j)}
+	\end{equation}
+\end{defn}
+
+\begin{defn}[F-Measure for a clustering]\label{def:mean F-measure}
+	In order to obtain the F-measure for a clustering solution, we need to find the mean F-measure. The F-measure of a cluster \textit{j} is multiplied by the amount of objects in the gold standard cluster which have most in common objects. Take the sum over all clusters. Divide by total amount of objects in the data set. Each cluster from the gold standard can only be referenced/mapped once.
+	\begin{equation}
+		\frac{\sum_{i = 1}^{m} \text{F-measure}(K_i) \cdot n_{i}^{j}}{n}
+	\end{equation}
+\end{defn}
+A F-measure is between 0 and 1. A value near 1 indicates a good match with the gold standard(good clustering result). Values near 0 indicates a bad result. Usually we say that it is a good result if the measure is above 0.70(\textbf{\large Needs  a reference!}).
+It is important to pay attention to the statement in Definition \ref{def:mean F-measure} saying that each cluster from the gold standard can only be referenced once. If, e.g. three clusters from \textit{K} maps to the same cluster in \textit{C}, two clusters will be neglected. The F-measure will be 0.0 for the neglected clusters, which negatively influences the quality. This scenario can happen in all clustering solutions, but the probability for multiple mappings on to the same gold standard cluster increases when $|K|>|C|$. In the opposite direction the scenario where $|K|<|C|$, also has a negative impact. With $|K|<|C|$ the clusters in K would be bigger than the cluster in C. 
+Looking back at Definition \ref{def:mean F-measure}, we see that the multiplication is done with the size of $C_j$. Therefore we can conclude that the amount of objects that $K_i$ is bigger than $C_j$, $|K_i|-|C_j|$, has a smaller influence on the total F-measure than the remaining objects in $K_i$.
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

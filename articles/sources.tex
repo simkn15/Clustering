@@ -187,7 +187,9 @@ Input parameters of an algorithm can be number of clusters, density of clusters,
 \subsubsection{Cluster validity assessment}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{itemize}
-	\item Problem specification
+	\item Problem specification: 
+		\subitem One of the most important issues in cluster analysis is the evaluation of clustering results.
+		to find the partitioning that best fits the underlying data
 		\subitem Defining the optimal number of clusters
 	\item Fundamental concepts of cluster validity
 		\subitem Three approaches: external criteria, internal criteria and relative criteria.
@@ -211,6 +213,20 @@ Input parameters of an algorithm can be number of clusters, density of clusters,
 	\item External measures include Entropy, Purity, NMIMeasure and F-Measure.
 \end{itemize}
 \textit{Since clustering algorithms discover clusters, which are not known a priori, the final partitions of a data set requires some sort of evaluation in most applications (Rezaee et al.,1998).}
+
+Clustering is an unsupervised classification process fundamental to data mining. Data mining is one of the most important tasks in data analysis. Applications in several fields like bioinformatics[14], web data analysis [13], text mining [17] and scientific data exploration [1]. Clustering refers to unsupervised learning, where it has no a priori information about the data. A clustering algorithm depends on input parameters. k-means require a number of clusters (k) to be created. The question remains, what is the optimal number of clusters? Cluster validity indexes are a important factor as a means to give a solution [7]. Many methods have been proposed without any a priori information.
+\begin{itemize}
+	\item External Criteria: Evaluate the result with respect to a pre-specified structure.
+		\subitem External validation: Based on previous knowledge about data.
+	\item Internal Criteria: Evaluate the result with respect a information intrinsic to the data alone.
+		\subitem Internal validation: Based on the information intrinsic to the data alone.
+	\item Relative criteria: Fundamental idea is to choose the best clustering scheme of a set of defined schemes, according to a pre-specified criterion.
+\end{itemize}
+Most clustering algorithms are dependent on the characteristics of the dataset and the input parameters. Incorrect parameters may lead to clusters that deviate from the optimum solution. Usually clustering validity indexes are defined by combining \texttt{compactness} and \texttt{separability}.
+\begin{itemize}
+	\item [Compactness:] Measurement of closeness of cluster elements. Typically measure is variance.
+	\item [Separability:] Indicates the distinction of two clusters, by computing the distance between them.
+\end{itemize}
 
 
 

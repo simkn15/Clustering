@@ -1,23 +1,24 @@
 \select@language {english}
-\contentsline {section}{\numberline {1}Where to introduce the dynamic cutting tree approach?(Currently brief description in section hierarchical clustering)}{2}
-\contentsline {section}{\numberline {2}Abstract}{3}
-\contentsline {subsection}{\numberline {2.1}Background}{3}
-\contentsline {subsection}{\numberline {2.2}Results}{3}
-\contentsline {subsection}{\numberline {2.3}Conclusion}{3}
-\contentsline {section}{\numberline {3}Introduction}{4}
-\contentsline {section}{\numberline {4}Background}{7}
-\contentsline {subsection}{\numberline {4.1}Transitivity Clustering}{7}
-\contentsline {subsection}{\numberline {4.2}Hierarchical Clustering}{8}
-\contentsline {subsection}{\numberline {4.3}Cluster Validation}{10}
-\contentsline {subsection}{\numberline {4.4}Multidimensional Scaling}{10}
-\contentsline {subsection}{\numberline {4.5}GAP Statistics}{10}
-\contentsline {section}{\numberline {5}Method}{11}
-\contentsline {subsection}{\numberline {5.1}Assessing best clustering}{11}
-\contentsline {subsection}{\numberline {5.2}Randomization approach 1}{11}
-\contentsline {subsection}{\numberline {5.3}Randomization approach 2}{11}
-\contentsline {subsection}{\numberline {5.4}Randomization approach 3}{11}
-\contentsline {subsection}{\numberline {5.5}Randomization approach 4}{11}
-\contentsline {subsection}{\numberline {5.6}Results for randomizations}{11}
-\contentsline {subsection}{\numberline {5.7}Short about the implementation / tools}{11}
-\contentsline {section}{\numberline {6}Conclusion}{12}
-\contentsline {section}{\numberline {7}References}{13}
+\contentsline {section}{\numberline {1}Abstract}{3}
+\contentsline {subsection}{\numberline {1.1}Background}{3}
+\contentsline {subsection}{\numberline {1.2}Results}{3}
+\contentsline {subsection}{\numberline {1.3}Conclusion}{3}
+\contentsline {section}{\numberline {2}Introduction}{4}
+\contentsline {subsubsection}{\numberline {2.0.1}NEEDS REFORMULATION IF INCLUDED: Clustering algorithms: Add The 4 subcategories in introduction ? Which category does TC fall under ? Density based !?}{7}
+\contentsline {section}{\numberline {3}Background}{9}
+\contentsline {subsection}{\numberline {3.1}The Dataset}{9}
+\contentsline {subsection}{\numberline {3.2}Transitivity Clustering}{9}
+\contentsline {subsection}{\numberline {3.3}Hierarchical Clustering}{10}
+\contentsline {subsection}{\numberline {3.4}Cluster Validation}{12}
+\contentsline {subsection}{\numberline {3.5}Multidimensional Scaling}{14}
+\contentsline {subsection}{\numberline {3.6}GAP Statistics}{14}
+\contentsline {section}{\numberline {4}Method}{15}
+\contentsline {subsection}{\numberline {4.1}Assessing best clustering}{15}
+\contentsline {subsection}{\numberline {4.2}Randomization approach 1}{15}
+\contentsline {subsection}{\numberline {4.3}Randomization approach 2}{15}
+\contentsline {subsection}{\numberline {4.4}Randomization approach 3}{15}
+\contentsline {subsection}{\numberline {4.5}Randomization approach 4}{15}
+\contentsline {subsection}{\numberline {4.6}Results for randomizations}{15}
+\contentsline {subsection}{\numberline {4.7}Short about the implementation / tools}{15}
+\contentsline {section}{\numberline {5}Conclusion}{16}
+\contentsline {section}{\numberline {6}References}{17}
