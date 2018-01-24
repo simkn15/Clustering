@@ -8,7 +8,7 @@ library(ClusterR)
 library(stringi)
 library(RColorBrewer)
 
-source("randomV2.R")
+source("randomization.R")
 
 clusteringWithTclust <- function(simMatrix, proteinLabels, threshold) {
     tclustResult <- tclust(simmatrix = simMatrix, convert_dissimilarity_to_similarity = FALSE, threshold = threshold)
@@ -35,6 +35,12 @@ getProteinLabelsFromClustering <- function(tclustRes) {
     }
     
     return(proteinLabels)
+}
+
+# Returns the similarity subset of simMatrix where only 'proteins' are occuring
+getSimMatrixForSpecificProteins <- function(simMatrix, proteins) {
+    proteins <- as.character(proteins) # Precaution that no error will occure
+    return(simMatrix[proteins, proteins])
 }
 
 # Used for the small data set
@@ -72,6 +78,7 @@ buildSimilarityMatrix <- function(proteins, df_table) {
 }
 
 # Used for the big data set
+# Directions can have multiple similarities
 buildSimilarityMatrixFromBlast <- function(proteins, df_table) {
     if (length(proteins) < 2) { stop("Cannot build similarity matrix with less than 2 proteins")}
     # Create an empty matrix
@@ -89,7 +96,6 @@ buildSimilarityMatrixFromBlast <- function(proteins, df_table) {
         
         for(y in (x+1):length(proteins)) {
             p2 = proteins[y]
-            # We have to check for both directions p1 -> p2 and p2 <- p1. Rule is, to be more conservative, we take the minimum of both values
             d1.set <- presec[presec[,1] == p2, 3]
             d2.set <- presec[presec[,2] == p2, 3]
             d1.length <- length(d1.set)
@@ -111,7 +117,7 @@ buildSimilarityMatrixFromBlast <- function(proteins, df_table) {
                         d2.maxValue <- d2.set[i]
                     }
                 }
-                
+                # Take the minimum of both directions
                 simMatrix[x,y] = simMatrix[y,x] = min(d1.maxValue, d2.maxValue)
             }
         }

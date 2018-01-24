@@ -67,7 +67,6 @@ calculateIndexInMatrix <- function(IndexInOrder, amountOfProteins) {
     return(c(row, col))
 }
 
-
 buildRandomSimMatrixAp2 <- function(proteins, simMatrix, k = 10, seed = 42) {
     set.seed(seed)
     simMatrixAsDist <- as.dist((max(simMatrix) + 1) - simMatrix) # Why was +1 needed ?
