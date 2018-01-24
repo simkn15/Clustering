@@ -1,3 +1,4 @@
+setwd(dirname(rstudioapi::getActiveDocumentContext()$path))
 library(transclustr)
 library(ggplot2)
 library(plyr)
@@ -7,16 +8,16 @@ library(ClusterR)
 library(stringi)
 require(graphics)
 
-#library(pryr) # get size of objects with object_size(l)
-
 source("fmeasure.R")
 source("utilities.R")
 ####################################################################################################
 # Read in data and build similarity matrix
 ####################################################################################################
-step <- 30
-minSplit <- 2
-maxSplit <- 10
+# Adjust variables to desired bounds for binary search
+# The binary search uses a upperBound and a lowerBound to find the proper threshold in the current iteration. 
+step <- 1 # Default step for threshold. Binary search is skipped if 'step <- 1'. 30 is used for the binary split
+minSplit <- 2 # Minimum number of splits. Minimum bound will increase if splits are < 2
+maxSplit <- 10 # Maximum number of splits. Upper bound will decrease if splits are >= maxSplit.
 
 readSmallDataSet <- FALSE
 readBigDataSet <- !readSmallDataSet
@@ -29,11 +30,11 @@ if (readSmallDataSet) {
     proteins = levels(df_table[,1])
     simMatrix <- buildSimilarityMatrix(proteins, df_table)
     
-    minThreshold <- min(simMatrix) - 1
-    maxThreshold <- round(max(simMatrix)) + 1
+    minThreshold <- min(simMatrix) - 1 # The starting threshold. -1 such that the first run returns 1 cluster.
+    maxThreshold <- round(max(simMatrix)) + 1 # Threshold where all clusters will be singletons
     
     if (writeToFile) {
-        fileName <- paste0("SavingWorkSpaceHcOutputSmallDataSetMin", minSplit, "Max", maxSplit, "Step", step, ".txt")
+        fileName <- paste0("hcSmallDataNoBinary", minSplit, "Max", maxSplit, "Step", step, ".txt")
         file <- file(fileName, "w") 
     }
 }
@@ -47,7 +48,7 @@ if (readBigDataSet) {
     maxThreshold <- round(max(simMatrix)) + 1
 
     if (writeToFile) {
-        fileName <- paste0("DEBUGhcTestOutputBigDataSetMin", minSplit, "Max", maxSplit, "Step", step, ".txt")
+        fileName <- paste0("hcBigDataNoBinary", minSplit, "Max", maxSplit, "Step", step, ".txt")
         file <- file(fileName, "w") 
     }
 }
@@ -57,28 +58,34 @@ if (readBigDataSet) {
 ####################################################################################################
 # hcObject <- list(merge = matrix(0, nrow = 0, ncol = 2), height = c(), order = c(), labels = proteins)
 
+# List of all clusters that needs to be clustered with tclust
+# cid: Cluster id
+# proteins: Proteins in the given cluster
+# startIndex, endIndex: The range in 'order' for the proteins belonging to this cluster. 
+# height: The height where the children clusters would be merged into this cluster. Meaning that this cluster is split into its children at height-1.
+# nextThreshold: Next threshold to run tclust on this cluster.
 proteinLabelsOfEachCluster <- list(c1 = list(cid = "c1", proteins = c(proteins), startIndex = 1, endIndex = length(proteins), height = -1, parent = "", nextThreshold = minThreshold))
 
-amountOfTotalClusters <- 1
-totalClusters <- proteinLabelsOfEachCluster
+amountOfTotalClusters <- 1 # Used to get proper cid on all clusters. Total number of clusters which has occured during the run. (Includes singleton clusters).
+totalClusters <- proteinLabelsOfEachCluster # Holds all information for every cluster during the run. totalClusters$c1 is information about the first cluster. Required to make the merge ordering for the dendrogram.
 
-countSplits <- 0
-countSingletons <- 0
+countSplits <- 0 # Total number of splits for the entire run
+countSingletons <- 0 # Equals the amount of proteins when run is done
 
-charC <- "c" # Is this used anywhere ?
+charC <- "c" # used to make var cid(cluster id)
 
 # hc object
 mergeMatrix <- matrix(0, nrow = 0, ncol = 2)
-merge <- list()
+merge <- list() # Hold the order of all splits. merge[[1]] returns which clusters was made from the first split.
 height <- c() # maxThreshold - threshold
-order <- proteins
-labels <- proteins
+order <- proteins # Holds the ordered proteins for the dendrogram
+labels <- proteins # The labels of all proteins
 while (countSingletons < length(proteins)) {
     cat("\n")
     print("##############################")
     print(paste("Clusters to tclust =", length(proteinLabelsOfEachCluster)))
     
-    clustersLargerThanOne <- list()
+    clustersLargerThanOne <- list() # All clusters returned from this iteration of tclust(Not singletons). These will be added to 'proteinLabelsOfEachCluster' to be clustered in the next iteration.
     
     # For every level: Do tclust on all clusters with current threshold
     if (length(proteinLabelsOfEachCluster) > 0) {
@@ -93,7 +100,7 @@ while (countSingletons < length(proteins)) {
                 write(string, file, append = TRUE) 
             }
             
-            if (length(currentTclustCluster$proteins) > 1) { # Not a singleton
+            if (length(currentTclustCluster$proteins) > 1) { # Not a singleton. This check might not be necessary, as we dont add singletons for the next iteration
                 
                 print(paste0("currentTclustCluster: cid = ", currentTclustCluster$cid, " | size = ", length(currentTclustCluster$proteins), " | startIndex = ", currentTclustCluster$startIndex, " | endIndex = ", currentTclustCluster$endIndex, " | height = ", currentTclustCluster$height, " | parent = ", currentTclustCluster$parent))
                 # print(currentTclustCluster$proteins)
@@ -108,7 +115,7 @@ while (countSingletons < length(proteins)) {
                 fallBack <- FALSE
                 if (amountOfClustersInTclustResult > 1) {
                     
-                    ### BEGIN New stuff
+                    ### BEGIN binary search
                     if (amountOfClustersInTclustResult >= maxSplit && step > 1) { # Too many new clusters. Can't do binary search if base step is 1
                         tempTclustResultDataFrame <- tclustResultDataFrame
                         tempAmountOfClustersInTclustResult <- amountOfClustersInTclustResult
@@ -204,7 +211,7 @@ while (countSingletons < length(proteins)) {
                         print(string)
                         if (writeToFile) { write(string, file, append = TRUE) }
                     }
-                    ### END New stuff
+                    ### END binary search
 
                     tempProteinLabelsOfEachCluster <- getProteinLabelsFromClustering(tclustResultDataFrame)
                     for (j in 1:amountOfClustersInTclustResult) { # Update height on cluster object
@@ -221,7 +228,7 @@ while (countSingletons < length(proteins)) {
                         tempProteinLabelsOfEachCluster[[j]]$nextThreshold <- nextThreshold
                     }
                 }
-                else { # Same cluster as currentTclustCluster
+                else { # Same cluster as currentTclustCluster, no split occured
                     tempProteinLabelsOfEachCluster <- getProteinLabelsFromClustering(tclustResultDataFrame)
                     tempProteinLabelsOfEachCluster[[1]]$height <- currentTclustCluster$height
                     tempProteinLabelsOfEachCluster[[1]]$cid <- currentTclustCluster$cid
@@ -307,22 +314,22 @@ for (i in 1:length(totalClusters)) {
 ####################################################################################################
 # hc$merge
 ####################################################################################################
-mergeMatrix <- matrix(0, nrow = 0, ncol = 2)
-mergeLookUpList <- list()
-mergeHeights <- c()
+mergeMatrix <- matrix(0, nrow = 0, ncol = 2) # Negative values are singletons. Positive values are clusters, where the value corresponds to the row at which this cluster came from.
+mergeLookUpList <- list() # Holds the row numbers for 'merge' for a given merge. mergeLookUpList$c1 returns the row in 'merge' where cluster c1 was made.
+mergeHeights <- c() # Holds the height for all merges
 
-# which(proteins == totalClusters$c324$proteins[[1]])
-
-# Move in descending order!
+# 'merge' in ascending order corresponds to the ordering of the splits (Divisive)
+# 'merge' in descending order corresponds to the ordering of the merges (Agglomerative)
+# The hierarchical clustering is done divisive, but in order to use the plotting function for a 'hclust() object' we need to see it as agglomerative.
 for (i in length(merge):1) { # For all parents
     parent <- ""
     for (j in 2:length(merge[[i]])) { # For all children of parent i
-        # TODO Simplify!
-        # Think about if (j == 1) && (j > 1). We are doing pretty much the same thing
+        # length(merge[[i]]) == 2, A two-split occured -> merging 2 clusters into one
+        # length(merge[[i]]) > 2, split resulted in more than 2 clusters -> merging multiple cluster into one
         
         mergeHeights <- c(mergeHeights, height[i])
         
-        if (j == 2) { # initialize run -> a cluster cannot be on previous line
+        if (j == 2) {
             c1 <- merge[[i]][j-1]
             c2 <- merge[[i]][j]
             c1.isSingleton <- length(totalClusters[[c1]]$proteins) == 1
@@ -331,7 +338,7 @@ for (i in length(merge):1) { # For all parents
             c2.isCluster <- !c2.isSingleton
             parent <- totalClusters[[c1]]$parent
             
-            if (c1.isSingleton && c2.isSingleton) { # (s,s)
+            if (c1.isSingleton && c2.isSingleton) { # (s,s), on first iteration there are no clusters, only singletons
                 rowLabelsC1 <- - which(labels == totalClusters[[c1]]$proteins[1])
                 rowLabelsC2 <- - which(labels == totalClusters[[c2]]$proteins[1])
                 mergeMatrix <- rbind(mergeMatrix, c(rowLabelsC1, rowLabelsC2))
@@ -358,7 +365,7 @@ for (i in length(merge):1) { # For all parents
         if (j > 2) { # Merge next element with cluster from previous line in mergeMatrix
             c1 <- nrow(mergeMatrix)
             c2 <- merge[[i]][j]
-            c1.isCluster <- TRUE
+            c1.isCluster <- TRUE # cluster from previous line in mergeMatrix. This will always be a cluster, since we handle merging of 2 singletons above(j == 2, initalize run)
             c2.isSingleton <- length(totalClusters[[c2]]$proteins) == 1
             c2.isCluster <- !c2.isSingleton
             
@@ -380,7 +387,7 @@ for (i in length(merge):1) { # For all parents
     }
     # Update mergeLookUpList
     newCluster <- list(nrow(mergeMatrix)) # Make a counter, this is too many ops
-    names(newCluster) <- parent # The children have been marge into its parent.
+    names(newCluster) <- parent # cid for parent. The children have been merged into its parent.
     mergeLookUpList <- c(mergeLookUpList, newCluster)
 }
 

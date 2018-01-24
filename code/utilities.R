@@ -122,6 +122,9 @@ buildSimilarityMatrixFromBlast <- function(proteins, df_table) {
     return(simMatrix)
 }
 
+##############################################################
+# Below functions are all for plotting costs
+##############################################################
 plotCostsSmallOneVsOneWithGap <- function(dimensions = c(5)) { # Outdated
     dimensionsAsChar <- as.character(dimensions)
     df_plot <- data.frame(threshold = integer(0), cost = integer(0), dimension = character())

@@ -1,3 +1,7 @@
+#########################
+# Code used for making plots for the Introduction section of the report
+#########################
+
 setwd(dirname(rstudioapi::getActiveDocumentContext()$path))
 library(transclustr)
 library(ggplot2)

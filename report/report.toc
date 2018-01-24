@@ -4,21 +4,25 @@
 \contentsline {subsection}{\numberline {1.2}Results}{3}
 \contentsline {subsection}{\numberline {1.3}Conclusion}{3}
 \contentsline {section}{\numberline {2}Introduction}{4}
-\contentsline {subsubsection}{\numberline {2.0.1}NEEDS REFORMULATION IF INCLUDED: Clustering algorithms: Add The 4 subcategories in introduction ? Which category does TC fall under ? Density based !?}{7}
+\contentsline {subsection}{\numberline {2.1}What is Clustering?}{4}
+\contentsline {subsection}{\numberline {2.2}Clustering Approaches}{7}
+\contentsline {subsection}{\numberline {2.3}Cluster validity}{8}
 \contentsline {section}{\numberline {3}Background}{9}
 \contentsline {subsection}{\numberline {3.1}The Dataset}{9}
 \contentsline {subsection}{\numberline {3.2}Transitivity Clustering}{9}
 \contentsline {subsection}{\numberline {3.3}Hierarchical Clustering}{10}
-\contentsline {subsection}{\numberline {3.4}Cluster Validation}{12}
-\contentsline {subsection}{\numberline {3.5}Multidimensional Scaling}{14}
-\contentsline {subsection}{\numberline {3.6}GAP Statistics}{14}
-\contentsline {section}{\numberline {4}Method}{15}
-\contentsline {subsection}{\numberline {4.1}Assessing best clustering}{15}
-\contentsline {subsection}{\numberline {4.2}Randomization approach 1}{15}
-\contentsline {subsection}{\numberline {4.3}Randomization approach 2}{15}
-\contentsline {subsection}{\numberline {4.4}Randomization approach 3}{15}
-\contentsline {subsection}{\numberline {4.5}Randomization approach 4}{15}
-\contentsline {subsection}{\numberline {4.6}Results for randomizations}{15}
-\contentsline {subsection}{\numberline {4.7}Short about the implementation / tools}{15}
-\contentsline {section}{\numberline {5}Conclusion}{16}
-\contentsline {section}{\numberline {6}References}{17}
+\contentsline {subsection}{\numberline {3.4}Cluster Validation}{11}
+\contentsline {subsection}{\numberline {3.5}Multidimensional Scaling}{13}
+\contentsline {subsection}{\numberline {3.6}GAP Statistics}{13}
+\contentsline {section}{\numberline {4}Method}{14}
+\contentsline {subsection}{\numberline {4.1}Assessing best clustering}{14}
+\contentsline {subsection}{\numberline {4.2}Randomization approach 1}{14}
+\contentsline {subsection}{\numberline {4.3}Randomization approach 2}{14}
+\contentsline {subsection}{\numberline {4.4}Randomization approach 3}{14}
+\contentsline {subsection}{\numberline {4.5}Randomization approach 4}{14}
+\contentsline {subsection}{\numberline {4.6}Results for randomizations}{14}
+\contentsline {section}{\numberline {5}Implementation : Keep it short!}{15}
+\contentsline {section}{\numberline {6}Conclusion}{16}
+\contentsline {section}{\numberline {7}Appendix}{17}
+\contentsline {subsection}{\numberline {7.1}Clustering Approaches and Algorithms : Missing description of each algorithm}{17}
+\contentsline {section}{\numberline {8}References}{18}

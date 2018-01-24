@@ -1,0 +1,47 @@
+TODO coding:
+- measureTclust.R needs cleanup
+- measureBrown.R needs cleanuå
+- DEBUG hclustDivisive.R before adding the randomization.
+    - Make a backup before adding the randomization.
+
+
+fmeasure.R
+All code that involves measuring the quality of a clustering with F-measure.
+
+gap.R
+Edited gap file, which was used to figure out how to do the gap statistics.
+
+gapOriginal.R
+Original gap file from Richard.
+
+hclustDivisive.R
+Main file for doing the Hierarchical clustering approach with Transitivity Clustering.
+
+hclustDivisiveBackup.R
+Backup file for hclustDivisive.R. Unsure when last backup was made.
+30/12-17 was kast date of modification.
+
+measureBrown.R
+
+measureTclust.R
+
+randomMeeting.R
+Used this file in the meeting about randomization. Notes for code lines almost matches this one.
+
+randomV2.R
+Holds all the functions for randomization.
+Not sure why function buildSimilarityMatrix() is in here. Something to do with importing from other files ????
+
+utilities.R
+Functions:
+- clusteringWithTclust
+- getProteinLabelsFromClustering
+- buildSimilarityMatrix
+- buildSimilarityMatrixFromBlast
+- all functions used for plotting gap costs
+
+makeSimFileFromBlast.R
+Used to make the similarity file of the big data set from the given blast file.
+
+plotsIntroduction.R
+Used to make plots for the Introduction section. Not sure if this is relevant anymore.
