@@ -184,7 +184,7 @@ Figure \ref{fig:g2-combined} shows similar datasets with decreasing separating a
 	\caption{g2-2-70 clustering with 10 clusters}
 	\label{fig:g2-2-70-k10}
 \end{figure}
-Clustering requires an understanding of the dataset, in order to select the proper features of the data to determine the similarity. E.g. the optimal clustering solution could be one with 10 clusters, shown in figure \ref{fig:g2-2-70-k10}. A feature is some attribute which describes the data. Lets say the dataset was about the appearance of people. Then the features could be hair color, eye color, height, weight, etc..
+Clustering requires an understanding of the dataset, in order to select the proper features of the data to determine the similarity. E.g. the optimal clustering solution could be one with 10 clusters, shown in figure \ref{fig:g2-2-70-k10}. A feature is some attribute which describes the data. Lets say the dataset was about the appearance of people. The features could be hair color, eye color, height, weight, etc..
 The basic data for a cluster analysis starts with a $n \cdot p$ multivariate data matrix, \texttt{X}, which describes each object to be clustered. The entry $x_{ij}$ gives the value of the \textit{j}th variable on object \textit{i}:
 \begin{figure}[H]
 	\centering
@@ -373,7 +373,7 @@ In Figure \ref{fig:hc quality example} we could cut the tree between height 3-7.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Cluster Validation}
+\subsection{Cluster Validation - F-measure}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Section 'Partitioning biological data with Transitivity Clustering'
@@ -395,33 +395,33 @@ $n_{i}^{j} = $ number of objects contained in $K_i \cap C_j$
 \begin{defn}[True Positive]\label{}
 	The number of common objects between cluster \textit{i} and the compared gold standard cluster \textit{j}.
 	\begin{equation}
-		\text{TP}(i,j) = |K_i \cup C_j|
+		\text{TP} = |K_i \cup C_j|
 	\end{equation}
 \end{defn}
 
 \begin{defn}[False Positive]\label{}
 	The number of objects in cluster \textit{i}, which are not in the compared gold standard cluster \textit{j}.
 	\begin{equation}
-		\text{FP}(i,j) = |K_i \backslash C_j|
+		\text{FP} = |K_i \backslash C_j|
 	\end{equation}
 \end{defn}
 
 \begin{defn}[False Negative]\label{}
-	Number objects that are not in cluster \textit{i}, which are in the compared gold standard cluster \textit{j}
+	The number of objects that are not in cluster \textit{i}, which are in the compared gold standard cluster \textit{j}
 	\begin{equation}
-		\text{FN}(i,j) = |C_j \backslash K_i|
+		\text{FN} = |C_j \backslash K_i|
 	\end{equation}
 \end{defn}
 
 \begin{defn}[Recall]\label{}
 	\begin{equation}
-		\text{Recall}(i,j) = \frac{n_{ij}}{n_i}
+		\text{Recall}(i,j) = \frac{n_{ij}}{n_i} = \frac{TP}{TP + FP}
 	\end{equation}
 \end{defn}
 
 \begin{defn}[Precision]\label{}
 	\begin{equation}
-		\text{Precision}(i,j) = \frac{n_{ij}}{n_j}
+		\text{Precision}(i,j) = \frac{n_{ij}}{n_j} = \frac{TP}{TP + FN}
 	\end{equation}
 \end{defn}
 
@@ -449,6 +449,12 @@ Looking back at Definition \ref{def:mean F-measure}, we see that the multiplicat
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{comment}
 Look at section 2.3.3 Multidimensional scaling (Cluster Analysis)
+
+High dimensionality -> Curse of dimensionality (From slides)
+Dimensionality reduction(From slides)
+
+
+The issue when randomizing and low dimensionality. Hard if not impossible to have proper scale of similarities between many objects. If x1 and x2 have low similarity, but x3 have high similarity with both, which is higher than the middle between x1 and x2.
 \end{comment}
 
 

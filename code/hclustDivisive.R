@@ -10,6 +10,11 @@ require(graphics)
 
 source("utilities.R")
 
+# NOTE!
+# The Hierarchical Clustering approach is divisive.
+# The information for the dendrogram is converted into agglomerative, thus being able to use the plotting defined for a hclust() object
+# Required to make a hclust() object, doing a clustering with the method, and reassigning the variables on the object.
+
 ####################################################################################################
 # Hierarchical Method
 ####################################################################################################
@@ -23,12 +28,7 @@ source("utilities.R")
 # maxThreshold: The maximum threshold where all clusters are singletons, max(simMatrix) + 1
 # binarySearch: TRUE will enable the binary search
 # DEBUG and fileName: Used for debugging
-hclustDivisive <- function(simMatrix, proteins, step = 1, minSplit = 2, maxSplit = 10, minThreshold, maxThreshold, binarySearch = FALSE, DEBUG = FALSE, fileName = "") {
-    if (DEBUG)  {
-        if (fileName == "") { stop("DEBUG mode requires a filename for the output.") } 
-        fileName <- paste0(fileName, minSplit, "Max", maxSplit, "Step", step, ".txt")
-        file <- file(fileName, "w")
-    }
+hclustDivisive <- function(simMatrix, proteins, step = 1, minSplit = 2, maxSplit = 10, minThreshold, maxThreshold, binarySearch = FALSE) {
     if (binarySearch && step == 1) { stop("Binary search requires step >= 2.") }
     
     # List of all clusters that needs to be clustered with tclust
@@ -52,168 +52,80 @@ hclustDivisive <- function(simMatrix, proteins, step = 1, minSplit = 2, maxSplit
     
     # Variables used to create the dendrogram with a hclust() object
     mergeMatrix <- matrix(0, nrow = 0, ncol = 2)
-    merge <- list() # Hold the order of all splits. merge[[1]] returns which clusters was made from the first split.
+    merge <- list() # Holds the order of all splits. merge[[1]] returns which clusters was made from the first split.
     height <- c() # maxThreshold - threshold
     order <- proteins # Holds the ordered proteins for the dendrogram
     
     labels <- proteins # The labels of all proteins
     while (countSingletons < length(proteins)) {
-        if(DEBUG) {
-            cat("\n")
-            print("##############################")
-            print(paste("Clusters to tclust =", length(proteinLabelsOfEachCluster)))   
-        }
-        
         clustersLargerThanOne <- list() # All clusters returned from this iteration of tclust(Not singletons). These will be added to 'proteinLabelsOfEachCluster' to be clustered in the next iteration.
         
         # For every level: Do tclust on all clusters with current threshold
-        if (length(proteinLabelsOfEachCluster) > 0) {
+        if (length(proteinLabelsOfEachCluster) > 0) { # TODO: Remove this check ?
             for (i in 1:length(proteinLabelsOfEachCluster)) {
                 currentStep <- step
                 currentTclustCluster <- proteinLabelsOfEachCluster[[i]]# Cluster to tclust
                 
-                if (DEBUG) {
-                    print(paste("currentTclustCluster$nextThreshold =", currentTclustCluster$nextThreshold))
-                    write("", file, append = TRUE)
-                    string <- paste0("currentTclustCluster = ", currentTclustCluster$cid, " | nextThreshold = ", currentTclustCluster$nextThreshold)
-                    write(string, file, append = TRUE) 
-                }
-                
                 if (length(currentTclustCluster$proteins) > 1) { # Not a singleton. This check might not be necessary, as we dont add singletons for the next iteration
-                    if (DEBUG) {
-                        print(paste0("currentTclustCluster: cid = ", currentTclustCluster$cid, " | size = ", length(currentTclustCluster$proteins), " | startIndex = ", currentTclustCluster$startIndex, " | endIndex = ", currentTclustCluster$endIndex, " | height = ", currentTclustCluster$height, " | parent = ", currentTclustCluster$parent))   
+                    if (length(proteins) != length(currentTclustCluster$proteins)) { # We need to match the similarity matrix to the proteins in the cluster
+                        simMatrixTemp <- simMatrix[currentTclustCluster$proteins, currentTclustCluster$proteins]
                     }
+                    else { # Initial cluster
+                        simMatrixTemp <- simMatrix
+                    }
+                    # simMatrix <- buildSimilarityMatrix(currentTclustCluster$proteins, df_table) # TODO No reason to do it like this, look at hcRandomization.R
                     
-                    simMatrix <- buildSimilarityMatrix(currentTclustCluster$proteins, df_table)
-                    
-                    tclustResultDataFrame <- clusteringWithTclust(simMatrix, currentTclustCluster$proteins, currentTclustCluster$nextThreshold)
+                    tclustResultDataFrame <- clusteringWithTclust(simMatrixTemp, currentTclustCluster$proteins, currentTclustCluster$nextThreshold)
                     amountOfClustersInTclustResult <- length(table(tclustResultDataFrame$cluster))
                     
                     # Get labels for each new cluster
                     # TODO check if clusters == 1, no need to getLabels, since currentTclustCluster holds all labels of cluster. Do the check inside the function
-                    fallBack <- FALSE # If binary search did not minimize the number of splits, reset to the initial threshold
+                    fallBack <- FALSE # If binary search did not minimize the number of splits, reset to the initial threshold/result
                     if (amountOfClustersInTclustResult > 1) {
                         
                         ### BEGIN binary search
-                        if (binarySearch && amountOfClustersInTclustResult >= maxSplit) { # Too many new clusters. Can't do binary search if base step is 1
+                        if (binarySearch && amountOfClustersInTclustResult >= maxSplit) {
                             tempTclustResultDataFrame <- tclustResultDataFrame
                             tempAmountOfClustersInTclustResult <- amountOfClustersInTclustResult
                             upperBound <- step
                             lowerBound <- 0
                             
-                            if (DEBUG) { 
-                                string <- paste0("Beginning binary search with cluster: ", currentTclustCluster$cid, " | amountOfClustersInTclustResult = ", amountOfClustersInTclustResult)
-                                print(string)
-                                write(string, file, append = TRUE) 
-                            }
-                            
                             while(amountOfClustersInTclustResult >= maxSplit) {
                                 currentStep <- lowerBound + ceiling(abs(upperBound - lowerBound) / 2)
-                                # print(paste0(currentTclustCluster$cid, " | Decreasing step -> ", currentStep))
-                                
-                                if (DEBUG) { 
-                                    string <- paste0("Decreasing to step = ", currentStep, " | lowerBound = ", lowerBound, " | upperBound = ", upperBound)
-                                    print(string)
-                                    write(string, file, append = TRUE) 
-                                }
-                                
-                                tclustResultDataFrame <- clusteringWithTclust(simMatrix, currentTclustCluster$proteins, currentTclustCluster$nextThreshold - step + currentStep)
+                                tclustResultDataFrame <- clusteringWithTclust(simMatrixTemp, currentTclustCluster$proteins, currentTclustCluster$nextThreshold - step + currentStep)
                                 amountOfClustersInTclustResult <- length(table(tclustResultDataFrame$cluster))
                                 
-                                if (DEBUG) { 
-                                    string <- paste0("amountOfClustersInTclustResult = ", amountOfClustersInTclustResult, " | currentStep = ", currentStep)
-                                    print(string)
-                                    write(string, file, append = TRUE) 
-                                }
-                                
                                 while (amountOfClustersInTclustResult < minSplit && currentStep > 1 && currentStep != step) {
-                                    if (DEBUG) { 
-                                        string <- paste0("Inner loop | Updating lowerBound from ", lowerBound, " to ", currentStep)
-                                        print(string)
-                                        write(string, file, append = TRUE) 
-                                    }
-                                    
                                     lowerBound <- currentStep
                                     currentStep <- lowerBound + ceiling(abs(upperBound - lowerBound) / 2)
                                     
-                                    if (DEBUG) { 
-                                        string <- paste0("Increasing to step = ", currentStep, " | lowerBound = ", lowerBound, " | upperBound = ", upperBound)
-                                        print(string)
-                                        write(string, file, append = TRUE) 
-                                    }
-                                    
                                     if (currentStep == upperBound) { # Did not find a better threshold
-                                        if (DEBUG) {
-                                            string <- paste0("fallBack mode at inner, currentStep ", currentStep, " == ", upperBound, " upperBound")
-                                            print(string)
-                                            write(string, file, append = TRUE)
-                                        }
-                                        
                                         fallBack = TRUE
                                         break
                                     }
                                     
-                                    tclustResultDataFrame <- clusteringWithTclust(simMatrix, currentTclustCluster$proteins, currentTclustCluster$nextThreshold - step + currentStep)
+                                    tclustResultDataFrame <- clusteringWithTclust(simMatrixTemp, currentTclustCluster$proteins, currentTclustCluster$nextThreshold - step + currentStep)
                                     amountOfClustersInTclustResult <- length(table(tclustResultDataFrame$cluster))
-                                    
-                                    if (DEBUG) { 
-                                        string <- paste0("amountOfClustersInTclustResult = ", amountOfClustersInTclustResult, " | currentStep = ", currentStep)
-                                        print(string)
-                                        write(string, file, append = TRUE)
-                                    }
                                 }
                                 
                                 if (amountOfClustersInTclustResult >= maxSplit && (upperBound - lowerBound == 1)) {
-                                    if (DEBUG) {
-                                        string <- paste0("fallBack mode at outer, currentStep ", currentStep, " == 1", " | amountOfClustersInTclustResult >= ", maxSplit)
-                                        print(string)
-                                        write(string, file, append = TRUE)
-                                    }
-                                    
                                     fallBack = TRUE
                                 }
                                 if (fallBack) {
-                                    break                            
+                                    break
                                 }
                                 if (amountOfClustersInTclustResult >= maxSplit) { # currentStep did not descrease the amount of clusters enough
-                                    if (DEBUG) {
-                                        string <- paste0("Outer loop | amountOfClustersInTclustResult >= ", maxSplit, " | Updating upperBound from ", upperBound, " to ", currentStep)
-                                        print(string)
-                                        write(string, file, append = TRUE)
-                                    }
-                                    
+                                    # Decrease upperBound
                                     upperBound <- currentStep
                                 }
                             }
-                        }
-                        
-                        if (fallBack) {
-                            if (DEBUG) {
-                                string <- paste0("fallBack mode caught")
-                                print(string)
-                                write(string, file, append = TRUE)
-                                string <- paste0("amountOfClustersInTclustResult ", amountOfClustersInTclustResult, " > ", tempAmountOfClustersInTclustResult, " tempAmountOfClustersInTclustResult")
-                                write(string, file, append = TRUE)
-                            }
-                            
-                            
-                            if ((amountOfClustersInTclustResult > tempAmountOfClustersInTclustResult) || 
-                                (amountOfClustersInTclustResult == 1 && (amountOfClustersInTclustResult < tempAmountOfClustersInTclustResult))) {
-                                # Either the first tclustResult was better, or the first tclustResult gave the only split
-                                if (DEBUG) {
-                                    string <- paste0("######## Resetting into pre-binary-search")
-                                    print(string)
-                                    write(string, file, append = TRUE)
+                            if (fallBack) { # Resetting back to first result
+                                if ((amountOfClustersInTclustResult > tempAmountOfClustersInTclustResult) || 
+                                    (amountOfClustersInTclustResult == 1 && (amountOfClustersInTclustResult < tempAmountOfClustersInTclustResult))) {
+                                    # Either the first tclustResult was better, or the first tclustResult gave the only split
+                                    tclustResultDataFrame <- tempTclustResultDataFrame
+                                    amountOfClustersInTclustResult <- tempAmountOfClustersInTclustResult
                                 }
-                                
-                                tclustResultDataFrame <- tempTclustResultDataFrame
-                                amountOfClustersInTclustResult <- tempAmountOfClustersInTclustResult
-                            }
-                            
-                            if (DEBUG) {
-                                string <- paste0("amountOfClustersInTclustResult = ", amountOfClustersInTclustResult)
-                                print(string)
-                                write(string, file, append = TRUE) 
                             }
                         }
                         ### END binary search
@@ -266,18 +178,10 @@ hclustDivisive <- function(simMatrix, proteins, step = 1, minSplit = 2, maxSplit
                     
                     # Add clusters for next iteration
                     if (amountOfClustersInTclustResult == 1) {
-                        if (DEBUG) {
-                            print(paste0("There was no split, threshold = ", currentTclustCluster$nextThreshold))
-                            cat("\n")                            
-                        }
                         tempCurrentCluster <- tempProteinLabelsOfEachCluster[[1]]
                         clustersLargerThanOne <- c(clustersLargerThanOne, list(tempCurrentCluster)) # We lose name at this line
                     }
                     else {
-                        if (DEBUG)  {
-                            print(paste0("Was split into ", length(table(tclustResultDataFrame$cluster)), " clusters, threshold = ", currentTclustCluster$nextThreshold - step + currentStep))                            
-                        }
-                        
                         height <- c(height, c(maxThreshold - (currentTclustCluster$nextThreshold - step + currentStep - 1)))
                         countSplits <- countSplits + 1
                         
@@ -308,16 +212,10 @@ hclustDivisive <- function(simMatrix, proteins, step = 1, minSplit = 2, maxSplit
         # All clusters to tclust on next iteration
         proteinLabelsOfEachCluster <- clustersLargerThanOne
     }
-    if (DEBUG) {
-        print(paste0("Total splits: ", countSplits, " | length(height): ", length(height)))
-        as.numeric(levels(as.factor(height)))
-        print(paste0("Total clusters = ", amountOfTotalClusters))        
-    }
     
     singletons <- c()
     clusters <- c()
     for (i in 1:length(totalClusters)) {
-        # clust <- paste0("c", i)
         if (length(totalClusters[[i]]$proteins) == 1) {singletons <- c(singletons, totalClusters[[i]]$cid)}
         else {clusters <- c(clusters, totalClusters[[i]]$cid)}
     }

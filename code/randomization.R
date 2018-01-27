@@ -69,10 +69,16 @@ calculateIndexInMatrix <- function(IndexInOrder, amountOfProteins) {
 
 buildRandomSimMatrixAp2 <- function(proteins, simMatrix, k = 10, seed = 42) {
     set.seed(seed)
-    simMatrixAsDist <- as.dist((max(simMatrix) + 1) - simMatrix) # Why was +1 needed ?
+    simMatrixAsDist <- as.dist((max(simMatrix) + 1) - simMatrix)
     
-    mds <- isoMDS(simMatrixAsDist, k = k)
-    mdsPoints <- mds$points
+    print(paste0("Randomizing ", amountOfProteins, " proteins | dimensions = ", k))
+    cmd <-  cmdscale(simMatrixAsDist, k)
+    print(paste0("cmdscale(d, k) has ", nrow(cmd), " rows and ", ncol(cmd), " columns"))
+    # mds <- isoMDS(simMatrixAsDist, k = k)
+    mds <- isoMDS(d = simMatrixAsDist, y = cmd, k = ncol(cmd))
+    # mds <- isoMDS(simMatrixAsDist, k = k)
+
+        mdsPoints <- mds$points
     Q = cov(mdsPoints)
     
     eval = eigen(Q)$values
@@ -99,9 +105,14 @@ buildRandomSimMatrixAp3 <- function(proteins, simMatrix, k = 10, seed = 42) {
     amountOfZeroes <- table(simMatrix)[1]
     amountOfProteins <- length(proteins)
     
-    simMatrixAsDist <- as.dist((max(simMatrix) + 1) - simMatrix) # Why was +1 needed ?
+    simMatrixAsDist <- as.dist((max(simMatrix) + 1) - simMatrix)
     
-    mds <- isoMDS(simMatrixAsDist, k = k)
+    # print(paste0("Randomizing ", amountOfProteins, " proteins | dimensions = ", k))
+    cmd <-  cmdscale(simMatrixAsDist, k)
+    # print(paste0("cmdscale(d, k) has ", nrow(cmd), " rows and ", ncol(cmd), " columns"))
+    # mds <- isoMDS(simMatrixAsDist, k = k)
+    mds <- isoMDS(d = simMatrixAsDist, y = cmd, k = ncol(cmd))
+    # mds <- isoMDS(simMatrixAsDist, k = k)
     mdsPoints <- mds$points
     Q = cov(mdsPoints)
     
@@ -159,9 +170,13 @@ buildRandomSimMatrixAp4 <- function(proteins, simMatrix, k = 10, seed = 42) {
     set.seed(seed)
     amountOfProteins <- length(proteins)
     
-    simMatrixAsDist <- as.dist((max(simMatrix) + 1) - simMatrix) # Why was +1 needed ?
+    simMatrixAsDist <- as.dist((max(simMatrix) + 1) - simMatrix)
     
-    mds <- isoMDS(simMatrixAsDist, k = k)
+    # print(paste0("Randomizing ", amountOfProteins, " proteins | dimensions = ", k))
+    cmd <-  cmdscale(simMatrixAsDist, k)
+    # print(paste0("cmdscale(d, k) has ", nrow(cmd), " rows and ", ncol(cmd), " columns"))
+    # mds <- isoMDS(simMatrixAsDist, k = k)
+    mds <- isoMDS(d = simMatrixAsDist, y = cmd, k = ncol(cmd))
     mdsPoints <- mds$points
     Q = cov(mdsPoints)
     

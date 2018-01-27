@@ -59,7 +59,6 @@ getQualityOfClustering <- function(clustering, gsClustering) {
             sumCommon <- sumCommon + gsMatch[j,4]
         }
     }
-    # print(paste("Sum of common:", sum))
     
     # Divide by totalProteins to get the mean F-measure
     fMeasureClustering <- fMeasureClustering / totalProteins
