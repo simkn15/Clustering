@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2017.9.12)  31 JAN 2018 16:02
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2017.9.12)  31 JAN 2018 17:03
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -643,18 +643,18 @@ LaTeX Warning: Label `' multiply defined.
 )
 \openout1 = `report.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 62.
-LaTeX Font Info:    ... okay on input line 62.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 62.
-LaTeX Font Info:    ... okay on input line 62.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 62.
-LaTeX Font Info:    ... okay on input line 62.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 62.
-LaTeX Font Info:    ... okay on input line 62.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 62.
-LaTeX Font Info:    ... okay on input line 62.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 62.
-LaTeX Font Info:    ... okay on input line 62.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 63.
+LaTeX Font Info:    ... okay on input line 63.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 63.
+LaTeX Font Info:    ... okay on input line 63.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 63.
+LaTeX Font Info:    ... okay on input line 63.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 63.
+LaTeX Font Info:    ... okay on input line 63.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 63.
+LaTeX Font Info:    ... okay on input line 63.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 63.
+LaTeX Font Info:    ... okay on input line 63.
  (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count123
@@ -720,12 +720,12 @@ e
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: subfig package v1.3 is loaded.
 Package caption Info: End \AtBeginDocument code.
-LaTeX Font Info:    Try loading font information for U+msa on input line 63.
+LaTeX Font Info:    Try loading font information for U+msa on input line 64.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 63.
+LaTeX Font Info:    Try loading font information for U+msb on input line 64.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
@@ -740,40 +740,40 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 File: ./pictures/clusterShapes.png Graphic file (type png)
 
 <use ./pictures/clusterShapes.png>
-Package pdftex.def Info: ./pictures/clusterShapes.png used on input line 110.
+Package pdftex.def Info: ./pictures/clusterShapes.png used on input line 111.
 (pdftex.def)             Requested size: 234.47185pt x 64.23885pt.
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 116.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 117.
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 116.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 117.
  [4 <./pictures/clusterShapes.png>]
 
 Package amsmath Warning: Foreign command \atopwithdelims;
 (amsmath)                \frac or \genfrac should be used instead
-(amsmath)                 on input line 132.
+(amsmath)                 on input line 133.
 
 [5] <./pictures/clusterAnalysis.png, id=36, 923.45pt x 299.1175pt>
 File: ./pictures/clusterAnalysis.png Graphic file (type png)
 
 <use ./pictures/clusterAnalysis.png>
-Package pdftex.def Info: ./pictures/clusterAnalysis.png used on input line 158.
+Package pdftex.def Info: ./pictures/clusterAnalysis.png used on input line 159.
 
 (pdftex.def)             Requested size: 369.37346pt x 119.64487pt.
 
-Overfull \hbox (24.37346pt too wide) in paragraph at lines 158--159
+Overfull \hbox (24.37346pt too wide) in paragraph at lines 159--160
  [][] 
  []
 
-LaTeX Font Info:    Try loading font information for T1+cmtt on input line 173.
+LaTeX Font Info:    Try loading font information for T1+cmtt on input line 174.
 
 (/usr/share/texlive/texmf-dist/tex/latex/base/t1cmtt.fd
 File: t1cmtt.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 ) [6 <./pictures/clusterAnalysis.png>]
-Overfull \hbox (0.56601pt too wide) in paragraph at lines 198--199
+Overfull \hbox (0.56601pt too wide) in paragraph at lines 199--200
 []\T1/cmr/m/n/10 Ordinal (e.g., qual-i-ta-tive eval-u-a-tions of pain: "no pain
 ", "some pain") 
  []
@@ -783,11 +783,11 @@ Overfull \hbox (0.56601pt too wide) in paragraph at lines 198--199
 File: ./pictures/booleanVariables.png Graphic file (type png)
 
 <use ./pictures/booleanVariables.png>
-Package pdftex.def Info: ./pictures/booleanVariables.png used on input line 276
+Package pdftex.def Info: ./pictures/booleanVariables.png used on input line 277
 .
 (pdftex.def)             Requested size: 76.68513pt x 59.82243pt.
  [10 <./pictures/booleanVariables.png>]
-Overfull \hbox (0.94943pt too wide) in paragraph at lines 300--301
+Overfull \hbox (0.94943pt too wide) in paragraph at lines 301--302
 \T1/cmr/m/n/10 Density-based clus-ter-ing might be un-able to dis-cover any sig
 -nif-i-cant change
  []
@@ -795,17 +795,17 @@ Overfull \hbox (0.94943pt too wide) in paragraph at lines 300--301
 [11] [12]
 
 LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `tbp') on input line 339.
+               Default added (so using `tbp') on input line 340.
 
 [13] <./pictures/hc/agglo_vs_div.png, id=69, 608.2725pt x 717.68124pt>
 File: ./pictures/hc/agglo_vs_div.png Graphic file (type png)
 
 <use ./pictures/hc/agglo_vs_div.png>
-Package pdftex.def Info: ./pictures/hc/agglo_vs_div.png used on input line 414.
+Package pdftex.def Info: ./pictures/hc/agglo_vs_div.png used on input line 415.
 
 (pdftex.def)             Requested size: 182.48315pt x 215.30603pt.
 
-Overfull \hbox (4.27948pt too wide) in paragraph at lines 411--417
+Overfull \hbox (4.27948pt too wide) in paragraph at lines 412--418
 []\T1/cmr/m/n/10 There are two forms of hi-er-ar-chi-cal Clus-ter-ing, \T1/cmtt
 /m/n/10 agglomerative \T1/cmr/m/n/10 and \T1/cmtt/m/n/10 divisive\T1/cmr/m/n/10
  .
@@ -815,15 +815,15 @@ Overfull \hbox (4.27948pt too wide) in paragraph at lines 411--417
 File: ./pictures/hc/hc_example.png Graphic file (type png)
 
 <use ./pictures/hc/hc_example.png>
-Package pdftex.def Info: ./pictures/hc/hc_example.png used on input line 423.
+Package pdftex.def Info: ./pictures/hc/hc_example.png used on input line 424.
 (pdftex.def)             Requested size: 291.19012pt x 223.43648pt.
  [15 <./pictures/hc/agglo_vs_div.png>]
 [16 <./pictures/hc/hc_example.png>] [17] [18]
 
-LaTeX Warning: Reference `result:hc' on page 19 undefined on input line 530.
+LaTeX Warning: Reference `result:hc' on page 19 undefined on input line 531.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 538--541
+Underfull \hbox (badness 10000) in paragraph at lines 539--542
 
  []
 
@@ -833,7 +833,7 @@ File: ./pictures/dendrogramHclustStandard.png Graphic file (type png)
 
 <use ./pictures/dendrogramHclustStandard.png>
 Package pdftex.def Info: ./pictures/dendrogramHclustStandard.png used on input 
-line 585.
+line 586.
 (pdftex.def)             Requested size: 258.75pt x 152.82056pt.
 
 <./pictures/dendrogramHcImplemented.png, id=102, 1332.98pt x 788.9475pt>
@@ -841,7 +841,7 @@ File: ./pictures/dendrogramHcImplemented.png Graphic file (type png)
 
 <use ./pictures/dendrogramHcImplemented.png>
 Package pdftex.def Info: ./pictures/dendrogramHcImplemented.png used on input l
-ine 590.
+ine 591.
 (pdftex.def)             Requested size: 258.75pt x 153.1399pt.
  [21]
 <./pictures/dendrogramHclustBigData.png, id=106, 1824.8175pt x 1077.02374pt>
@@ -849,7 +849,7 @@ File: ./pictures/dendrogramHclustBigData.png Graphic file (type png)
 
 <use ./pictures/dendrogramHclustBigData.png>
 Package pdftex.def Info: ./pictures/dendrogramHclustBigData.png used on input l
-ine 599.
+ine 600.
 (pdftex.def)             Requested size: 258.75pt x 152.70508pt.
 
 <./pictures/dendrogramBigDataHcImplemented.png, id=107, 1831.84375pt x 1084.05p
@@ -857,7 +857,7 @@ t>
 File: ./pictures/dendrogramBigDataHcImplemented.png Graphic file (type png)
  <use ./pictures/dendrogramBigDataHcImplemented.png>
 Package pdftex.def Info: ./pictures/dendrogramBigDataHcImplemented.png used on 
-input line 604.
+input line 605.
 (pdftex.def)             Requested size: 258.75pt x 153.12234pt.
  [22 <./pictures/dendrogramHclustStandard.png> <./pictures/dendrogramHcImplemen
 ted.png>]
@@ -866,7 +866,7 @@ File: ./plots/plotCostSmallDataOriginal.pdf Graphic file (type pdf)
 
 <use ./plots/plotCostSmallDataOriginal.pdf>
 Package pdftex.def Info: ./plots/plotCostSmallDataOriginal.pdf used on input li
-ne 624.
+ne 625.
 (pdftex.def)             Requested size: 232.87341pt x 232.87431pt.
 
 <./plots/plotCostBigDataOriginal.pdf, id=114, 505.89pt x 505.89pt>
@@ -874,7 +874,7 @@ File: ./plots/plotCostBigDataOriginal.pdf Graphic file (type pdf)
 
 <use ./plots/plotCostBigDataOriginal.pdf>
 Package pdftex.def Info: ./plots/plotCostBigDataOriginal.pdf used on input line
- 630.
+ 631.
 (pdftex.def)             Requested size: 232.87341pt x 232.87431pt.
  [23 <./pictures/dendrogramHclustBigData.png> <./pictures/dendrogramBigDataHcIm
 plemented.png>] [24 <./plots/plotCostSmallDataOriginal.pdf> <./plots/plotCostBi
@@ -884,7 +884,7 @@ File: ./plots/plotCostsRandomSmallData-Ap2.pdf Graphic file (type pdf)
 
 <use ./plots/plotCostsRandomSmallData-Ap2.pdf>
 Package pdftex.def Info: ./plots/plotCostsRandomSmallData-Ap2.pdf used on input
- line 651.
+ line 652.
 (pdftex.def)             Requested size: 276.00105pt x 276.00177pt.
  [25]
 <./plots/plotMaxCostRandomBig/plotCostsRandomBigData-Ap2.pdf, id=140, 505.89pt 
@@ -893,7 +893,7 @@ File: ./plots/plotMaxCostRandomBig/plotCostsRandomBigData-Ap2.pdf Graphic file
 (type pdf)
  <use ./plots/plotMaxCostRandomBig/plotCostsRandomBigData-Ap2.pdf>
 Package pdftex.def Info: ./plots/plotMaxCostRandomBig/plotCostsRandomBigData-Ap
-2.pdf used on input line 658.
+2.pdf used on input line 659.
 (pdftex.def)             Requested size: 276.00105pt x 276.00177pt.
 
 [26 <./plots/plotCostsRandomSmallData-Ap2.pdf>]
@@ -904,7 +904,7 @@ file (type pdf)
 
 <use ./plots/plotsCostAndSimAp234/plotBigDataCostAndSim-AP2-S7-K5.pdf>
 Package pdftex.def Info: ./plots/plotsCostAndSimAp234/plotBigDataCostAndSim-AP2
--S7-K5.pdf used on input line 667.
+-S7-K5.pdf used on input line 668.
 (pdftex.def)             Requested size: 232.87341pt x 232.87431pt.
 
 <./plots/plotsCostAndSimAp234/plotBigDataCostAndSim-AP2-S7-K10.pdf, id=151, 505
@@ -914,7 +914,7 @@ File: ./plots/plotsCostAndSimAp234/plotBigDataCostAndSim-AP2-S7-K10.pdf Graphic
 
 <use ./plots/plotsCostAndSimAp234/plotBigDataCostAndSim-AP2-S7-K10.pdf>
 Package pdftex.def Info: ./plots/plotsCostAndSimAp234/plotBigDataCostAndSim-AP2
--S7-K10.pdf used on input line 673.
+-S7-K10.pdf used on input line 674.
 (pdftex.def)             Requested size: 232.87341pt x 232.87431pt.
 
 [27 <./plots/plotMaxCostRandomBig/plotCostsRandomBigData-Ap2.pdf>] [28 <./plots
@@ -926,7 +926,7 @@ File: ./plots/plotMaxCostRandomBig/plotCostsRandomBigData-Ap3.pdf Graphic file
 (type pdf)
  <use ./plots/plotMaxCostRandomBig/plotCostsRandomBigData-Ap3.pdf>
 Package pdftex.def Info: ./plots/plotMaxCostRandomBig/plotCostsRandomBigData-Ap
-3.pdf used on input line 686.
+3.pdf used on input line 687.
 (pdftex.def)             Requested size: 276.00105pt x 276.00177pt.
 
 <./plots/plotsCostAndSimAp234/plotBigDataCostAndSim-AP3-S7-K5.pdf, id=177, 505.
@@ -936,7 +936,7 @@ file (type pdf)
 
 <use ./plots/plotsCostAndSimAp234/plotBigDataCostAndSim-AP3-S7-K5.pdf>
 Package pdftex.def Info: ./plots/plotsCostAndSimAp234/plotBigDataCostAndSim-AP3
--S7-K5.pdf used on input line 695.
+-S7-K5.pdf used on input line 696.
 (pdftex.def)             Requested size: 232.87341pt x 232.87431pt.
 
 <./plots/plotsCostAndSimAp234/plotBigDataCostAndSim-AP3-S42-K2.pdf, id=178, 505
@@ -946,7 +946,7 @@ File: ./plots/plotsCostAndSimAp234/plotBigDataCostAndSim-AP3-S42-K2.pdf Graphic
 
 <use ./plots/plotsCostAndSimAp234/plotBigDataCostAndSim-AP3-S42-K2.pdf>
 Package pdftex.def Info: ./plots/plotsCostAndSimAp234/plotBigDataCostAndSim-AP3
--S42-K2.pdf used on input line 701.
+-S42-K2.pdf used on input line 702.
 (pdftex.def)             Requested size: 232.87341pt x 232.87431pt.
 
 [29 <./plots/plotMaxCostRandomBig/plotCostsRandomBigData-Ap3.pdf>] [30 <./plots
@@ -958,7 +958,7 @@ File: ./plots/plotMaxCostRandomBig/plotCostsRandomBigData-Ap4.pdf Graphic file
 (type pdf)
  <use ./plots/plotMaxCostRandomBig/plotCostsRandomBigData-Ap4.pdf>
 Package pdftex.def Info: ./plots/plotMaxCostRandomBig/plotCostsRandomBigData-Ap
-4.pdf used on input line 714.
+4.pdf used on input line 715.
 (pdftex.def)             Requested size: 276.00105pt x 276.00177pt.
 
 <./plots/plotsCostAndSimAp234/plotBigDataCostAndSim-AP4-S21-K2.pdf, id=205, 505
@@ -968,7 +968,7 @@ File: ./plots/plotsCostAndSimAp234/plotBigDataCostAndSim-AP4-S21-K2.pdf Graphic
 
 <use ./plots/plotsCostAndSimAp234/plotBigDataCostAndSim-AP4-S21-K2.pdf>
 Package pdftex.def Info: ./plots/plotsCostAndSimAp234/plotBigDataCostAndSim-AP4
--S21-K2.pdf used on input line 724.
+-S21-K2.pdf used on input line 725.
 (pdftex.def)             Requested size: 232.87341pt x 232.87431pt.
 
 <./plots/plotsCostAndSimAp234/plotBigDataCostAndSim-AP4-S7-K3.pdf, id=206, 505.
@@ -978,10 +978,10 @@ file (type pdf)
 
 <use ./plots/plotsCostAndSimAp234/plotBigDataCostAndSim-AP4-S7-K3.pdf>
 Package pdftex.def Info: ./plots/plotsCostAndSimAp234/plotBigDataCostAndSim-AP4
--S7-K3.pdf used on input line 730.
+-S7-K3.pdf used on input line 731.
 (pdftex.def)             Requested size: 232.87341pt x 232.87431pt.
  [31 <./plots/plotMaxCostRandomBig/plotCostsRandomBigData-Ap4.pdf>]
-Underfull \hbox (badness 10000) in paragraph at lines 736--738
+Underfull \hbox (badness 10000) in paragraph at lines 737--739
 
  []
 
@@ -989,7 +989,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 736--738
 s/plotsCostAndSimAp234/plotBigDataCostAndSim-AP4-S7-K3.pdf>]
 
 LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `tbp') on input line 747.
+               Default added (so using `tbp') on input line 748.
 
 [33]
 <./plots/plotCostGap/plotCostGapSmallDataAp3Step1K5Seed21NoBinary.pdf, id=235, 
@@ -999,7 +999,7 @@ hic file (type pdf)
 
 <use ./plots/plotCostGap/plotCostGapSmallDataAp3Step1K5Seed21NoBinary.pdf>
 Package pdftex.def Info: ./plots/plotCostGap/plotCostGapSmallDataAp3Step1K5Seed
-21NoBinary.pdf used on input line 776.
+21NoBinary.pdf used on input line 777.
 (pdftex.def)             Requested size: 248.39926pt x 248.40544pt.
 
 <./plots/plotCostGap/plotCostGapSmallDataAp3Step30K5Seed7Binary.pdf, id=236, 50
@@ -1009,7 +1009,7 @@ c file (type pdf)
 
 <use ./plots/plotCostGap/plotCostGapSmallDataAp3Step30K5Seed7Binary.pdf>
 Package pdftex.def Info: ./plots/plotCostGap/plotCostGapSmallDataAp3Step30K5See
-d7Binary.pdf used on input line 782.
+d7Binary.pdf used on input line 783.
 (pdftex.def)             Requested size: 248.39926pt x 248.40544pt.
 
 [34]
@@ -1020,7 +1020,7 @@ ic file (type pdf)
 
 <use ./plots/plotCostGap/plotCostGapSmallDataAp4Step1K5Seed7NoBinary.pdf>
 Package pdftex.def Info: ./plots/plotCostGap/plotCostGapSmallDataAp4Step1K5Seed
-7NoBinary.pdf used on input line 792.
+7NoBinary.pdf used on input line 793.
 (pdftex.def)             Requested size: 248.39926pt x 248.40544pt.
 
 <./plots/plotCostGap/plotCostGapSmallDataAp4Step30K5Seed42Binary.pdf, id=241, 5
@@ -1030,7 +1030,7 @@ ic file (type pdf)
 
 <use ./plots/plotCostGap/plotCostGapSmallDataAp4Step30K5Seed42Binary.pdf>
 Package pdftex.def Info: ./plots/plotCostGap/plotCostGapSmallDataAp4Step30K5See
-d42Binary.pdf used on input line 798.
+d42Binary.pdf used on input line 799.
 (pdftex.def)             Requested size: 248.39926pt x 248.40544pt.
 
 [35 <./plots/plotCostGap/plotCostGapSmallDataAp3Step1K5Seed21NoBinary.pdf> <./p
@@ -1042,7 +1042,7 @@ c file (type pdf)
 
 <use ./plots/plotCostGap/plotCostGapBigDataAp3Step1K5Seed42NoBinary.pdf>
 Package pdftex.def Info: ./plots/plotCostGap/plotCostGapBigDataAp3Step1K5Seed42
-NoBinary.pdf used on input line 808.
+NoBinary.pdf used on input line 809.
 (pdftex.def)             Requested size: 248.39926pt x 248.40544pt.
 
 <./plots/plotCostGap/plotCostGapBigDataAp3Step30K5Seed7Binary.pdf, id=260, 505.
@@ -1052,7 +1052,7 @@ file (type pdf)
 
 <use ./plots/plotCostGap/plotCostGapBigDataAp3Step30K5Seed7Binary.pdf>
 Package pdftex.def Info: ./plots/plotCostGap/plotCostGapBigDataAp3Step30K5Seed7
-Binary.pdf used on input line 814.
+Binary.pdf used on input line 815.
 (pdftex.def)             Requested size: 248.39926pt x 248.40544pt.
  [36 <./plots/plotCostGap/plotCostGapSmallDataAp4Step1K5Seed7NoBinary.pdf> <./p
 lots/plotCostGap/plotCostGapSmallDataAp4Step30K5Seed42Binary.pdf>]
@@ -1063,7 +1063,7 @@ c file (type pdf)
 
 <use ./plots/plotCostGap/plotCostGapBigDataAp4Step1K5Seed42NoBinary.pdf>
 Package pdftex.def Info: ./plots/plotCostGap/plotCostGapBigDataAp4Step1K5Seed42
-NoBinary.pdf used on input line 824.
+NoBinary.pdf used on input line 825.
 (pdftex.def)             Requested size: 248.39926pt x 248.40544pt.
 
 <./plots/plotCostGap/plotCostGapBigDataAp4Step30K5Seed42Binary.pdf, id=278, 505
@@ -1073,7 +1073,7 @@ File: ./plots/plotCostGap/plotCostGapBigDataAp4Step30K5Seed42Binary.pdf Graphic
 
 <use ./plots/plotCostGap/plotCostGapBigDataAp4Step30K5Seed42Binary.pdf>
 Package pdftex.def Info: ./plots/plotCostGap/plotCostGapBigDataAp4Step30K5Seed4
-2Binary.pdf used on input line 830.
+2Binary.pdf used on input line 831.
 (pdftex.def)             Requested size: 248.39926pt x 248.40544pt.
 
 [37 <./plots/plotCostGap/plotCostGapBigDataAp3Step1K5Seed42NoBinary.pdf> <./plo
@@ -1114,7 +1114,7 @@ e/texmf/fonts/type1/public/cm-super/sfrm1000.pfb></usr/share/texmf/fonts/type1/
 public/cm-super/sfrm1200.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm
 1728.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfti1000.pfb></usr/share
 /texmf/fonts/type1/public/cm-super/sftt1000.pfb>
-Output written on report.pdf (42 pages, 859115 bytes).
+Output written on report.pdf (42 pages, 860364 bytes).
 PDF statistics:
  393 PDF objects out of 1000 (max. 8388607)
  266 compressed objects within 3 object streams

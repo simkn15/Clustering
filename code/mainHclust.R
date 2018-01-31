@@ -35,10 +35,8 @@ if (readBigDataSet) {
     if (DEBUG) { fileName <- "hcBigData" }
 }
 
-# hc <- hclustDivisive(simMatrix, proteins, step, minSplit, maxSplit, minThreshold, maxThreshold, binarySearch = FALSE)
-# hc <- hclustDivisiveGap(simMatrix, proteins, step, minSplit, maxSplit, minThreshold, maxThreshold, binarySearch = FALSE, GAP = TRUE, dimensions = 5, seed = 42, randomAp = 4)
-# plot(hc$hc, xlab = "protein", ylab = "height")
-# plot(hc$hc, hang = -1, xlab = "Protein", ylab = "Height")
+hc <- hclustDivisiveGap(simMatrix, proteins, step, minSplit, maxSplit, minThreshold, maxThreshold, binarySearch = FALSE, GAP = TRUE, dimensions = 5, seed = 42, randomAp = 4)
+plot(hc$hc, hang = -1, xlab = "Protein", ylab = "Height")
 
 
 # g <- plotCostDifference(hc4$gap)

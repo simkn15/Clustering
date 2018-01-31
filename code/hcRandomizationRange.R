@@ -12,10 +12,6 @@ require(graphics)
 source("utilities.R")
 source("randomization.R")
 
-# TODO
-# Does it make sense to have binary search and GAP in the same run ????
-# For now: Do not run binary search and GAP at the same time
-
 # NOTE!
 # The Hierarchical Clustering approach is divisive.
 # The information for the dendrogram is converted into agglomerative, thus being able to use the plotting defined for a hclust() object
@@ -460,7 +456,7 @@ hclustDivisiveRandom <- function(simMatrix, proteins, step = 1, minSplit = 2, ma
 # hclust
 ####################################################################################################
 # Adjust variables to desired bounds for binary search
-# The binary search uses a upperBound and a lowerBound to find the proper threshold in the current iteration. 
+# The binary search uses a upperBound and a lowerBound to find the proper threshold in the current iteration.
 step <- 1 # Default step for threshold. Binary search is skipped if 'step <- 1'. 30 is used for the binary split
 minSplit <- 5 # Minimum number of splits. Minimum bound will increase if splits are < 2
 maxSplit <- 10 # Maximum number of splits. Upper bound will decrease if splits are >= maxSplit.
@@ -473,38 +469,26 @@ if (readSmallDataSet) {
     df_table <- as.data.frame(table)
     proteins = levels(df_table[,1])
     simMatrix <- buildSimilarityMatrix(proteins, df_table)
-    
+
     minThreshold <- min(simMatrix) - 1 # The starting threshold. -1 such that the first run returns 1 cluster.
     maxThreshold <- round(max(simMatrix)) + 1 # Threshold where all clusters will be singletons
-    
+
     if (DEBUG) { fileName <- "hcSmallData" }
 }
 if (readBigDataSet) {
-    table <- read.table("./data/big/simBig.txt", sep = "") 
+    table <- read.table("./data/big/simBig.txt", sep = "")
     df_table <- as.data.frame(table)
     proteins = levels(df_table[,1])
     simMatrix <- buildSimilarityMatrixFromBlast(proteins, df_table)
-    
+
     minThreshold <- min(simMatrix) - 1
     maxThreshold <- round(max(simMatrix)) + 1
-    
+
     if (DEBUG) { fileName <- "hcBigData" }
 }
 
 hc <- hclustDivisiveRandom(simMatrix, proteins, step, minSplit, maxSplit, minThreshold, maxThreshold, binarySearch = FALSE, GAP = TRUE, dimensions = 5)
 plot(hc, xlab = "protein", ylab = "height")
 plot(hc, hang = -1, xlab = "Protein", ylab = "Height")
-
-
-
-# for (i in 1:length(totalClusters)){
-#     cid <- paste0("c", i)
-#     if (length(totalClusters[[i]]$proteins) > 1) {
-#         print(paste0(cid, " ", length(totalClusters[[i]]$proteins)))
-#     }
-# }
-
-
-
 
 

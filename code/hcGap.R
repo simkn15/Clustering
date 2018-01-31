@@ -62,7 +62,7 @@ hclustDivisiveGap <- function(simMatrix, proteins, step = 1, minSplit = 2, maxSp
         clustersLargerThanOne <- list() # All clusters returned from this iteration of tclust(Not singletons). These will be added to 'proteinLabelsOfEachCluster' to be clustered in the next iteration.
         
         # For every level: Do tclust on all clusters with current threshold
-        if (length(proteinLabelsOfEachCluster) > 0) { # TODO: Remove this check ?
+        if (length(proteinLabelsOfEachCluster) > 0) {
             for (i in 1:length(proteinLabelsOfEachCluster)) {
                 currentStep <- step
                 currentTclustCluster <- proteinLabelsOfEachCluster[[i]]# Cluster to tclust
@@ -75,7 +75,6 @@ hclustDivisiveGap <- function(simMatrix, proteins, step = 1, minSplit = 2, maxSp
                     else { # Initial cluster
                         simMatrixTemp <- simMatrix
                     }
-                    # simMatrix <- buildSimilarityMatrix(currentTclustCluster$proteins, df_table) # TODO No reason to do it like this, look at hcRandomization.R
                     
                     # tclustResultDataFrame <- clusteringWithTclust(simMatrixTemp, currentTclustCluster$proteins, currentTclustCluster$nextThreshold)
                     tclustResult <- tclust(simmatrix = simMatrixTemp, convert_dissimilarity_to_similarity = FALSE, threshold = currentTclustCluster$nextThreshold)
@@ -85,7 +84,6 @@ hclustDivisiveGap <- function(simMatrix, proteins, step = 1, minSplit = 2, maxSp
                     amountOfClustersInTclustResult <- length(table(tclustResultDataFrame$cluster))
                     
                     # Get labels for each new cluster
-                    # TODO check if clusters == 1, no need to getLabels, since currentTclustCluster holds all labels of cluster. Do the check inside the function
                     fallBack <- FALSE # If binary search did not minimize the number of splits, reset to the initial threshold/result
                     if (amountOfClustersInTclustResult > 1) {
                         
@@ -159,9 +157,6 @@ hclustDivisiveGap <- function(simMatrix, proteins, step = 1, minSplit = 2, maxSp
                             tclustResultRandomCost <- tclustResultRandom$costs
                             df <- data.frame(costOriginal = tclustResultCost, costRandom = tclustResultRandomCost, threshold = threshold, numberOfProteins = length(currentTclustCluster$proteins))
                             dfGap <- rbind(dfGap, df)
-                            # gapList <- c(gapList, list(list(costOriginal = tclustResultCost, costRandom = tclustResultRandomCost, threshold = threshold, numberOfProteins = length(currentTclustCluster$proteins))))
-                            
-                            
                         }
                         
                         tempProteinLabelsOfEachCluster <- getProteinLabelsFromClustering(tclustResultDataFrame)
@@ -236,13 +231,6 @@ hclustDivisiveGap <- function(simMatrix, proteins, step = 1, minSplit = 2, maxSp
                             if (length(tempCurrentCluster$proteins) > 1) { # Add cluster for next iteration
                                 clustersLargerThanOne <- c(clustersLargerThanOne, list(tempCurrentCluster)) # We lose name at this line
                             }
-                            
-                            # if (length(tempCurrentCluster$proteins) - 1 < dimensions) { # singleton found
-                            #     countSingletons <- countSingletons + length(tempCurrentCluster$proteins)
-                            # }
-                            # if (length(tempCurrentCluster$proteins) - 1 >= dimensions) { # Add cluster for next iteration
-                            #     clustersLargerThanOne <- c(clustersLargerThanOne, list(tempCurrentCluster)) # We lose name at this line
-                            # }
                         }
                         merge <- c(merge, list(currentMerge))
                     }

@@ -1,10 +1,3 @@
-########## TODO ##########
-# Implement method to count how many proteins has wrong "class"
-## 
-# Clean Code
-##
-##########################
-
 # clustering : tclust result
 # gsClustring : gold standard in same format as clustering
 getQualityOfClustering <- function(clustering, gsClustering) {
