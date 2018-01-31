@@ -79,18 +79,21 @@
 \subsection*{Background}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Clustering describes the unsupervised learning task of grouping similar objects into so-called clusters. A cluster is a group of objects that are more similar to each other than those of another cluster. Clustering is used is applied in many different fields such as economics, marketing, astronomy and bioinformatics. The conclusion of the study from \cite{powerLimits} was that state-of-the-art clustering tools have limitations capturing the diversity of protein families and requires a specific parameter for every dataset which cannot be easily provided in practice. A cluster analysis consists of 5 steps according to Jain et al. \cite{19overview}. (*) Data Abstraction, (1) Preprocessing, (2) Proximity Calculation, (3) Clustering, (4) Evaluation. We want to investigate parameterless clustering by dynamic tree-cutting. We will extend Transitivity Clustering(TC) into Hierarchical Clustering(HC), which we call Transitivity-Hierarchical Clustering(THC). The used dataset is the Brown dataset \cite{brown}. Hierarchical Clustering produces a tree like structure - a dendrogram. Each node represents a cluster. For each node in the dendrogram we randomize the same data from the node, and look at the difference in cost of the actual data and the random data. This should give an indication of where to cut the branches in the dendrogram. The resulting tree is cut on different levels, and is the optimal clustering. 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection*{Results}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+To measure the quality of a clustering F-measure was implemented and yielding close to the same results as \cite{clustEval} for the small dataset, a subset of the Brown dataset. The returning dendrogram of THC was compared to the standard implementation of HC in R, and determined as feasible as we can find similarities. A total of 4 randomization approaches was tested. Approach 3 and 4 was found feasible to find the difference of costs in the dendrograms of the THC. Tests was made according find the difference of costs to find the proper cuts. Due to the scope of the project the findings have not been analyzed.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection*{Conclusion}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+The first steps of finding a pattern or indications of the proper cuts in a dendrogram have been made. F-measure was implemented such that we can measure the quality of a clustering. TC was successfully extended into a HC approach. Two randomization approaches looks feasible at this point. Several tests have been made on measures the difference of costs in a dendrogram for each node of the actual data and the random data. Although the plots have not been fully analyzed they do seem promising. At this point we do not have clear knowledge of this approach is feasible or infeasible. To answer this we need to take the following steps: (1) Analyze the produced information, (2) Alter THC such that it can cut the dendrogram on different branches and return a clustering result, (3) Measure the result with F-measure against the gold standard, (4) Repeatedly analyze produced data and try different ways to find the cuts, until we can deem this approach for parameterless clustering by dynamic tree-cutting feasible or infeasible.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -409,7 +412,7 @@ There are two forms of hierarchical Clustering, \texttt{agglomerative} and \text
 \begin{figure}[H]
 	\centering
 	\includegraphics*[scale=0.3]{./pictures/hc/agglo_vs_div.png}
-	\caption{Agglomerative vs. Divisive: Reference Cluster Analysis, page 72}
+	\caption{Agglomerative vs. Divisive \cite{clusterAnalysis}.}
 	\label{fig:agglo_vs_div}
 \end{figure} 
 The steps of joins or splits is often showed as a \texttt{dendrogram}, which is viewed as a tree structure. The root of the tree is the cluster containing all \textit{n} objects. Moving down the tree the nodes represents the clusters which was split from its parent. At the bottom of the tree we have the leafs, where the number of leafs represents all singleton clusters(the \textit{n} objects). The tree can be cut a given height resulting in a clustering solution. 
@@ -418,7 +421,7 @@ Figure \ref{fig:hc example} shows a \texttt{dendrogram} of the tree structure of
 \begin{figure}[H]
 	\centering
 	\includegraphics*[scale=0.3]{./pictures/hc/hc_example.png}
-	\caption{Dendrogram of a Hierarchical Clustering: Reference Cluster Analysis, page 75}
+	\caption{Dendrogram of a Hierarchical Clustering \cite{clusterAnalysis}.}
 	\label{fig:hc example}
 \end{figure}
 
@@ -585,7 +588,7 @@ Figure \ref{fig:dendrogramHclustStandard} shows the dendrogram using the standar
 	\end{minipage}
 	\begin{minipage}{0.75\textwidth}
 		\includegraphics[width=1\textwidth]{./pictures/dendrogramHcImplemented.png}
-		\caption{Resulting dendrogram with the small dataset - Implemented hierarchical clustering with TC}
+		\caption{Resulting dendrogram with the small dataset - Implemented THC}
 		\label{fig:dendrogramHcImplemented}
 	\end{minipage}
 \end{figure}
@@ -599,7 +602,7 @@ Figure \ref{fig:dendrogramHclustStandard} shows the dendrogram using the standar
 	\end{minipage}
 	\begin{minipage}{0.75\textwidth}
 		\includegraphics[width=1\textwidth]{./pictures/dendrogramBigDataHcImplemented.png}
-		\caption{Resulting dendrogram with the big dataset - Implemented hierarchical clustering with TC}
+		\caption{Resulting dendrogram with the big dataset - Implemented THC}
 		\label{fig:dendrogramHcImplementedBigData}
 	\end{minipage}
 \end{figure}
@@ -662,13 +665,13 @@ For the small dataset we randomized once for each dimension, giving a sample siz
 	\begin{minipage}{0.75\textwidth}
 		\centering
 		\includegraphics[width=0.9\textwidth]{./plots/plotsCostAndSimAp234/plotBigDataCostAndSim-AP2-S7-K5.pdf}
-		\caption{Max gap cost}
+		\caption{Randomization approach 2: Max gap cost}
 		\label{fig:maxGapCostBigDataAp2K5}
 	\end{minipage}
 	\begin{minipage}{0.75\textwidth}
 		\centering
 		\includegraphics[width=0.9\textwidth]{./plots/plotsCostAndSimAp234/plotBigDataCostAndSim-AP2-S7-K10.pdf}
-		\caption{Max gap cost}
+		\caption{Randomization approach 2: Max gap cost}
 		\label{fig:maxGapCostBigDataAp2K10}
 	\end{minipage}
 \end{figure}
@@ -690,13 +693,13 @@ The costs for the randomized data was obtained the same way as we did with appro
 	\begin{minipage}{0.75\textwidth}
 		\centering
 		\includegraphics[width=0.9\textwidth]{./plots/plotsCostAndSimAp234/plotBigDataCostAndSim-AP3-S7-K5.pdf}
-		\caption{Max gap cost}
+		\caption{Randomization approach 3: Max gap cost}
 		\label{fig:maxGapCostBigDataAp3K5}
 	\end{minipage}
 	\begin{minipage}{0.75\textwidth}
 		\centering
 		\includegraphics[width=0.9\textwidth]{./plots/plotsCostAndSimAp234/plotBigDataCostAndSim-AP3-S42-K2.pdf}
-		\caption{Max gap cost}
+		\caption{Randomization approach 3: Max gap cost}
 		\label{fig:maxGapCostBigDataAp3K2}
 	\end{minipage}
 \end{figure}
@@ -719,13 +722,13 @@ This approach was tested with same number of randomizations and dimensions as ap
 	\begin{minipage}{0.75\textwidth}
 		\centering
 		\includegraphics[width=0.9\textwidth]{./plots/plotsCostAndSimAp234/plotBigDataCostAndSim-AP4-S21-K2.pdf}
-		\caption{Max gap cost}
+		\caption{Randomization approach 4: Max gap cost}
 		\label{fig:maxGapCostBigDataAp4K2}
 	\end{minipage}
 	\begin{minipage}{0.75\textwidth}
 		\centering
 		\includegraphics[width=0.9\textwidth]{./plots/plotsCostAndSimAp234/plotBigDataCostAndSim-AP4-S7-K3.pdf}
-		\caption{Max gap cost}
+		\caption{Randomization approach 4: Max gap cost}
 		\label{fig:maxGapCostBigDataAp4K3}
 	\end{minipage}
 \end{figure}
@@ -839,6 +842,7 @@ Figures \ref{fig:hcMaxGapSmallDataAp3Step1NoBinary} through \ref{fig:hcMaxGapBig
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 R was the chosen language for the project as it eases the work around matrices, also has rather easy customization for producing plots. RStudio was the used IDE. R has a lot of built-in methods which eased the coding process, as not everything had to be invented from scratch. Also, it is possible to install different package for the suiting of your needs. Transitivity Clustering was given as an R package. Hierarchical Clustering is already implemented in R, meaning that we could use the plotting features for the dendrograms. From the package MASS we used the isoMDS() method for the multidimensional scaling. From the package 'stats' the method cmdscale() was used in correlation with isoMDS(). All coding and testing has been done on a Linux Mint environment, with Intel Core I7 and 32GB of RAM.
+All code and various testing output and plots can be viewed at: https://github.com/simkn15/Parameterless-clustering-by-dynamic-tree-cutting
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -848,9 +852,10 @@ R was the chosen language for the project as it eases the work around matrices, 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+We wanted to investigate parameterless clustering by dynamic-tree cutting. The first step was to extend Transitivity Clustering(TC) into Hierarchical Clustering(HC), we call this Transitivity-Hierarchical Clustering(THC). In order to evaluate a clustering according to to the gold standard of the dataset, the Brown dataset, F-measure was the implemented quality measure. The implementation of F-measure is feasible as we get close to the same results as \cite{clustEval} in terms of the threshold for the optimal clustering for the small dataset. In our case the optimal threshold was 47 with F-measure of 0.981 where \cite{clustEval} found threshold 48.86 with F-measure 0.986. Comparing the dendrograms of THC and the standard implementation og hierarchical clustering in R, the implementation is working as intended and produces a valid dendrogram. For each node in the dendrogram we look at the clustering cost of the actual data and a randomized version of the same node. The difference in cost should indicate where to cut each branch in the tree. The resulting tree is therefore cut on different levels, and is the optimal clustering. Multiple randomization approaches was tested in order to randomize each node in the dendrogram. In total of 4 different approaches was tested. TC returned costs that were too high on the first approach, above 1,000,000, for the small dataset. The actual costs peak at around 60,000. This is due to no structure in the randomized dataset. Each approach step by step gets a more structural randomization, which looks to be feasible with randomization approach 3 and 4. Approach 1 and 2 was determined as infeasible. Multiple tests was run with THC to find the difference in costs in all nodes in the dendrogram. However, unexpectedly, we did not get to analyze the plots from these tests, because of the scope of the project. Further steps must be taken in order to validate our approach for parameterless clustering by dynamic tree-cutting. (1) Analyze the plots of cost differences for all nodes in the dendrogram. (2) Alter the THC algorithm such that it can the branches in the dendrogram on different levels, and return a clustering result. (3) COmpare the clustering result to the gold standard with F-measure. (4) Repeat the steps of analyzing and change the approach of when to cut a branch, until we find this approach to parameterless clustering by dynamic tree-cutting either feasible or infeasible.
 
 
-
+\newpage
 \bibliographystyle{abbrv}
 \bibliography{references}
 
