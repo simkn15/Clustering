@@ -1,0 +1,142 @@
+\begin{thebibliography}{10}
+
+\bibitem{blast}
+S.~F. Altschul, W.~Gish, W.~Miller, E.~W. Myers, and D.~J. Lipman.
+\newblock Basic local alignment search tool.
+\newblock {\em Journal of molecular biology}, 215(3):403-410, 1990.
+
+\bibitem{18overview}
+M.~R. Anderberg.
+\newblock {\em CLuster analysis for applications: probability and mathematical
+  statistics: a series of monographs and textbooks}, volume~19.
+\newblock Academic press, 2014.
+
+\bibitem{64overview}
+B.~Andreopoulos, A.~An, X.~Wang, and M.~Schroeder.
+\newblock A roadmap of clustgering algorithms: finding a match for a biomedical
+  application.
+\newblock {\em Briefings in Bioinformatics}, 10(3):297-314, 2009.
+
+\bibitem{brown}
+S.~D. Brown, J.~A. Gerlt, J.~L. Seffernick, and P.~C. Babbitt.
+\newblock A gold standard set of mechanistically diverse enzyme superfamilies.
+\newblock {\em Genome Biology}, 7:R8, 2006.
+
+\bibitem{clustEval}
+W.~Christian, R.~Röttger, and J.~BaumBach.
+\newblock Comparing the performance of biomedical clustering methods.
+\newblock {\em Nature Methods}, 2015.
+
+\bibitem{clusterAnalysis}
+B.~S. Everitt and S.~Landau.
+\newblock {\em Cluster Analysis}, volume 5th edition.
+\newblock Wiley, 2011.
+
+\bibitem{6powerLimits}
+R.~D. Finn, P.~Coggill, R.~Y. Eberhardt, S.~R. Eddy, J.~Mistry, A.~L. Mitchell,
+  S.~C. Potter, M.~Punta, M.~Qureshi, A.~Sangrador-Vegas, and et~al.
+\newblock The pfam protein families database: towards a more sustainable
+  future.
+\newblock {\em Nucleic Acids Research}, 44, 2016.
+
+\bibitem{36overview}
+G.~Gan, C.~Ma, and J.~Wu.
+\newblock {\em Data clustering, theory, algorithms, and applications},
+  volume~20.
+\newblock Siam, 2007.
+
+\bibitem{22overview}
+I.~Guyon and A.~Elisseeff.
+\newblock An introduction to variable and feature selection.
+\newblock {\em Journal of machine learning research}, 3, 2003.
+
+\bibitem{33overview}
+I.~Guyon and A.~Elisseeff.
+\newblock {\em Feature extraction}.
+\newblock Springer, 2006.
+
+\bibitem{onClustTechniques}
+M.~Halkidi, Y.~Batistakis, and M.~Vazirgiannis.
+\newblock On clustering validation techniques.
+\newblock {\em Journal of Intelligent Information Systems}, 17:107-145, 2001.
+
+\bibitem{52overview}
+P.~Jaccard.
+\newblock Nouvelles recherches sur la distribution floral.
+\newblock {\em Bull. Soc. Vard. Sci. Nat}, 44:223-270, 1908.
+
+\bibitem{19overview}
+A.~K. Jain, M.~N. Murty, and P.~J. Flynn.
+\newblock Data clustering: a review.
+\newblock {\em ACM computing surveys}, 31:3, 1999.
+
+\bibitem{26overview}
+I.~Jolliffe.
+\newblock Principal component analysis.
+\newblock {\em Wiley Online Library}, 2002.
+
+\bibitem{7powerLimits}
+V.~Kunin, I.~Cases, A.~J. Enright, V.~d. Lorenzo, and C.~A. Ouzounis.
+\newblock Myriads of protein families, and still counting.
+\newblock {\em Genome biology}, 4, 2003.
+
+\bibitem{natureReviewsGenetics}
+M.~L. Metzker.
+\newblock Sequencing technologies - the next genetation.
+\newblock {\em Nature reviews genetics}, 11:31, 2010.
+
+\bibitem{clusteringOverview}
+R.~Röttger.
+\newblock Clustering of biological datasets in the era of big data.
+\newblock {\em Integrative Bioinformatics}, 13(1):300, 2016.
+
+\bibitem{35overview}
+L.~A. Shalabi, Z.~Shaaban, and B.~Kasasbeh.
+\newblock Data mining: A preprocessing engine.
+\newblock {\em Journal of Computer Science}, 2(9):735-739, 2006.
+
+\bibitem{34overview}
+K.~Thangavel and N.~K. Visalakshi.
+\newblock Impact of normalization in distributed k-means clustering.
+\newblock {\em International Journal of Soft Computing}, 4(4):168-172, 2009.
+
+\bibitem{partitioningBiologicalDataTC}
+T.~Wittkop, D.~Emig, S.~Lange, S.~Rahmann, M.~Albrecht, J.~H. Morris,
+  B.~Sebastian, J.~Stoye, and J.~Baumbach.
+\newblock Partitioning biological data with transitivity clustering.
+\newblock {\em Nature methods}, 7, 2010.
+
+\bibitem{comprehensiveCAwithTC}
+T.~Wittkop, D.~Emig, A.~Truss, M.~Albrecht, S.~Böcker, and J.~Baumbach.
+\newblock Comprehensive cluster analysis with transitivity clustering.
+\newblock {\em Nature Protocols}, 6:3, 2011.
+
+\bibitem{extensionAndRobustnessTC}
+T.~Wittkop, S.~Rahmann, R.~Röttger, S.~Böcker, and J.~Baumbach.
+\newblock Extension and robustness of transitivity clustering for
+  protein-protein interaction network analysis.
+\newblock {\em Internet Mathematics}, 7:4, 2011.
+
+\bibitem{17overview}
+C.~Wiwie, J.~Baumbach, and R.~Röttger.
+\newblock Comparing the performance of biomedical clustering methods.
+\newblock {\em Nature methods}, 12(11):1033-1038, 2015.
+
+\bibitem{powerLimits}
+C.~Wiwie and R.~Röttger.
+\newblock On the power and limits of sequence similarity based clustering of
+  proteins into families.
+\newblock {\em Pacific Symposium on Biocomputing}, 2017.
+
+\bibitem{15overview}
+R.~Xu and D.~Wunsch.
+\newblock Clustering algorithms in biomedical research: a review.
+\newblock {\em IEEE Rev Biomed Eng}, 16(3):645-678, 2005.
+
+\bibitem{94overview}
+K.~Y. Yeung, C.~Fraley, A.~Murua, A.~E. Raftery, and W.~L. Ruzzo.
+\newblock Model-based clustering and data transformations for gene expression
+  data.
+\newblock {\em Bioinformatics}, 17(10):977-987, 2001.
+
+\end{thebibliography}

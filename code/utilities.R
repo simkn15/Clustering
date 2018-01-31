@@ -149,7 +149,7 @@ plotCostsSmallOneVsOneWithGap <- function(dimensions = c(5)) { # Outdated
     
     df_plot <- rbind(df_plot, df_original)
     
-    table <- read.table(paste0("./randomSmall/outputRandomSmallData-S42-K", dimensions[1], ".txt"), sep = "")
+    table <- read.table(paste0("./randomSmallAp2/outputRandomSmallData-S42-K", dimensions[1], ".txt"), sep = "")
     df_random <- as.data.frame(table)
     df_random <- as.data.frame(cbind(df_random[,3], df_random[,19]))
     colnames(df_random) <- names
@@ -171,8 +171,11 @@ plotCostsSmallOneVsOneWithGap <- function(dimensions = c(5)) { # Outdated
     }
     
     title <- paste0("Small Data Set : Biggest gap at threshold ", maxGapThreshold)
-    g <- ggplot(df_plot, aes(x = threshold, y = cost, color = dimension)) + ggtitle(title) + geom_line() + geom_vline(xintercept = maxGapThreshold, linetype="dotted")
-    g
+    g <- ggplot(df_plot, aes(x = threshold, y = cost, color = dimension)) +
+        ggtitle(title) + 
+        geom_line() + 
+        geom_vline(xintercept = maxGapThreshold, linetype="dotted") +
+        scale_y_continuous(labels=function(n){format(n, scientific = FALSE)})
     return(g)
 }
 
@@ -235,7 +238,7 @@ plotHistogramRandomVsOriginalSimilarities <- function(dimension = 10, seed = 42,
     colNames <- c("Similarity", "Dataset")
     df_plot <- data.frame(similarity = integer(0), dataset = character())
     # Read in Original data
-    table <- read.table("../data/big/simBig.txt", sep = "")
+    table <- read.table("./data/big/simBig.txt", sep = "")
     df_table <- as.data.frame(table)
     proteins = levels(df_table[,1])
     simMatrix <- buildSimilarityMatrixFromBlast(proteins, df_table) # Big data
@@ -303,5 +306,98 @@ plotRandomVsOriginalAndPrintToFile <- function() {
     }
 }
 
-# plotRandomVsOriginalAndPrintToFile()
+# Plotting of max cost for randomized big datasets. All approaches, seeds and dimensions. Returns a plot for each approach. 
+plotCostsFromOutputFileBig <- function() {
+    approaches <- c(2, 3, 4)
+    seeds <- c(7, 21, 42, 50)
+    dimensions <- seq(5, 100, 5)
+    
+    for (ap in approaches) {
+        df_plot <- data.frame(dimension = integer(0), cost = integer(0), seed = integer(0))
+        for (s in seeds) {
+            for (dim in dimensions) {
+                path <- paste0("./randomBig/ap", ap, "/seed", s, "/")
+                fileName <- paste0("AP", ap, "outputRandomBigData-S", s, "-K", dim, ".txt")
+                file <- paste0(path, fileName)
+                print(file)
+                df <- read.table(file, sep = "", skip = 1)
+                df_plot <- rbind(df_plot, data.frame(dimension = dim, cost = max(df[,2]), seed = s))
+            }
+        }
+        title <- paste0("Maximum cost for the randomized big dataset | Approach ", ap)
+        df_plot[,3] <- as.factor(df_plot[,3])
+        g <- ggplot(data = df_plot, aes(x = dimension, y = cost, colour = seed)) + 
+            geom_line(linetype = "solid") +
+            scale_x_continuous(breaks = dimensions) + 
+            scale_y_continuous(breaks = seq(1000000, 4000000, 100000)) +
+            ggtitle("Big dataset")
+        
+        plotFileName <- paste0("plotCostsRandomBigData-Ap", ap, ".pdf")
+        pdf(plotFileName)
+        print(g)
+        dev.off()
+    }
+}
 
+# Plotting of max cost for randomized big datasets. All approaches, seeds and dimensions. Returns a plot for each approach. 
+plotCostsFromOutputFileSmall <- function() {
+    approaches <- c(2)
+    seeds <- c(42)
+    dimensions <- seq(5, 100, 5)
+    
+    for (ap in approaches) {
+        df_plot <- data.frame(dimension = integer(0), cost = integer(0), seed = integer(0))
+        for (s in seeds) {
+            for (dim in dimensions) {
+                path <- paste0("./randomSmallAp2/")
+                fileName <- paste0("outputRandomSmallData-S", s, "-K", dim, ".txt")
+                file <- paste0(path, fileName)
+                print(file)
+                df <- read.table(file, sep = "", skip = 1)
+                df_plot <- rbind(df_plot, data.frame(dimension = dim, cost = max(df[,19]), seed = s))
+            }
+        }
+        title <- paste0("Maximum cost for the randomized small dataset | Approach ", ap)
+        df_plot[,3] <- as.factor(df_plot[,3])
+        g <- ggplot(data = df_plot, aes(x = dimension, y = cost)) + 
+            geom_line(linetype = "solid") +
+            scale_x_continuous(breaks = dimensions) + 
+            scale_y_continuous(breaks = seq(200000, 500000, 20000)) +
+            ggtitle("Small dataset")
+        
+        plotFileName <- paste0("plotCostsRandomSmallData-Ap", ap, ".pdf")
+        pdf(plotFileName)
+        print(g)
+        dev.off()
+    }
+}
+
+# Used to make the cost plots for the actual datasets. Makes a pdf for each dataset.
+plotCostsFromMeasureFile <- function() {
+    names <- c("Threshold", "F-measure", "Clusters", "Common", "Cost")
+    table <- read.table(paste0("./measure/measureSmallDataOriginalFixedColumns.txt"), sep = "", fill = TRUE, skip = 1)
+    names(table) <- names
+    g <- ggplot(data = table, aes(x = Threshold, y = Cost)) + 
+        geom_line(linetype = "solid") +
+        scale_x_continuous(breaks = seq(0, 330, 20)) +
+        scale_y_continuous(breaks = seq(5000, 100000, 5000)) +
+        theme(axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5)) +
+        ggtitle("Small dataset")
+    fileName <- paste0("plotCostSmallDataOriginal.pdf")
+    pdf(fileName)
+    print(g)
+    dev.off()
+    
+    table <- read.table(paste0("./measure/measureBigDataOriginalFixedColumns.txt"), sep = "", fill = TRUE, skip = 1)
+    names(table) <- names
+    g <- ggplot(data = table, aes(x = Threshold, y = Cost)) + 
+        geom_line(linetype = "solid") +
+        scale_x_continuous(breaks = seq(0, 300, 10)) +
+        scale_y_continuous(breaks = seq(50000, 1000000, 50000)) +
+        theme(axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5)) +
+        ggtitle("Big dataset")
+    fileName <- paste0("plotCostBigDataOriginal.pdf")
+    pdf(fileName)
+    print(g)
+    dev.off()
+}

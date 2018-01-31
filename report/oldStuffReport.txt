@@ -1,0 +1,138 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% begin old introduction
+In ancient history it was important to realize that many objects shared certain properties like being edible or poisonous. Since it could be a matter of living or dieing. Categorizing is something most people, if not all, are doing daily without paying too much attention to it. Categorizing, or classifying, people as cute, clever, marriage-potential, etc..
+
+Two key learnings methods are: (Does not fit here)
+\begin{itemize}
+\item \textbf{Supervised Learning}: The machine learning task of inferring a function $f : X \rightarrow Y$ given a set of labeled training data $\{ \langle x_i, y_i \rangle \}$. 
+\item \textbf{Unsupervised Learning}: The task of building a model of X explaining its structure and inherit properties.
+\end{itemize}
+In short the difference is that supervised learning has a training data given a priori, where there is none in unsupervised learning. Thus, making supervised learning more subjective. Clustering is an unsupervised learning method.
+
+
+Clustering, or cluster analysis, is a way of grouping a set of objects such that a cluster (group) of objects is more similar to each other than those of another cluster. Clustering can help with the description of patterns of similarities and differences in a dataset. Similarity is highly subjective depending on the scenario.
+How a cluster is recognized is not entirely clear when displayed in the plane. One intuitive approach is assessing the relative distances between points. Figure \ref{fig:clusterShape} shows three types of shapes for clusters. Looking at the middle one, assessing the distance between points would not necessarily give two clusters. Taking the left cluster, shape of the letter \textbf{C}. The top most right point and the bottom most right point would have a high distance insinuating low similarity. Visually the two points are in the same cluster. 
+Figure \ref{fig:noNaturalCluster} shows an example without any 'natural' clusters. Visual examination does not leave any clues on the number of clusters. This scenario can be the geographical locations of houses in a town, where it makes sense to divide the houses into postal districts. Clustering is used in many different fields like market research, astronomy, weather classification, bioinformatics and genetics, etc..
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.4]{./pictures/clusterShapes.png}
+\caption{Different shapes of clusters}
+\label{fig:clusterShape}
+\end{figure}
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.4]{./pictures/noNaturalCluster.png}
+\caption{}
+\label{fig:noNaturalCluster}
+\end{figure}
+
+There are many different tools to do cluster analysis, which all intend to find an optimal clustering depending on a set of criteria. Given a set of criteria and parameters, we can analyze the data and discover the clusters. The resulting clusters can all be either feasible or infeasible. In some circumstances overlapping clusters can provide acceptable solutions. When there are no clear separation of clusters, it can be hard to determine if the solution is acceptable or not.\\
+Figure \ref{fig:g2-combined} shows similar datasets with decreasing separating and density of the clusters. \texttt{g2-2-70} does not have any clear separation between the clusters, and visually determining the number of clusters is no longer an option.
+\begin{figure}[H]
+\centering
+\begin{minipage}{5cm}
+\includegraphics[width=5cm]{./pictures/G2/g2-2-10.pdf}
+\caption*{g2-2-10}
+\label{g2-2-10}
+\end{minipage}
+\begin{minipage}{5cm}
+\includegraphics[width=5cm]{./pictures/G2/g2-2-30.pdf}
+\caption*{g2-2-30}
+\label{g2-2-30}
+\end{minipage}
+\\
+\begin{minipage}{5cm}
+\includegraphics[width=5cm]{./pictures/G2/g2-2-50.pdf}
+\caption*{g2-2-50}
+\label{g2-2-50}
+\end{minipage}
+\begin{minipage}{5cm}
+\includegraphics[width=5cm]{./pictures/G2/g2-2-70.pdf}
+\caption*{g2-2-70}
+\label{g2-2-70}
+\end{minipage}
+
+\caption{URL: https://cs.joensuu.fi/sipu/datasets/}
+\label{fig:g2-combined}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.4]{./pictures/G2/g2-2-70-k10.pdf}
+\caption{g2-2-70 clustering with 10 clusters}
+\label{fig:g2-2-70-k10}
+\end{figure}
+Clustering requires an understanding of the dataset, in order to select the proper features of the data to determine the similarity. E.g. the optimal clustering solution could be one with 10 clusters, shown in figure \ref{fig:g2-2-70-k10}. A feature is some attribute which describes the data. Lets say the dataset was about the appearance of people. The features could be hair color, eye color, height, weight, etc..
+The basic data for a cluster analysis starts with a $n \cdot p$ multivariate data matrix, \texttt{X}, which describes each object to be clustered. The entry $x_{ij}$ gives the value of the \textit{j}th variable on object \textit{i}:
+\begin{figure}[H]
+\centering
+\[
+\texttt{X}
+=
+\begin{bmatrix}
+x_{11} & x_{12} & \dots & x_{1p} \\
+x_{21} & x_{22} & \dots & \dots \\
+\vdots & \vdots & \vdots & \vdots \\
+x_{n1} & \dots & \dots & x_{np}
+\end{bmatrix}
+\]
+\caption{Multivariate data matrix}
+\label{fig:dataMatrix}
+\end{figure}
+
+Many clustering techniques begins by converting \texttt{X} into a symmetric $n \cdot n$ matrix. Both rows and columns represents the objects in the dataset. The resulting matrix could be of similarities, dissimilarities or distances between all objects.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Clustering Approaches}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Thus according to the method adopted to define clusters, the algorithms can be broadly
+classified into the following types (Jain et al., 1999): \textbf{From On Clustering Validation Techniques}
+There are many different clustering approaches. Each has its purpose dependent on the data. The three most notable approaches are
+\begin{itemize}
+	\item \textbf{Partitional}: Requires a parameter k, which is the number of returned clusters while optimizing a criterion function, e.g. a distance function.
+	\item \textbf{Hierarchical}: Proceeds by either merging smaller clusters into larger, or splitting larges cluster into smaller. Resulting in a dendrogram, which is a tree of clusters, showing the related clusters. The clustering solution is given by a cut on a desired level of the dendrogram.
+	\item \textbf{Density-based}: Grouping neighboring objects into clusters based on a density condition.
+\end{itemize}
+\textbf{Reformulate}
+With partitional clustering it can be hard to derive a proper k for the returned clusters. With low dimensional data plotting the data can be helpful to determine k, but gets increasingly difficult with high dimensional data. As a rule of thumb $1 \ll k \leq 10$, but highly depends on the data. Calculating the F-ratio can possibly give a good estimation for k.
+Density-based clustering is usually not a good approach if the dataset has a high variance of density between the clusters.
+Next is some algorithms under each approach
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{itemize}
+	\item \textbf{Reference: On Clustering Validation Techniques}
+	\item Partitional algorithms
+		\subitem K-Means
+		\subitem PAM (Partitioning Around Medoids)
+		\subitem CLARA (Clustering Large Applications)
+		\subitem CLARANS (Clustering Large Applications based on Randomized Search)
+		\subitem Transitivity Clustering (TC)
+	\item Hierarchical algorithms:
+		\subitem Agglomerative algorithms:
+		\subitem Divisive algorithms:
+		\subitem BIRCH (Zhang et al., 1996)
+		\subitem CURE (Guha et al., 1998)
+		\subitem ROCK (Guha et al., 1999)
+	\item Density-based algorithms
+		\subitem DBSCAN
+		\subitem DENCLUE
+\end{itemize}
+For this project the density-based algorithm Transitivity Clustering is used, and is incorporated into a hierarchical clustering approach.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Cluster Validity Assessment}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+It is difficult to visually compare two clusterings if they differ in a few points, thus it is needed to calculate the quality of a clustering. Clustering is a unsupervised learning without training data to guide, so how do we measure the quality? Evaluating two results can be difficult, if not impossible, when looking at plots of the clusterings. Thus, we need other methods to validate the results. \texttt{Cluster validity indices} are an important factor to evaluate solutions. There are three categories of validity indices[REF: On Clustering Validation Techniques]:
+\begin{itemize}
+	\item External : Evaluate the result with respect to a pre-specified structure, such as a gold standard. 
+	\item Internal : Evaluate the result with respect to information intrinsic to the data alone.
+	\item Relative : Choosing the best clustering scheme of a set of defined schemes, according to a pre-specified criterion.
+\end{itemize}
+Internal measures are often based on
+\begin{itemize}
+	\item Compactness: Measures how closely related the objects are in a cluster
+	\item Separation: Measures how distinct or well-separated a cluster is from other clusters
+\end{itemize}
+Internal measures are e.g. Sum of Squares(SSQ), Silhouette Coefficient and Dunn Index. External measures use external information not present in the data. Normally a 'gold standard' is used. A gold standard is a clustering solution developed by experts, and are rarely available. In practice they are not available at all. Comparing against this ground truth is the way for determining the quality. External measures are e.g. F-measure and Jaccard coefficient. Generally, external validity indices evaluate a result in terms of the purity of individual clusters and the completeness of the clusters[REF: power\_limits]. Relative will not be further discussed, but an overview can be found in [REF: On clustering Validation Techniques]. There are many methods underlying these categories, but for the sake of brevity and the scope of the work, we limit ourselves to the F-measure. F-measure falls under the category of an external measure and will be discussed in Section \ref{sec:clusterValidation}.

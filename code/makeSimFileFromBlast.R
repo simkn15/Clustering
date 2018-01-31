@@ -1,3 +1,4 @@
+setwd(dirname(rstudioapi::getActiveDocumentContext()$path))
 buildSimilarityMatrixFromBlast <- function(proteins, df_table) {
     if (length(proteins) < 2) { stop("Cannot build similarity matrix with less than 2 proteins")}
     # Create an empty matrix
@@ -48,19 +49,20 @@ buildSimilarityMatrixFromBlast <- function(proteins, df_table) {
     return(simMatrix)
 }
 
-table <- read.table("../data/big/blast_original.txt", sep = "")
+table <- read.table("./data/big/blast_original.txt", sep = "")
 df_table <- as.data.frame(table)
 df_table <- df_table[,c(1,2,11)]
 table <- df_table
 for (i in 1:nrow(df_table)) {
     if (table[i,3] != 0) {
-        table[i,3] <- -log(table[i,3])
+        table[i,3] <- -log10(table[i,3])
     }
 }
 
-#proteins <- levels(table[,1])
+proteins <- levels(table[,1])
 
-#simMatrix <- buildSimilarityMatrix(proteins, table)
+simMatrix <- buildSimilarityMatrixFromBlast(proteins, table)
+
 require(gdata)
 file <- file("./data/big/simBig.txt", "w")
 # for (i in 1:nrow(table)) {

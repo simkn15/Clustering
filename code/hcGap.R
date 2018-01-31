@@ -28,7 +28,6 @@ source("randomization.R")
 # minTreshold: The starting threshold, gets incremented by 'step'
 # maxThreshold: The maximum threshold where all clusters are singletons, max(simMatrix) + 1
 # binarySearch: TRUE will enable the binary search
-# DEBUG and fileName: Used for debugging
 hclustDivisiveGap <- function(simMatrix, proteins, step = 1, minSplit = 2, maxSplit = 10, minThreshold, maxThreshold, binarySearch = FALSE, GAP = FALSE, dimensions = 5, seed = 42, randomAp = 4) {
     if (binarySearch && step == 1) { stop("Binary search requires step >= 2.") }
     dfGap <- data.frame(costOriginal = integer(0), costRandom = integer(0), threshold = integer(0), numberOfProteins = integer(0))
@@ -67,6 +66,7 @@ hclustDivisiveGap <- function(simMatrix, proteins, step = 1, minSplit = 2, maxSp
             for (i in 1:length(proteinLabelsOfEachCluster)) {
                 currentStep <- step
                 currentTclustCluster <- proteinLabelsOfEachCluster[[i]]# Cluster to tclust
+                print(paste0("Clustering ", currentTclustCluster$cid, " with ", length(currentTclustCluster$proteins), " proteins | threshold = ", currentTclustCluster$nextThreshold))
                 
                 if (length(currentTclustCluster$proteins) > 1) { # Not a singleton. This check might not be necessary, as we dont add singletons for the next iteration
                     if (length(proteins) != length(currentTclustCluster$proteins)) { # We need to match the similarity matrix to the proteins in the cluster
@@ -149,7 +149,7 @@ hclustDivisiveGap <- function(simMatrix, proteins, step = 1, minSplit = 2, maxSp
                         if (GAP && length(currentTclustCluster$proteins) - 1 >= dimensions) {
                             threshold <- currentTclustCluster$nextThreshold - step + currentStep
                             if (randomAp == 3) {
-                                simMatrixRandom <- buildRandomSimMatrixAp4(currentTclustCluster$proteins, simMatrixTemp, k = dimensions, seed = seed)
+                                simMatrixRandom <- buildRandomSimMatrixAp3(currentTclustCluster$proteins, simMatrixTemp, k = dimensions, seed = seed)
                             }
                             if (randomAp == 4)  {
                                 simMatrixRandom <- buildRandomSimMatrixAp4(currentTclustCluster$proteins, simMatrixTemp, k = dimensions, seed = seed)
@@ -213,7 +213,7 @@ hclustDivisiveGap <- function(simMatrix, proteins, step = 1, minSplit = 2, maxSp
                     # Add clusters for next iteration
                     if (amountOfClustersInTclustResult == 1) {
                         tempCurrentCluster <- tempProteinLabelsOfEachCluster[[1]]
-                        clustersLargerThanOne <- c(clustersLargerThanOne, list(tempCurrentCluster)) # We lose name at this line
+                        clustersLargerThanOne <- c(clustersLargerThanOne, list(tempCurrentCluster))
                     }
                     else {
                         height <- c(height, c(maxThreshold - (currentTclustCluster$nextThreshold - step + currentStep - 1)))
@@ -236,6 +236,13 @@ hclustDivisiveGap <- function(simMatrix, proteins, step = 1, minSplit = 2, maxSp
                             if (length(tempCurrentCluster$proteins) > 1) { # Add cluster for next iteration
                                 clustersLargerThanOne <- c(clustersLargerThanOne, list(tempCurrentCluster)) # We lose name at this line
                             }
+                            
+                            # if (length(tempCurrentCluster$proteins) - 1 < dimensions) { # singleton found
+                            #     countSingletons <- countSingletons + length(tempCurrentCluster$proteins)
+                            # }
+                            # if (length(tempCurrentCluster$proteins) - 1 >= dimensions) { # Add cluster for next iteration
+                            #     clustersLargerThanOne <- c(clustersLargerThanOne, list(tempCurrentCluster)) # We lose name at this line
+                            # }
                         }
                         merge <- c(merge, list(currentMerge))
                     }
@@ -333,8 +340,6 @@ hclustDivisiveGap <- function(simMatrix, proteins, step = 1, minSplit = 2, maxSp
         names(newCluster) <- parent # cid for parent. The children have been merged into its parent.
         mergeLookUpList <- c(mergeLookUpList, newCluster)
     }
-    
-    if (DEBUG) { close(file) }
     
     # Can't plot without making a hclust() object and reassign
     hc <- hclust(dist(USArrests), "ave")

@@ -300,8 +300,6 @@ hclustDivisive <- function(simMatrix, proteins, step = 1, minSplit = 2, maxSplit
         mergeLookUpList <- c(mergeLookUpList, newCluster)
     }
     
-    if (DEBUG) { close(file) }
-    
     # Can't plot without making a hclust() object and reassign
     hc <- hclust(dist(USArrests), "ave")
     hc$merge <- mergeMatrix

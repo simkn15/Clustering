@@ -1,28 +1,28 @@
 \select@language {english}
-\contentsline {section}{\numberline {1}Abstract}{3}
-\contentsline {subsection}{\numberline {1.1}Background}{3}
-\contentsline {subsection}{\numberline {1.2}Results}{3}
-\contentsline {subsection}{\numberline {1.3}Conclusion}{3}
-\contentsline {section}{\numberline {2}Introduction}{4}
-\contentsline {subsection}{\numberline {2.1}What is Clustering?}{4}
-\contentsline {subsection}{\numberline {2.2}Clustering Approaches}{7}
-\contentsline {subsection}{\numberline {2.3}Cluster validity}{8}
-\contentsline {section}{\numberline {3}Background}{9}
-\contentsline {subsection}{\numberline {3.1}The Dataset}{9}
-\contentsline {subsection}{\numberline {3.2}Transitivity Clustering}{9}
-\contentsline {subsection}{\numberline {3.3}Hierarchical Clustering}{10}
-\contentsline {subsection}{\numberline {3.4}Cluster Validation - F-measure}{11}
-\contentsline {subsection}{\numberline {3.5}Multidimensional Scaling}{13}
-\contentsline {subsection}{\numberline {3.6}GAP Statistics}{13}
-\contentsline {section}{\numberline {4}Method}{14}
-\contentsline {subsection}{\numberline {4.1}Assessing best clustering}{14}
-\contentsline {subsection}{\numberline {4.2}Randomization approach 1}{14}
-\contentsline {subsection}{\numberline {4.3}Randomization approach 2}{14}
-\contentsline {subsection}{\numberline {4.4}Randomization approach 3}{14}
-\contentsline {subsection}{\numberline {4.5}Randomization approach 4}{14}
-\contentsline {subsection}{\numberline {4.6}Results for randomizations}{14}
-\contentsline {section}{\numberline {5}Implementation : Keep it short!}{15}
-\contentsline {section}{\numberline {6}Conclusion}{16}
-\contentsline {section}{\numberline {7}Appendix}{17}
-\contentsline {subsection}{\numberline {7.1}Clustering Approaches and Algorithms : Missing description of each algorithm}{17}
-\contentsline {section}{\numberline {8}References}{18}
+\contentsline {section}{\numberline {1}Introduction}{4}
+\contentsline {subsection}{\numberline {1.1}Clustering Overview}{6}
+\contentsline {subsubsection}{\numberline {1.1.1}Preprocessing}{6}
+\contentsline {subsubsection}{\numberline {1.1.2}Proximity measures}{9}
+\contentsline {subsubsection}{\numberline {1.1.3}Clustering Strategies}{10}
+\contentsline {subsubsection}{\numberline {1.1.4}Clustering Properties}{11}
+\contentsline {subsubsection}{\numberline {1.1.5}Clustering Evaluation}{12}
+\contentsline {section}{\numberline {2}Background}{13}
+\contentsline {subsection}{\numberline {2.1}The Data}{13}
+\contentsline {subsection}{\numberline {2.2}Transitivity Clustering}{13}
+\contentsline {subsection}{\numberline {2.3}Hierarchical Clustering}{14}
+\contentsline {subsection}{\numberline {2.4}Cluster Validation}{16}
+\contentsline {subsection}{\numberline {2.5}Multidimensional Scaling}{18}
+\contentsline {section}{\numberline {3}Method}{19}
+\contentsline {subsection}{\numberline {3.1}Assessing the best clustering}{19}
+\contentsline {subsection}{\numberline {3.2}Transitivity-Hierarchical Clustering}{19}
+\contentsline {subsection}{\numberline {3.3}Randomization}{20}
+\contentsline {subsection}{\numberline {3.4}Results}{21}
+\contentsline {subsubsection}{\numberline {3.4.1}Transitivity-Hierarchical Clustering}{21}
+\contentsline {subsubsection}{\numberline {3.4.2}Randomization}{23}
+\contentsline {subsubsection}{\numberline {3.4.3}Randomization Approach 1}{25}
+\contentsline {subsubsection}{\numberline {3.4.4}Randomization Approach 2}{25}
+\contentsline {subsubsection}{\numberline {3.4.5}Randomization Approach 3}{28}
+\contentsline {subsubsection}{\numberline {3.4.6}Randomization Approach 4}{30}
+\contentsline {subsubsection}{\numberline {3.4.7}Randomization and Transitivity-Hierarchical Clustering}{33}
+\contentsline {section}{\numberline {4}Implementation}{39}
+\contentsline {section}{\numberline {5}Conclusion}{40}
